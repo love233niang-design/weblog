@@ -1,5 +1,7 @@
 package com.quanxiaoha.weblog.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import javax.validation.constraints.*;
@@ -7,9 +9,11 @@ import javax.validation.constraints.*;
 // 使用 JSR 380 参数校验注解
 // 可自动校验字段格式
 @Data
+@ApiModel(value = "用户实体类") //描述类
 public class User {
     // 用户名
     @NotBlank(message = "用户名不能为空")// 验证字符串不能为空
+    @ApiModelProperty(value = "用户名") // 描述字段
     private String username;
     // 性别
     @NotNull(message = "性别不能为空")// 验证数字不能为空

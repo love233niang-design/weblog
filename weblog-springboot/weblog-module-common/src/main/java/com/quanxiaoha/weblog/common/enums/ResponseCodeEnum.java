@@ -11,6 +11,7 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
     SYSTEM_ERROR("1000", "出错了"),
     // 业务异常状态码
     PRODUCT_NOT_FOUND("2000", "商品不存在"),
+    PARAM_NOT_VALID("2001", "参数不合法"),
     ;
 
     // 异常码
