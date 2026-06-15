@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/config/Knif4jConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/model/User.java" afterDir="false" />
-    </list>
+    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +73,9 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\JAVA_IDE_WORK\idea Javawork\weblog\weblog-springboot\weblog-web\src\main\java" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.quanxiaoha.weblog.admin.config" />
+    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WeblogWebApplication">
     <configuration name="WeblogWebApplicationTests.testLog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -132,11 +126,15 @@
       <workItem from="1781482875826" duration="4301000" />
       <workItem from="1781487545121" duration="5744000" />
       <workItem from="1781505120854" duration="3062000" />
-      <workItem from="1781508202435" duration="5869000" />
+      <workItem from="1781508202435" duration="6319000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
