@@ -1,0 +1,14 @@
+[TraceId: ] 2026-06-15 09:40:18.290 [main] INFO  com.quanxiaoha.weblog.web.WeblogWebApplication - Starting WeblogWebApplication using Java 1.8.0_311 on DESKTOP-EK335RQ with PID 31840 (E:\JAVA_IDE_WORK\idea Javawork\weblog\weblog-springboot\weblog-web\target\classes started by hq in E:\JAVA_IDE_WORK\idea Javawork\weblog\weblog-springboot)
+[TraceId: ] 2026-06-15 09:40:18.293 [main] INFO  com.quanxiaoha.weblog.web.WeblogWebApplication - The following profiles are active: prod
+[TraceId: ] 2026-06-15 09:40:18.855 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+[TraceId: ] 2026-06-15 09:40:18.861 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+[TraceId: ] 2026-06-15 09:40:18.870 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.56]
+[TraceId: ] 2026-06-15 09:40:18.923 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+[TraceId: ] 2026-06-15 09:40:18.923 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 604 ms
+[TraceId: ] 2026-06-15 09:40:19.137 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+[TraceId: ] 2026-06-15 09:40:19.143 [main] INFO  com.quanxiaoha.weblog.web.WeblogWebApplication - Started WeblogWebApplication in 1.255 seconds (JVM running for 1.988)
+[TraceId: ] 2026-06-15 09:40:22.746 [http-nio-8080-exec-2] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+[TraceId: ] 2026-06-15 09:40:22.746 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+[TraceId: ] 2026-06-15 09:40:22.747 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+[TraceId: 31d2eb14-7d19-4b3b-a5fe-978219d93369] 2026-06-15 09:40:22.847 [http-nio-8080-exec-2] INFO  c.q.weblog.common.aspect.ApiOperationLogAspect - ====== 请求开始: [测试接口], 入参: {"username":"admin","sex":1}, 请求类: TestController, 请求方法: test =================================== 
+[TraceId: 31d2eb14-7d19-4b3b-a5fe-978219d93369] 2026-06-15 09:40:22.855 [http-nio-8080-exec-2] INFO  c.q.weblog.common.aspect.ApiOperationLogAspect - ====== 请求结束: [测试接口], 耗时: 19ms, 出参: {"username":"admin","sex":1} =================================== 

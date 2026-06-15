@@ -25,12 +25,14 @@ public class ApiOperationLogAspect {
     public void apiOperationLog() {}
 
     @Around("apiOperationLog()")
+    // 参数 ProceedingJoinPoint 可以获取目标方法信息，控制目标方法的执行
     public Object doAround(ProceedingJoinPoint joinPoint) throws Throwable {
         try {
             // 请求开始时间
             long startTime = System.currentTimeMillis();
 
             // MDC
+            // traceId 表示追踪 ID，值这里直接用的 UUID
             MDC.put("traceId", UUID.randomUUID().toString());
 
             // 获取被请求的类和方法
@@ -39,6 +41,7 @@ public class ApiOperationLogAspect {
 
             // 请求入参
             Object[] args = joinPoint.getArgs();
+
             // 入参转 JSON 字符串
             String argsJsonStr = Arrays.stream(args).map(toJsonStr()).collect(Collectors.joining(", "));
 
@@ -64,6 +67,8 @@ public class ApiOperationLogAspect {
             MDC.clear();
         }
     }
+
+    // 获取功能描述信息
     private String getApiOperationLogDescription(ProceedingJoinPoint joinPoint) {
         // 从 ProceedingJoinPoint 获取 MethodSignature
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();

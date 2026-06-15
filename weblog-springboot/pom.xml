@@ -112,12 +112,4 @@
     </pluginManagement>
   </build>
 
-  <!-- 使用阿里云的 Maven 仓库源，提升包下载速度 -->
-  <repositories>
-    <repository>
-      <id>aliyunmaven</id>
-      <name>aliyun</name>
-      <url>https://maven.aliyun.com/repository/public</url>
-    </repository>
-  </repositories>
 </project>

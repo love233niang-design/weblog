@@ -18,5 +18,6 @@ public @interface ApiOperationLog {
      *
      * @return
      */
+    // 表示注解的一个元素（属性），使用该注解时，通过 description = "" 来赋值
     String description() default "";
 }
