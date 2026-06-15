@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="" />
+    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/config/JacksonConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,31 +49,31 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "JUnit.WeblogWebApplicationTests.testLog.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "Maven.weblog-springboot [clean].executor": "Run",
-    "Maven.weblog-springboot [package].executor": "Run",
-    "Maven.weblog-springboot [validate].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "Spring Boot.WeblogWebApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "spring",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.WeblogWebApplicationTests.testLog.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.weblog-springboot [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.weblog-springboot [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.weblog-springboot [validate].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;Spring Boot.WeblogWebApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;spring&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\JAVA_IDE_WORK\idea Javawork\weblog\weblog-springboot\weblog-web\src\main\java" />
@@ -127,6 +132,7 @@
       <workItem from="1781487545121" duration="5744000" />
       <workItem from="1781505120854" duration="3062000" />
       <workItem from="1781508202435" duration="6319000" />
+      <workItem from="1781517338531" duration="796000" />
     </task>
     <servers />
   </component>
