@@ -2,6 +2,8 @@ import '@/assets/main.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { createApp } from 'vue'
 import App from '@/App.vue'
+import 'animate.css';
+
 // 导入路由
 import router from '@/router'
 
