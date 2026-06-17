@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/filter/TokenAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAccessDeniedHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAuthenticationEntryPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/filter/JwtAuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/filter/JwtAuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/service/UserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/service/UserDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/utils/JwtTokenHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/utils/JwtTokenHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +29,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -183,6 +189,9 @@
       </set>
     </attachedChunks>
   </component>
+  <component name="StructureViewState">
+    <option name="selectedTab" value="Logical" />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="" />
@@ -199,7 +208,9 @@
       <workItem from="1781589538141" duration="15140000" />
       <workItem from="1781607720586" duration="7804000" />
       <workItem from="1781615670658" duration="1023000" />
-      <workItem from="1781656985221" duration="6113000" />
+      <workItem from="1781656985221" duration="7908000" />
+      <workItem from="1781665296990" duration="3756000" />
+      <workItem from="1781677451055" duration="1866000" />
     </task>
     <servers />
   </component>

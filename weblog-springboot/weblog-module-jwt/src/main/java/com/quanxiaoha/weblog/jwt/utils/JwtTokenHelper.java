@@ -28,6 +28,9 @@ public class JwtTokenHelper implements InitializingBean {
     // jwt 解析
     private JwtParser jwtParser;
 
+    @Value("${jwt.tokenExpireTime}")
+    private Long tokenExpireTime;
+
     // 解码配置文件中的配置的 Base 64 编码 key 为密钥
     @Value("${jwt.secret}")
     public void setBase64Key(String base64Key) {
@@ -48,7 +51,7 @@ public class JwtTokenHelper implements InitializingBean {
     public String generateToken(String username) {
         LocalDateTime now = LocalDateTime.now();
         // 设置 token 一小时过期
-        LocalDateTime expireTime = now.plusHours(1);
+        LocalDateTime expireTime = now.plusHours(tokenExpireTime);
 
         return Jwts.builder()
                 .setSubject(username)
@@ -84,5 +87,22 @@ public class JwtTokenHelper implements InitializingBean {
     public static void main(String[] args) {
         String key = generateBase64Key();
         System.out.println("key：" + key);
+    }
+
+    // 校验 Token 是否可用
+    public void validateToken(String token) {
+        jwtParser.parseClaimsJws(token);
+    }
+
+    // 解析 token 获取用户名
+    public String getUsernameByToken(String token) {
+        try {
+            Claims claims = jwtParser.parseClaimsJws(token).getBody();
+            String username = claims.getSubject();
+            return username;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
