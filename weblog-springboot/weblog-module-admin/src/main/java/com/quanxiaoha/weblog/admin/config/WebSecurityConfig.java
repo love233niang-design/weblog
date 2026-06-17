@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
         http.csrf().disable() // 禁用 CSRF 跨站请求伪造
-                .formLogin().disable() // 禁用表单登录
+                .formLogin().disable() // 禁用原始表单登录，改为使用 JWT
                 .apply(jwtAuthenticationSecurityConfig)// 设置用户登录认证相关配置
                 .and()
                 .authorizeHttpRequests()

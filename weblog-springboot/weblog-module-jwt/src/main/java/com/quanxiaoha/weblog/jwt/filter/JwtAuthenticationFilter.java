@@ -21,6 +21,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
 
     /**
      * 指定用户登录的访问地址
+     * 告诉Spring Security，当用户访问 /login 时且为 POST 请求，将使用这个过滤器处理
      */
     public JwtAuthenticationFilter() {
         super(new AntPathRequestMatcher("/login", "POST"));
@@ -32,7 +33,7 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
         // 解析提交的 JSON 数据
         JsonNode jsonNode = mapper.readTree(request.getInputStream());
         JsonNode usernameNode = jsonNode.get("username");
-        JsonNode passwordNode =  jsonNode.get("password");
+        JsonNode passwordNode = jsonNode.get("password");
 
         // 判断用户名、密码是否为空
         if (Objects.isNull(usernameNode) || Objects.isNull(passwordNode)
