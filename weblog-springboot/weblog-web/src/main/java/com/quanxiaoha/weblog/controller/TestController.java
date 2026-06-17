@@ -21,7 +21,7 @@ import java.time.LocalTime;
 @Api(tags = "首页模块")// 此注解作用于 controller 之上，描述相关职责
 public class TestController {
 
-    @PostMapping("/test")
+    @PostMapping("/admin/test")
     @ApiOperationLog(description = "测试接口")
     @ApiOperation(value = "测试接口") //作用于接口上，用于描述接口功能
     public Response test(@RequestBody @Validated User user) {

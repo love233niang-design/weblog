@@ -5,10 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/config/JacksonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/config/MybatisPlusConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/dos/UserDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/config/JwtAuthenticationSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/config/PasswordEncoderConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/exception/UsernameOrPasswordNullException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/filter/JwtAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAuthenticationFailureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAuthenticationSuccessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/service/UserDetailServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/utils/JwtTokenHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/utils/ResultUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/vo/LoginRspVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/spy.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/test/java/com/quanxiaoha/weblog/web/WeblogWebApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/test/java/com/quanxiaoha/weblog/web/WeblogWebApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +72,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.JwtTokenHelper.executor&quot;: &quot;Run&quot;,
+    &quot;Application.PasswordEncoderConfig.executor&quot;: &quot;Run&quot;,
+    &quot;Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.WeblogWebApplicationTests.insertTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.WeblogWebApplicationTests.testLog.executor&quot;: &quot;Run&quot;,
     &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
     &quot;Maven.weblog-springboot [clean].executor&quot;: &quot;Run&quot;,
@@ -83,6 +108,61 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WeblogWebApplication">
+    <configuration name="JwtTokenHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.quanxiaoha.utils.JwtTokenHelper" />
+      <module name="weblog-module-jwt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.quanxiaoha.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PasswordEncoderConfig" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.quanxiaoha.weblog.jwt.config.PasswordEncoderConfig" />
+      <module name="weblog-module-jwt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.quanxiaoha.weblog.jwt.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper" />
+      <module name="weblog-module-jwt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.quanxiaoha.weblog.jwt.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WeblogWebApplicationTests.insertTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="weblog-web" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.quanxiaoha.weblog.web.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.quanxiaoha.weblog.web" />
+      <option name="MAIN_CLASS_NAME" value="com.quanxiaoha.weblog.web.WeblogWebApplicationTests" />
+      <option name="METHOD_NAME" value="insertTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="WeblogWebApplicationTests.testLog" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="weblog-web" />
       <extension name="coverage">
@@ -108,6 +188,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PasswordEncoderConfig" />
+        <item itemvalue="Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper" />
+        <item itemvalue="Application.JwtTokenHelper" />
+        <item itemvalue="JUnit.WeblogWebApplicationTests.insertTest" />
         <item itemvalue="JUnit.WeblogWebApplicationTests.testLog" />
       </list>
     </recent_temporary>
@@ -133,6 +217,10 @@
       <workItem from="1781505120854" duration="3062000" />
       <workItem from="1781508202435" duration="6319000" />
       <workItem from="1781517338531" duration="796000" />
+      <workItem from="1781589538141" duration="15140000" />
+      <workItem from="1781607720586" duration="7804000" />
+      <workItem from="1781615670658" duration="1023000" />
+      <workItem from="1781656985221" duration="786000" />
     </task>
     <servers />
   </component>

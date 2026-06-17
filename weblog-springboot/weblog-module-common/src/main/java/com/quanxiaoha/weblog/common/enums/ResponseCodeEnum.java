@@ -10,8 +10,12 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
     // 通用异常状态码
     SYSTEM_ERROR("1000", "出错了"),
     // 业务异常状态码
-    PRODUCT_NOT_FOUND("2000", "商品不存在"),
-    PARAM_NOT_VALID("2001", "参数不合法"),
+    PRODUCT_NOT_FOUND("1001", "商品不存在"),
+    PARAM_NOT_VALID("1002", "参数不合法"),
+
+    LOGIN_FAIL("20000", "登录失败"),
+    USERNAME_OR_PWD_ERROR("20001", "用户名或密码错误"),
+
     ;
 
     // 异常码

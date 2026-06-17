@@ -1,3 +1,8 @@
 spring:
   profiles:
     active: dev
+jwt:
+  # 签发人
+  issuer: hq
+  # 秘钥
+  secret: wJbZItzmM7b6awCaYZHwRqJksrDxVG0Tn8xV1JLwqkSU+uny0eLdG9d1ZsM8vg/24ZvS/AgfElcCe0ZLpNTC8w==
