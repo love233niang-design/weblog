@@ -33,8 +33,8 @@ public class WeblogWebApplicationTests {
     @Test
     void  insertTest() {
         UserDO userDO = new UserDO();
-        userDO.setUsername("hq");
-        userDO.setPassword("123456");
+        userDO.setUsername("test");
+        userDO.setPassword("$2a$10$3Aq/OGIX2gA5nar9QytFieRs1E64x97x1ABJgI/OQCg0aqfscj4Ta");
         userDO.setCreateTime(new Date());
         userDO.setUpdateTime(new Date());
         userDO.setIsDeleted(false);

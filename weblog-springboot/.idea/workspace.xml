@@ -5,12 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/filter/TokenAuthenticationFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAccessDeniedHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAuthenticationEntryPoint.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/dos/UserRoleDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/mapper/UserRoleMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/utils/JwtTokenHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/utils/JwtTokenHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/config/PasswordEncoderConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/config/PasswordEncoderConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/handler/RestAccessDeniedHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/service/UserDetailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/quanxiaoha/weblog/jwt/service/UserDetailServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/quanxiaoha/weblog/controller/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/test/java/com/quanxiaoha/weblog/web/WeblogWebApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/test/java/com/quanxiaoha/weblog/web/WeblogWebApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/admin/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/admin/login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,10 +185,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WeblogWebApplicationTests.insertTest" />
         <item itemvalue="Application.PasswordEncoderConfig" />
         <item itemvalue="Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper" />
         <item itemvalue="Application.JwtTokenHelper" />
-        <item itemvalue="JUnit.WeblogWebApplicationTests.insertTest" />
         <item itemvalue="JUnit.WeblogWebApplicationTests.testLog" />
       </list>
     </recent_temporary>
@@ -210,7 +222,7 @@
       <workItem from="1781615670658" duration="1023000" />
       <workItem from="1781656985221" duration="7908000" />
       <workItem from="1781665296990" duration="3756000" />
-      <workItem from="1781677451055" duration="1866000" />
+      <workItem from="1781677451055" duration="15707000" />
     </task>
     <servers />
   </component>

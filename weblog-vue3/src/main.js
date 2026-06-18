@@ -3,9 +3,12 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import { createApp } from 'vue'
 import App from '@/App.vue'
 import 'animate.css';
+import 'nprogress/nprogress.css'
 
 // 导入路由
 import router from '@/router'
+// 导入全局路由守卫
+import '@/permission'
 
 const app = createApp(App)
 
