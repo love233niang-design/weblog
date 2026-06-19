@@ -46,7 +46,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
             List<String> roles = roleDOS.stream().map(p -> p.getRole()).collect(Collectors.toList());
             roleArr = roles.toArray(new String[roles.size()]);
             for (String s : roleArr) {
-                System.out.println(s);
+                log.info(s);
             }
         }
 

@@ -59,7 +59,7 @@ import { login } from '@/api/admin/user'
 import { showMessage } from '@/composables/util'
 import { useRouter } from 'vue-router';
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
-import { setToken } from '@/composables/auth'
+import { setToken } from '@/composables/cookie'
 const router = useRouter()
 // 登录按钮加载
 const loading = ref(false)

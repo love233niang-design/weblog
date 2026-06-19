@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
+
 // 全局异常处理
 @Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
+
+    // 处理业务异常
     @ExceptionHandler({BizException.class}) // 指定处理什么异常, 这里处理的是 BizException 异常
     @ResponseBody
     public Response<Object> handleBizException(BizException e, HttpServletRequest request) {
@@ -24,6 +27,7 @@ public class GlobalExceptionHandler {
         return Response.fail(e);
     }
 
+    //处理系统异常（兜底
     @ExceptionHandler({Exception.class})
     @ResponseBody
     public Response<Object> handleOtherException(HttpServletRequest request, Exception e) {
@@ -31,6 +35,7 @@ public class GlobalExceptionHandler {
         return Response.fail(ResponseCodeEnum.SYSTEM_ERROR);
     }
 
+    // 处理参数校验异常
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseBody
     public Response<Object> handleMethodArgumentNotValidException(HttpServletRequest request, MethodArgumentNotValidException e) {
@@ -58,7 +63,8 @@ public class GlobalExceptionHandler {
         return Response.fail(errorCode, errorMessage);
     }
 
-    @ExceptionHandler({ AccessDeniedException.class })
+    // 处理权限异常
+    @ExceptionHandler({AccessDeniedException.class})
     public void throwAccessDeniedException(AccessDeniedException e) throws AccessDeniedException {
         // 捕获到鉴权失败异常，主动抛出，交给 RestAccessDeniedHandler 去处理
         log.info("============= 捕获到 AccessDeniedException");

@@ -4,6 +4,7 @@ import { createApp } from 'vue'
 import App from '@/App.vue'
 import 'animate.css';
 import 'nprogress/nprogress.css'
+import { createPinia } from 'pinia'
 
 // 导入路由
 import router from '@/router'
@@ -12,6 +13,10 @@ import '@/permission'
 
 const app = createApp(App)
 
+const pinia = createPinia()
+
+// 应用 Pinia
+app.use(pinia)
 // 应用路由
 app.use(router)
 app.mount('#app')
