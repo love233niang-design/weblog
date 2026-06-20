@@ -19,6 +19,7 @@ public class AdminUserServiceImpl implements AdminUserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    // 修改密码
     @Override
     public Response updateAdminUserPassword(UpdateAdminUserPasswordReqVO updateAdminUserPasswordReqVO) {
         // 获取用户名和密码
@@ -33,6 +34,7 @@ public class AdminUserServiceImpl implements AdminUserService {
         return count == 1 ? Response.success() : Response.fail(ResponseCodeEnum.USERNAME_NOT_FOUND);
     }
 
+    // 获取当前登录的用户信息
     @Override
     public Response findUserInfo() {
         // 获取存储再 ThreadLocal 中的用户信息

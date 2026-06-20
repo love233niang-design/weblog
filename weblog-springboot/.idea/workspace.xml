@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/config/JacksonConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/config/JacksonConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/api/admin/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/api/admin/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/layouts/admin/components/AdminHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/layouts/admin/components/AdminHeader.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/stores/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/stores/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/controller/AdminCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/model/vo/category/AddCategoryReqVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/AdminCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/impl/AdminCategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/dos/CategoryDO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/mapper/CategoryMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-admin/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/impl/AdminUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/impl/AdminUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/enums/ResponseCodeEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +88,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.quanxiaoha.weblog.admin.service.impl" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\JAVA_IDE_WORK\idea Javawork\weblog\weblog-springboot\weblog-web\src\main\java" />
     </key>
@@ -213,7 +221,8 @@
       <workItem from="1781751134576" duration="1098000" />
       <workItem from="1781850448553" duration="3003000" />
       <workItem from="1781917484121" duration="3187000" />
-      <workItem from="1781920974797" duration="2835000" />
+      <workItem from="1781920974797" duration="3585000" />
+      <workItem from="1781934979596" duration="5404000" />
     </task>
     <servers />
   </component>
