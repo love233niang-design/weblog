@@ -1,6 +1,6 @@
 package com.quanxiaoha.weblog.admin.controller;
 
-import com.quanxiaoha.weblog.admin.model.vo.UpdateAdminUserPasswordReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.user.UpdateAdminUserPasswordReqVO;
 import com.quanxiaoha.weblog.admin.service.AdminUserService;
 import com.quanxiaoha.weblog.common.aspect.ApiOperationLog;
 import com.quanxiaoha.weblog.common.utils.Response;
@@ -26,5 +26,12 @@ public class AdminUserController {
     @ApiOperationLog(description = "修改用户名密码")
     public Response updatePassword(@RequestBody @Validated UpdateAdminUserPasswordReqVO updateAdminUserPasswordReqVO) {
         return userService.updateAdminUserPassword(updateAdminUserPasswordReqVO);
+    }
+
+    @PostMapping("/user/info")
+    @ApiOperation(value = "获取用户信息")
+    @ApiOperationLog(description = "获取用户信息")
+    public Response findUserInfo() {
+        return userService.findUserInfo();
     }
 }

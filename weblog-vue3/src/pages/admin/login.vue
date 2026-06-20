@@ -39,7 +39,7 @@
                     <el-form-item prop="password">
                         <!-- 密码框组件 -->
                         <el-input size="large" type="password" v-model="form.password" placeholder="请输入密码"
-                            :prefix-icon="Lock" clearable show-password/>
+                            :prefix-icon="Lock" clearable show-password />
                     </el-form-item>
                     <el-form-item>
                         <!-- 登录按钮，宽度设置为 100% -->
@@ -60,6 +60,8 @@ import { showMessage } from '@/composables/util'
 import { useRouter } from 'vue-router';
 import { ref, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { setToken } from '@/composables/cookie'
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
 const router = useRouter()
 // 登录按钮加载
 const loading = ref(false)
@@ -89,7 +91,6 @@ const form = reactive({
 })
 
 // 登录
-
 const onSubmit = () => {
     console.log('登录')
     // 先验证 form 表单字段
@@ -109,7 +110,8 @@ const onSubmit = () => {
                 // 存储 Token 到 Cookie 中
                 let token = res.data.token
                 setToken(token)
-                console.log('11111')
+                // 获取用户信息，并存储到全局状态中
+                userStore.setUserInfo()
                 // 跳转到后台首页
                 router.push('/admin/index')
             } else {
@@ -145,4 +147,6 @@ onMounted(() => {
 onBeforeUnmount(() => {
     document.removeEventListener('keyup', onKeyUp)
 })
+
+
 </script>
