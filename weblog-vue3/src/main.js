@@ -4,7 +4,8 @@ import { createApp } from 'vue'
 import App from '@/App.vue'
 import 'animate.css';
 import 'nprogress/nprogress.css'
-import { createPinia } from 'pinia'
+// 引入全局状态管理 Pinia
+import pinia from '@/stores'
 
 // 导入路由
 import router from '@/router'
@@ -13,7 +14,7 @@ import '@/permission'
 
 const app = createApp(App)
 
-const pinia = createPinia()
+
 
 // 应用 Pinia
 app.use(pinia)
