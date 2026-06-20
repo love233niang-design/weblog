@@ -41,6 +41,8 @@ public class JacksonConfig {
         javaTimeModule.addDeserializer(LocalTime.class, new LocalTimeDeserializer(DateTimeFormatter.ofPattern("HH:mm:ss")));
 
         objectMapper.registerModule(javaTimeModule);
+        // 忽略未知属性(未定义字段)
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         // 设置时区
         objectMapper.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
