@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 public class AddCategoryReqVO {
 
     @NotBlank(message = "分类名称不能为空")
-    @Length(min = 1, max = 10, message = "分类名称长度不能超过10个字符")
+    @Length(min = 1, max = 20, message = "分类名称长度不能超过20个字符")
     private String name;
 
 }
