@@ -19,9 +19,9 @@ import { ref } from 'vue'
 
 const dialogVisible = ref(false)
 
-// 打开
+// 打开弹框
 const open = () => dialogVisible.value = true
-// 关闭
+// 关闭弹框
 const close = () => dialogVisible.value = false
 
 
