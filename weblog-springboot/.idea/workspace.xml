@@ -52,40 +52,40 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.JwtTokenHelper.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PasswordEncoderConfig.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WeblogWebApplicationTests.insertTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WeblogWebApplicationTests.testLog.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.weblog-springboot [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.weblog-springboot [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.weblog-springboot [validate].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WeblogWebApplication.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/JAVA_IDE_WORK/idea Javawork/weblog/weblog-springboot&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.JwtTokenHelper.executor": "Run",
+    "Application.PasswordEncoderConfig.executor": "Run",
+    "Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper.executor": "Run",
+    "JUnit.WeblogWebApplicationTests.insertTest.executor": "Run",
+    "JUnit.WeblogWebApplicationTests.testLog.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.weblog-springboot [clean].executor": "Run",
+    "Maven.weblog-springboot [package].executor": "Run",
+    "Maven.weblog-springboot [validate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.WeblogWebApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/JAVA_IDE_WORK/idea Javawork/weblog/weblog-springboot",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.quanxiaoha.weblog.admin.service.impl" />
@@ -94,6 +94,10 @@
       <recent name="E:\JAVA_IDE_WORK\idea Javawork\weblog\weblog-springboot\weblog-web\src\main\java" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.quanxiaoha.weblog.admin.service" />
+      <recent name="com.quanxiaoha.weblog.admin.controller" />
+      <recent name="com.quanxiaoha.weblog.common.domain.mapper" />
+      <recent name="com.quanxiaoha.weblog.common.domain.dos" />
       <recent name="com.quanxiaoha.weblog.admin.config" />
     </key>
   </component>
@@ -178,8 +182,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.WeblogWebApplicationTests.insertTest" />
         <item itemvalue="Application.PasswordEncoderConfig" />
+        <item itemvalue="JUnit.WeblogWebApplicationTests.insertTest" />
         <item itemvalue="Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper" />
         <item itemvalue="Application.JwtTokenHelper" />
         <item itemvalue="JUnit.WeblogWebApplicationTests.testLog" />
@@ -230,6 +234,12 @@
       <workItem from="1782440929133" duration="300000" />
       <workItem from="1782441248820" duration="1758000" />
       <workItem from="1782444504407" duration="17000" />
+      <workItem from="1782868599190" duration="137000" />
+      <workItem from="1782868750112" duration="171000" />
+      <workItem from="1782869581070" duration="128000" />
+      <workItem from="1782869720966" duration="145000" />
+      <workItem from="1782872298879" duration="3403000" />
+      <workItem from="1782883684948" duration="2822000" />
     </task>
     <servers />
   </component>
