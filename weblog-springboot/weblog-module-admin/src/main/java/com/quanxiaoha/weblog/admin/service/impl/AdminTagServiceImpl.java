@@ -3,11 +3,13 @@ package com.quanxiaoha.weblog.admin.service.impl;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.quanxiaoha.weblog.admin.model.vo.tag.AddTagReqVo;
+import com.quanxiaoha.weblog.admin.model.vo.tag.DeleteTagReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.tag.FindTagPageListReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.tag.FindTagPageListRspVO;
 import com.quanxiaoha.weblog.admin.service.AdminTagService;
 import com.quanxiaoha.weblog.common.domain.dos.TagDO;
 import com.quanxiaoha.weblog.common.domain.mapper.TagMapper;
+import com.quanxiaoha.weblog.common.enums.ResponseCodeEnum;
 import com.quanxiaoha.weblog.common.utils.PageResponse;
 import com.quanxiaoha.weblog.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +28,11 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
     @Autowired
     private TagMapper tagMapper;
 
+    /**
+     * 添加标签集合
+     * @param addTagReqVo
+     * @return
+     */
     @Override
     public Response addTag(AddTagReqVo addTagReqVo) {
         // VO 转 DO
@@ -45,6 +52,11 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
         return Response.success();
     }
 
+    /**
+     * 标签分页列表查询
+     * @param findTagPageListReqVO
+     * @return
+     */
     @Override
     public PageResponse findTagPageList(FindTagPageListReqVO findTagPageListReqVO) {
         // 分页参数
@@ -67,5 +79,18 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
                     .build()).collect(Collectors.toList());
         }
         return PageResponse.success(page, vos);
+    }
+
+    /**
+     * 删除标签
+     * @param deleteTagReqVO
+     * @return
+     */
+    @Override
+    public Response deleteTag(DeleteTagReqVO deleteTagReqVO) {
+        Long tagId = deleteTagReqVO.getId();
+        int count = tagMapper.deleteById(tagId);
+
+        return count == 1 ? Response.success() : Response.fail(ResponseCodeEnum.TAG_NOT_EXISTED);
     }
 }

@@ -82,7 +82,7 @@
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
     "settings.build.tools.auto.reload": "ALL",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "preferences.sourceCode.JAVA",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -239,7 +239,7 @@
       <workItem from="1782869581070" duration="128000" />
       <workItem from="1782869720966" duration="145000" />
       <workItem from="1782872298879" duration="3403000" />
-      <workItem from="1782883684948" duration="7645000" />
+      <workItem from="1782883684948" duration="9613000" />
     </task>
     <servers />
   </component>
