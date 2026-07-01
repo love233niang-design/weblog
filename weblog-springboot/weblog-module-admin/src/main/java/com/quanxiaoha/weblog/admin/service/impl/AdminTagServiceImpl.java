@@ -2,14 +2,12 @@ package com.quanxiaoha.weblog.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.quanxiaoha.weblog.admin.model.vo.tag.AddTagReqVo;
-import com.quanxiaoha.weblog.admin.model.vo.tag.DeleteTagReqVO;
-import com.quanxiaoha.weblog.admin.model.vo.tag.FindTagPageListReqVO;
-import com.quanxiaoha.weblog.admin.model.vo.tag.FindTagPageListRspVO;
+import com.quanxiaoha.weblog.admin.model.vo.tag.*;
 import com.quanxiaoha.weblog.admin.service.AdminTagService;
 import com.quanxiaoha.weblog.common.domain.dos.TagDO;
 import com.quanxiaoha.weblog.common.domain.mapper.TagMapper;
 import com.quanxiaoha.weblog.common.enums.ResponseCodeEnum;
+import com.quanxiaoha.weblog.common.model.vo.SelectRspVO;
 import com.quanxiaoha.weblog.common.utils.PageResponse;
 import com.quanxiaoha.weblog.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +28,7 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
 
     /**
      * 添加标签集合
+     *
      * @param addTagReqVo
      * @return
      */
@@ -54,6 +53,7 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
 
     /**
      * 标签分页列表查询
+     *
      * @param findTagPageListReqVO
      * @return
      */
@@ -83,6 +83,7 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
 
     /**
      * 删除标签
+     *
      * @param deleteTagReqVO
      * @return
      */
@@ -92,5 +93,28 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
         int count = tagMapper.deleteById(tagId);
 
         return count == 1 ? Response.success() : Response.fail(ResponseCodeEnum.TAG_NOT_EXISTED);
+    }
+
+    /**
+     * 根据标签关键词模糊查询
+     *
+     * @param searchTagReqVo
+     * @return
+     */
+    @Override
+    public Response searchTag(SearchTagReqVo searchTagReqVo) {
+        String key = searchTagReqVo.getKey();
+        // 执行模糊查询
+        List<TagDO> tagDOS = tagMapper.selectByKey(key);
+
+        // do 转 vo
+        List<SelectRspVO> vos = null;
+        if (!CollectionUtils.isEmpty(tagDOS)) {
+            vos = tagDOS.stream().map(tagDO -> SelectRspVO.builder()
+                    .label(tagDO.getName())
+                    .value(tagDO.getId())
+                    .build()).collect(Collectors.toList());
+        }
+        return Response.success(vos);
     }
 }

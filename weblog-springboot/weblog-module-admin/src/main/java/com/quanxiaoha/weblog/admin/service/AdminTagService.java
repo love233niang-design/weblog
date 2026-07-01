@@ -4,6 +4,7 @@ package com.quanxiaoha.weblog.admin.service;
 import com.quanxiaoha.weblog.admin.model.vo.tag.AddTagReqVo;
 import com.quanxiaoha.weblog.admin.model.vo.tag.DeleteTagReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.tag.FindTagPageListReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.tag.SearchTagReqVo;
 import com.quanxiaoha.weblog.common.utils.PageResponse;
 import com.quanxiaoha.weblog.common.utils.Response;
 
@@ -29,4 +30,11 @@ public interface AdminTagService {
      * @return
      */
     Response deleteTag(DeleteTagReqVO deleteTagReqVO);
+
+    /**
+     * 根据标签关键词模糊查询
+     * @param searchTagReqVo
+     * @return
+     */
+    Response searchTag(SearchTagReqVo searchTagReqVo);
 }
