@@ -94,11 +94,11 @@
       <recent name="E:\JAVA_IDE_WORK\idea Javawork\weblog\weblog-springboot\weblog-web\src\main\java" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.quanxiaoha.weblog.admin.model.vo.tag" />
       <recent name="com.quanxiaoha.weblog.admin.service" />
       <recent name="com.quanxiaoha.weblog.admin.controller" />
       <recent name="com.quanxiaoha.weblog.common.domain.mapper" />
       <recent name="com.quanxiaoha.weblog.common.domain.dos" />
-      <recent name="com.quanxiaoha.weblog.admin.config" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.WeblogWebApplication">
@@ -239,7 +239,7 @@
       <workItem from="1782869581070" duration="128000" />
       <workItem from="1782869720966" duration="145000" />
       <workItem from="1782872298879" duration="3403000" />
-      <workItem from="1782883684948" duration="3317000" />
+      <workItem from="1782883684948" duration="7645000" />
     </task>
     <servers />
   </component>
