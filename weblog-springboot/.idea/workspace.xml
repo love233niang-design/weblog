@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/model/vo/tag/SearchTagReqVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/controller/AdminTagController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/controller/AdminTagController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/AdminTagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/AdminTagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/impl/AdminTagServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/quanxiaoha/weblog/admin/service/impl/AdminTagServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/mapper/TagMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/quanxiaoha/weblog/common/domain/mapper/TagMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/admin/tag-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/admin/tag-list.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +238,8 @@
       <workItem from="1782869720966" duration="145000" />
       <workItem from="1782872298879" duration="3403000" />
       <workItem from="1782883684948" duration="9700000" />
-      <workItem from="1782893951716" duration="1541000" />
+      <workItem from="1782893951716" duration="1908000" />
+      <workItem from="1782913474886" duration="175000" />
     </task>
     <servers />
   </component>
