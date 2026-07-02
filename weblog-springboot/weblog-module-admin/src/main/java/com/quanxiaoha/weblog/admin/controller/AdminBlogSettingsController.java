@@ -23,7 +23,14 @@ public class AdminBlogSettingsController {
     @PostMapping("/update")
     @ApiOperation(value = "博客基础信息修改")
     @ApiOperationLog(description = "博客基础信息修改")
-    private Response updateBlogSettings(@RequestBody @Validated UpdateBlogSettingsReqVO updateBlogSettingsReqVO) {
+    public Response updateBlogSettings(@RequestBody @Validated UpdateBlogSettingsReqVO updateBlogSettingsReqVO) {
         return blogSettingsService.updateBlogSettins(updateBlogSettingsReqVO);
+    }
+
+    @PostMapping("/detail")
+    @ApiOperation(value = "获取博客设置详情")
+    @ApiOperationLog(description = "获取博客设置详情")
+    public Response findDetail() {
+        return blogSettingsService.findDetail();
     }
 }
