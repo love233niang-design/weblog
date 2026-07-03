@@ -1,58 +1,60 @@
 <template>
-    <!-- 设置背景色为白色、高度为 64px，padding-right 为 4， border-bottom 为 slate 100 -->
-    <div class="bg-white h-[64px] flex pr-4 border-b border-slate-100">
-        <!-- 左边栏收缩、展开 -->
-        <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
-            @click="handleMenuWidth">
-            <el-icon>
-                <Fold v-if="menuStore.menuWidth == '250px'" />
-                <Expand v-else />
-            </el-icon>
+    <el-affix :offset="0">
+        <!-- 设置背景色为白色、高度为 64px，padding-right 为 4， border-bottom 为 slate 100 -->
+        <div class="bg-white h-[64px] flex pr-4 border-b border-slate-100">
+            <!-- 左边栏收缩、展开 -->
+            <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
+                @click="handleMenuWidth">
+                <el-icon>
+                    <Fold v-if="menuStore.menuWidth == '250px'" />
+                    <Expand v-else />
+                </el-icon>
+            </div>
+
+            <!-- 右边容器 -->
+            <div class="ml-auto flex">
+                <!-- 点击刷新页面 -->
+                <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
+                    <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
+                        @click="handleRefresh">
+                        <el-icon>
+                            <Refresh />
+                        </el-icon>
+                    </div>
+                </el-tooltip>
+
+                <!-- 点击全屏展示 -->
+                <el-tooltip class="box-item" effect="dark" content="全屏" placement="bottom">
+                    <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 mr-2 hover:bg-gray-200"
+                        @click="toggle">
+                        <el-icon>
+                            <FullScreen v-if="!isFullscreen" />
+                            <Aim v-else />
+                        </el-icon>
+                    </div>
+                </el-tooltip>
+
+                <!-- 登录用户头像 -->
+                <el-dropdown class="flex items-center justify-center" @command="handleCommand">
+                    <span class="el-dropdown-link flex items-center justify-center text-gray-700 text-xs">
+                        <!-- 头像 Avatar -->
+                        <el-avatar class="mr-2" :size="25"
+                            src="http://127.0.0.1:9000/weblog/0e5840e2d91d440a93c3676e6a8e10d5.jpg" />
+                        {{ userStore.userInfo.username }}
+                        <el-icon class="el-icon--right">
+                            <arrow-down />
+                        </el-icon>
+                    </span>
+                    <template #dropdown>
+                        <el-dropdown-menu>
+                            <el-dropdown-item command="updatePassword">修改密码</el-dropdown-item>
+                            <el-dropdown-item command="logout">退出登录</el-dropdown-item>
+                        </el-dropdown-menu>
+                    </template>
+                </el-dropdown>
+            </div>
         </div>
-
-        <!-- 右边容器 -->
-        <div class="ml-auto flex">
-            <!-- 点击刷新页面 -->
-            <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
-                <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
-                    @click="handleRefresh">
-                    <el-icon>
-                        <Refresh />
-                    </el-icon>
-                </div>
-            </el-tooltip>
-
-            <!-- 点击全屏展示 -->
-            <el-tooltip class="box-item" effect="dark" content="全屏" placement="bottom">
-                <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 mr-2 hover:bg-gray-200"
-                    @click="toggle">
-                    <el-icon>
-                        <FullScreen v-if="!isFullscreen" />
-                        <Aim v-else />
-                    </el-icon>
-                </div>
-            </el-tooltip>
-
-            <!-- 登录用户头像 -->
-            <el-dropdown class="flex items-center justify-center" @command="handleCommand">
-                <span class="el-dropdown-link flex items-center justify-center text-gray-700 text-xs">
-                    <!-- 头像 Avatar -->
-                    <el-avatar class="mr-2" :size="25"
-                        src="https://img.quanxiaoha.com/quanxiaoha/f97361c0429d4bb1bc276ab835843065.jpg" />
-                    {{ userStore.userInfo.username }}
-                    <el-icon class="el-icon--right">
-                        <arrow-down />
-                    </el-icon>
-                </span>
-                <template #dropdown>
-                    <el-dropdown-menu>
-                        <el-dropdown-item command="updatePassword">修改密码</el-dropdown-item>
-                        <el-dropdown-item command="logout">退出登录</el-dropdown-item>
-                    </el-dropdown-menu>
-                </template>
-            </el-dropdown>
-        </div>
-    </div>
+    </el-affix>
 
     <!-- 修改密码表单 -->
     <FormDialog ref="formDialogRef" title="修改密码" destroyOnClose @submit="onSubmit">
@@ -208,7 +210,7 @@ const onSubmit = () => {
             return
         }
 
-          // 显示提交按钮 loading
+        // 显示提交按钮 loading
         formDialogRef.value.showBtnLoading()
 
         // 调用修改用户密码接口
