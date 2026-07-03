@@ -14,3 +14,7 @@ export function addTag(data) {
 export function deleteTag(id) {
     return axios.post("/admin/tag/delete", {id})
 }
+// 根据标签名模糊查询
+export function searchTags(key) {
+    return axios.post("/admin/tag/search", {key})
+}
