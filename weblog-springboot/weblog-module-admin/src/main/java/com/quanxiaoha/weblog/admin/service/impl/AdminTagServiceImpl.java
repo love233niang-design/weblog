@@ -1,5 +1,6 @@
 package com.quanxiaoha.weblog.admin.service.impl;
 
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.quanxiaoha.weblog.admin.model.vo.tag.*;
@@ -114,6 +115,27 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
                     .label(tagDO.getName())
                     .value(tagDO.getId())
                     .build()).collect(Collectors.toList());
+        }
+        return Response.success(vos);
+    }
+
+    /**
+     * 查询标签 Select 列表数据
+     *
+     * @return
+     */
+    @Override
+    public Response findTagSelectList() {
+        // 查询所以标签 Wrappers.emptyWrapper() 表示查询条件为空
+        List<TagDO> tagDOS = tagMapper.selectList(Wrappers.emptyWrapper());
+        // do 转 vo
+        List<SelectRspVO> vos = null;
+        if (!CollectionUtils.isEmpty(tagDOS)) {
+            vos = tagDOS.stream()
+                    .map(tagDO -> SelectRspVO.builder()
+                            .label(tagDO.getName())
+                            .value(tagDO.getId())
+                            .build()).collect(Collectors.toList());
         }
         return Response.success(vos);
     }

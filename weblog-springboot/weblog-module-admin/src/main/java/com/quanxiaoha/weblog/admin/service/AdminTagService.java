@@ -37,4 +37,11 @@ public interface AdminTagService {
      * @return
      */
     Response searchTag(SearchTagReqVo searchTagReqVo);
+
+
+    /**
+     * 查询标签 Select 列表数据
+     * @return
+     */
+    Response findTagSelectList();
 }
