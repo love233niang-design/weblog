@@ -39,7 +39,7 @@
                     <span class="el-dropdown-link flex items-center justify-center text-gray-700 text-xs">
                         <!-- 头像 Avatar -->
                         <el-avatar class="mr-2" :size="25"
-                            src="http://127.0.0.1:9000/weblog/0e5840e2d91d440a93c3676e6a8e10d5.jpg" />
+                            :src="userStore.userAvatar.avatar" />
                         {{ userStore.userInfo.username }}
                         <el-icon class="el-icon--right">
                             <arrow-down />
@@ -99,7 +99,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, watch } from 'vue'
+import { ref, reactive, watch , onMounted } from 'vue'
 import { useMenuStore } from '@/stores/menu'
 import { useUserStore } from '@/stores/user'
 import { useFullscreen } from '@vueuse/core'
@@ -122,6 +122,10 @@ const userStore = useUserStore()
 const handleMenuWidth = () => {
     menuStore.handleMenuWidth()
 }
+
+onMounted(() => {
+  userStore.getavatar()
+})
 
 // 刷新页面
 const handleRefresh = () => location.reload()

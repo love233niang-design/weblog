@@ -79,6 +79,9 @@ import { Check, Close } from '@element-plus/icons-vue'
 import { getBlogSettingsDetail, updateBlogSettings } from '@/api/admin/blogsettings'
 import { uploadFile } from '@/api/admin/file'
 import { showMessage } from '@/composables/util'
+import { useUserStore } from '@/stores/user'
+
+const userStore = useUserStore()
 // 是否开启 GitHub
 const isGithubChecked = ref(false)
 // 是否开启 Gitee
@@ -195,6 +198,8 @@ const onSubmit = () => {
 
             // 重新渲染页面中的信息
             initBlogSettings()
+               // 重新获取用户信息（含头像）以同步 Header 组件
+      userStore.getavatar()
             showMessage('保存成功')
         }).finally(() => btnLoading.value = false) // 隐藏保存按钮 loading
     })
