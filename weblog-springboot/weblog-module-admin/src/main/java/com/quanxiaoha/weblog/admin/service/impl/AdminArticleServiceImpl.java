@@ -2,10 +2,8 @@ package com.quanxiaoha.weblog.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.common.collect.Lists;
-import com.quanxiaoha.weblog.admin.model.vo.article.DeleteArticleReqVO;
-import com.quanxiaoha.weblog.admin.model.vo.article.FindArticlePageListReqVO;
-import com.quanxiaoha.weblog.admin.model.vo.article.FindArticlePageListRspVO;
-import com.quanxiaoha.weblog.admin.model.vo.article.PublishArticleReqVO;
+import com.quanxiaoha.weblog.admin.convert.ArticleDetailConvert;
+import com.quanxiaoha.weblog.admin.model.vo.article.*;
 import com.quanxiaoha.weblog.admin.service.AdminArticleService;
 import com.quanxiaoha.weblog.common.domain.dos.*;
 import com.quanxiaoha.weblog.common.domain.mapper.*;
@@ -146,6 +144,37 @@ public class AdminArticleServiceImpl implements AdminArticleService {
                             .build()).collect(Collectors.toList());
         }
         return PageResponse.success(articleDOPage, vos);
+    }
+
+    /**
+     * 查询文章详情
+     *
+     * @param findArticleDetailReqVO
+     * @return
+     */
+    @Override
+    public Response findArticleDetail(FindArticleDetailReqVO findArticleDetailReqVO) {
+        Long articleId = findArticleDetailReqVO.getId();
+        ArticleDO articleDO = articleMapper.selectById(articleId);
+        if (Objects.isNull(articleDO)) {
+            log.warn("==> 查询的文章不存在，articleId: {}", articleId);
+            throw new BizException(ResponseCodeEnum.ARTICLE_NOT_FOUND);
+        }
+        // 查询文章内容
+        ArticleContentDO articleContentDO = articleContentMapper.selectByArticleId(articleId);
+        // 查询文章分类关联数据
+        ArticleCategoryRelDO articleCategoryRelDO = articleCategoryRelMapper.selectByArticleId(articleId);
+        // 查询文章标签集合关联数据
+        List<ArticleTagRelDO> articleTagRelDOS = articleTagRelMapper.selectByArticleId(articleId);
+        List<Long> tagIds = articleTagRelDOS.stream().map(ArticleTagRelDO::getArticleId).collect(Collectors.toList());
+
+        // DO 转 VO
+        FindArticleDetailRspVO vo = ArticleDetailConvert.INSTANCE.convertDO2VO(articleDO);
+        vo.setContent(articleContentDO.getContent());
+        vo.setCategoryId(articleCategoryRelDO.getCategoryId());
+        vo.setTagIds(tagIds);
+
+        return Response.success(vo);
     }
 
     /**
