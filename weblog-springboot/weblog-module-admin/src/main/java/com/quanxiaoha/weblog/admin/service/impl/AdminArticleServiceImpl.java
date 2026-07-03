@@ -178,6 +178,62 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     }
 
     /**
+     * 更新文章
+     *
+     * @param updateArticleReqVO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Response updateArticle(UpdateArticleReqVO updateArticleReqVO) {
+        Long articleId = updateArticleReqVO.getId();
+        // VO 转 ArticleDO, 并更新
+        ArticleDO articleDO = ArticleDO.builder()
+                .id(articleId)
+                .title(updateArticleReqVO.getTitle())
+                .cover(updateArticleReqVO.getCover())
+                .summary(updateArticleReqVO.getSummary())
+                .updateTime(LocalDateTime.now())
+                .build();
+        int count = articleMapper.updateById(articleDO);
+        // 根据更新是否成功，来判断该文章是否存在
+        if (count == 0) {
+            log.warn("==> 该文章不存在, articleId: {}", articleId);
+            throw new BizException(ResponseCodeEnum.ARTICLE_NOT_FOUND);
+        }
+        // 2. VO 转 ArticleContentDO，并更新
+        ArticleContentDO articleContentDO = ArticleContentDO.builder()
+                .articleId(articleId)
+                .content(updateArticleReqVO.getContent())
+                .build();
+        articleContentMapper.updateByArticleId(articleContentDO);
+
+        // 3. 更新文章分类
+        Long categoryId = updateArticleReqVO.getCategoryId();
+
+        // 校验分类是否存在
+        CategoryDO categoryDO = categoryMapper.selectById(categoryId);
+        if (Objects.isNull(categoryDO)) {
+            log.warn("==> 分类不存在, categoryId: {}", categoryId);
+            throw new BizException(ResponseCodeEnum.CATEGORY_NOT_EXISTED);
+        }
+
+        // 删除该文章关联的分类内容，在加入新的关联内容
+        articleCategoryRelMapper.deleteByArticleId(articleId);
+        ArticleCategoryRelDO articleCategoryRelDO = ArticleCategoryRelDO.builder()
+                .articleId(articleId)
+                .categoryId(categoryId)
+                .build();
+        articleCategoryRelMapper.insert(articleCategoryRelDO);
+
+        // 保存文章关联的标签集合
+        articleTagRelMapper.deleteByArticleId(articleId);
+        List<String> publishTags = updateArticleReqVO.getTags();
+        insertTags(articleId, publishTags);
+        return Response.success();
+    }
+
+    /**
      * 保存标签
      *
      * @param articleId

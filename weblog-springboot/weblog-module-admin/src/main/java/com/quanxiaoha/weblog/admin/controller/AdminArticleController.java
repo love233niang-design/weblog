@@ -1,9 +1,6 @@
 package com.quanxiaoha.weblog.admin.controller;
 
-import com.quanxiaoha.weblog.admin.model.vo.article.DeleteArticleReqVO;
-import com.quanxiaoha.weblog.admin.model.vo.article.FindArticleDetailReqVO;
-import com.quanxiaoha.weblog.admin.model.vo.article.FindArticlePageListReqVO;
-import com.quanxiaoha.weblog.admin.model.vo.article.PublishArticleReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.article.*;
 import com.quanxiaoha.weblog.admin.service.AdminArticleService;
 import com.quanxiaoha.weblog.common.aspect.ApiOperationLog;
 import com.quanxiaoha.weblog.common.utils.Response;
@@ -53,5 +50,14 @@ public class AdminArticleController {
     public Response findArticleDetail(@RequestBody @Validated FindArticleDetailReqVO findArticlePageListReqVO) {
         return articleService.findArticleDetail(findArticlePageListReqVO);
     }
+
+    @PostMapping("/update")
+    @ApiOperation(value = "更新文章")
+    @ApiOperationLog(description = "更新文章")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response updateArticle(@RequestBody @Validated UpdateArticleReqVO updateArticleReqVO) {
+        return articleService.updateArticle(updateArticleReqVO);
+    }
+
 
 }
