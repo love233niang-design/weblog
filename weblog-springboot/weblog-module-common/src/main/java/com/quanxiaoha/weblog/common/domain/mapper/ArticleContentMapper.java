@@ -1,8 +1,18 @@
 package com.quanxiaoha.weblog.common.domain.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.quanxiaoha.weblog.common.domain.dos.ArticleContentDO;
 
 public interface ArticleContentMapper extends BaseMapper<ArticleContentDO> {
+    /**
+     * 根据文章ID删除文章内容
+     * @param articleId
+     * @return
+     */
+    default int deleteByArticleId(Long articleId) {
+        return delete(Wrappers.<ArticleContentDO>lambdaQuery()
+                .eq(ArticleContentDO::getArticleId, articleId));
+    }
 
 }

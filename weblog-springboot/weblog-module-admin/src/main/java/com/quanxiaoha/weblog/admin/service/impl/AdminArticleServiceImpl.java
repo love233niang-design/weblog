@@ -1,12 +1,17 @@
 package com.quanxiaoha.weblog.admin.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.google.common.collect.Lists;
+import com.quanxiaoha.weblog.admin.model.vo.article.DeleteArticleReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.article.FindArticlePageListReqVO;
+import com.quanxiaoha.weblog.admin.model.vo.article.FindArticlePageListRspVO;
 import com.quanxiaoha.weblog.admin.model.vo.article.PublishArticleReqVO;
 import com.quanxiaoha.weblog.admin.service.AdminArticleService;
 import com.quanxiaoha.weblog.common.domain.dos.*;
 import com.quanxiaoha.weblog.common.domain.mapper.*;
 import com.quanxiaoha.weblog.common.enums.ResponseCodeEnum;
 import com.quanxiaoha.weblog.common.exception.BizException;
+import com.quanxiaoha.weblog.common.utils.PageResponse;
 import com.quanxiaoha.weblog.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -88,6 +94,61 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     }
 
     /**
+     * 删除文章
+     *
+     * @param deleteArticleReqVO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Response deleteArticle(DeleteArticleReqVO deleteArticleReqVO) {
+        Long articleId = deleteArticleReqVO.getId();
+        // 1. 删除文章
+        articleMapper.deleteById(articleId);
+
+        // 2. 删除文章内容
+        articleContentMapper.deleteByArticleId(articleId);
+
+        // 3. 删除文章-分类关联记录
+        articleCategoryRelMapper.deleteByArticleId(articleId);
+
+        // 4. 删除文章-标签关联记录
+        articleTagRelMapper.deleteByArticleId(articleId);
+        return Response.success();
+    }
+
+    /**
+     * 查询文章分页数据
+     *
+     * @param findArticlePageListReqVO
+     * @return
+     */
+    @Override
+    public Response findArticlePageList(FindArticlePageListReqVO findArticlePageListReqVO) {
+        Long current = findArticlePageListReqVO.getCurrent();
+        Long size = findArticlePageListReqVO.getSize();
+        String title = findArticlePageListReqVO.getTitle();
+        LocalDate startTime = findArticlePageListReqVO.getStartTime();
+        LocalDate endTime = findArticlePageListReqVO.getEndTime();
+
+        Page<ArticleDO> articleDOPage = articleMapper.selectPageList(current, size, title, startTime, endTime);
+        List<ArticleDO> articleDOS = articleDOPage.getRecords();
+
+        // DO 转 VO
+        List<FindArticlePageListRspVO> vos = null;
+        if (!CollectionUtils.isEmpty(articleDOS)) {
+            vos = articleDOS.stream()
+                    .map(articleDO -> FindArticlePageListRspVO.builder()
+                            .id(articleDO.getId())
+                            .title(articleDO.getTitle())
+                            .cover(articleDO.getCover())
+                            .createTime(articleDO.getCreateTime())
+                            .build()).collect(Collectors.toList());
+        }
+        return PageResponse.success(articleDOPage, vos);
+    }
+
+    /**
      * 保存标签
      *
      * @param articleId
@@ -113,6 +174,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
             // 否则则是不存在的
             notExistTags = publishTags.stream().filter(publishTag -> !tagIds.contains(String.valueOf(publishTag))).collect(Collectors.toList());
             // 还有一种可能：按字符串名称提交上来的标签，也有可能是表中已存在的，比如表中已经有了 Java 标签，用户提交了个 java 小写的标签，需要内部装换为 Java 标签
+            // 将库中的标签名称转小写，并存储到 Map 中，key 为标签名称，value 为标签 ID
             Map<String, Long> tagNameIdMap = tagDOS.stream().collect(Collectors.toMap(tagDO -> tagDO.getName().toLowerCase(), TagDO::getId));
 
             // 使用迭代器进行安全的删除操作
