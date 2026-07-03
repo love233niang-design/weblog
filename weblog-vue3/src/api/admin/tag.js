@@ -18,3 +18,7 @@ export function deleteTag(id) {
 export function searchTags(key) {
     return axios.post("/admin/tag/search", {key})
 }
+// 获取标签 select 列表数据
+export function getTagSelectList() {
+    return axios.post("/admin/tag/select/list")
+}
