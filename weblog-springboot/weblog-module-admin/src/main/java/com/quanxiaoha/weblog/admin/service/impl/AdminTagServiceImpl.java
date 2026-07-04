@@ -5,9 +5,12 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.quanxiaoha.weblog.admin.model.vo.tag.*;
 import com.quanxiaoha.weblog.admin.service.AdminTagService;
+import com.quanxiaoha.weblog.common.domain.dos.ArticleTagRelDO;
 import com.quanxiaoha.weblog.common.domain.dos.TagDO;
+import com.quanxiaoha.weblog.common.domain.mapper.ArticleTagRelMapper;
 import com.quanxiaoha.weblog.common.domain.mapper.TagMapper;
 import com.quanxiaoha.weblog.common.enums.ResponseCodeEnum;
+import com.quanxiaoha.weblog.common.exception.BizException;
 import com.quanxiaoha.weblog.common.model.vo.SelectRspVO;
 import com.quanxiaoha.weblog.common.utils.PageResponse;
 import com.quanxiaoha.weblog.common.utils.Response;
@@ -19,6 +22,7 @@ import org.springframework.util.CollectionUtils;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,6 +30,8 @@ import java.util.stream.Collectors;
 public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implements AdminTagService {
     @Autowired
     private TagMapper tagMapper;
+    @Autowired
+    private ArticleTagRelMapper articleTagRelMapper;
 
     /**
      * 添加标签集合
@@ -91,6 +97,11 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
     @Override
     public Response deleteTag(DeleteTagReqVO deleteTagReqVO) {
         Long tagId = deleteTagReqVO.getId();
+        ArticleTagRelDO articleTagRelDO = articleTagRelMapper.selectOneByTagId(tagId);
+        if (Objects.nonNull(articleTagRelDO)) {
+            log.warn("==> 此标签下包含文章，无法删除，tagId: {}", tagId);
+            throw new BizException(ResponseCodeEnum.TAG_CAN_NOT_DELETE);
+        }
         int count = tagMapper.deleteById(tagId);
 
         return count == 1 ? Response.success() : Response.fail(ResponseCodeEnum.TAG_NOT_EXISTED);

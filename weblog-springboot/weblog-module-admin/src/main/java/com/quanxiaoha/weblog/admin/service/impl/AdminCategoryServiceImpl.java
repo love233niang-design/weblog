@@ -6,7 +6,9 @@ import com.quanxiaoha.weblog.admin.model.vo.category.DeleteCategoryReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.category.FindCategoryPageListReqVO;
 import com.quanxiaoha.weblog.admin.model.vo.category.FindCategoryPageListRspVO;
 import com.quanxiaoha.weblog.admin.service.AdminCategoryService;
+import com.quanxiaoha.weblog.common.domain.dos.ArticleCategoryRelDO;
 import com.quanxiaoha.weblog.common.domain.dos.CategoryDO;
+import com.quanxiaoha.weblog.common.domain.mapper.ArticleCategoryRelMapper;
 import com.quanxiaoha.weblog.common.domain.mapper.CategoryMapper;
 import com.quanxiaoha.weblog.common.enums.ResponseCodeEnum;
 import com.quanxiaoha.weblog.common.exception.BizException;
@@ -28,6 +30,8 @@ import java.util.stream.Collectors;
 public class AdminCategoryServiceImpl implements AdminCategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
+    @Autowired
+    private ArticleCategoryRelMapper articleCategoryRelMapper;
 
     /**
      * 添加分类
@@ -89,9 +93,20 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
         return PageResponse.success(categoryDOPage, vos);
     }
 
+    /**
+     * 删除分类
+     *
+     * @param deleteCategoryReqVO
+     * @return
+     */
     @Override
     public Response deleteCategory(DeleteCategoryReqVO deleteCategoryReqVO) {
         Long categoryId = deleteCategoryReqVO.getId();
+        ArticleCategoryRelDO articleCategoryRelDO = articleCategoryRelMapper.selectOneByCategoryId(categoryId);
+        if (Objects.nonNull(articleCategoryRelDO)) {
+            log.warn("==> 此分类下包含文章，无法删除，categoryId: {}", categoryId);
+            throw new BizException(ResponseCodeEnum.CATEGORY_CAN_NOT_DELETE);
+        }
 
         // 删除分类
         categoryMapper.deleteById(categoryId);
@@ -99,6 +114,11 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
         return Response.success();
     }
 
+    /**
+     * 查询分类下拉列表
+     *
+     * @return
+     */
     @Override
     public Response findCategorySelectList() {
         List<CategoryDO> categoryDOS = categoryMapper.selectList(null);
