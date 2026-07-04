@@ -1,0 +1,36 @@
+package com.love233niang.weblog.common.enums;
+
+import com.love233niang.weblog.common.exception.BaseExceptionInterface;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public enum ResponseCodeEnum implements BaseExceptionInterface {
+    // 通用异常状态码
+    SYSTEM_ERROR("1000", "出错了"),
+    // 业务异常状态码
+    PRODUCT_NOT_FOUND("1001", "商品不存在"),
+    PARAM_NOT_VALID("1002", "参数不合法"),
+
+    LOGIN_FAIL("20000", "登录失败"),
+    USERNAME_OR_PWD_ERROR("20001", "用户名或密码错误"),
+    UNAUTHORIZED("20002", "无访问权限，请先登录！"),
+    FORBIDDEN("20004", "演示账号仅支持查询操作！"),
+    USERNAME_NOT_FOUND("20003", "该用户不存在"),
+    CATEGORY_NAME_IS_EXISTED("20005", "该分类已存在，请勿重复添加！"),
+    TAG_CANT_DUPLICATE("20006", "该标签已存在，请勿重复添加！"),
+    TAG_NOT_EXISTED("20007", "该标签不存在！"),
+    FILE_UPLOAD_FAILED("20008", "文件上传失败！"),
+    CATEGORY_NOT_EXISTED("20009", "提交的分类不存在！"),
+    ARTICLE_NOT_FOUND("20010", "该文章不存在！"),
+    CATEGORY_CAN_NOT_DELETE("20011", "该分类下包含文章，请先删除对应文章，才能删除！"),
+    TAG_CAN_NOT_DELETE("20012", "该标签下包含文章，请先删除对应文章，才能删除！"),
+    ;
+
+    // 异常码
+    private String errorCode;
+    // 异常信息
+    private String errorMessage;
+
+}
