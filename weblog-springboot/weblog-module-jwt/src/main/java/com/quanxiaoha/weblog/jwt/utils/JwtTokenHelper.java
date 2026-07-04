@@ -51,7 +51,7 @@ public class JwtTokenHelper implements InitializingBean {
     public String generateToken(String username) {
         LocalDateTime now = LocalDateTime.now();
         // 设置 token 一小时过期
-        LocalDateTime expireTime = now.plusHours(tokenExpireTime);
+        LocalDateTime expireTime = now.plusMinutes(tokenExpireTime);
 
         return Jwts.builder()
                 .setSubject(username)
