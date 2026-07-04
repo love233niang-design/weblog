@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public interface CategoryMapper extends BaseMapper<CategoryDO> {
+    /**
+     * 根据名称查询分类
+     */
     default CategoryDO selectByName(String name) {
         // 构建查询条件
         LambdaQueryWrapper<CategoryDO> wrapper = new LambdaQueryWrapper<>();
