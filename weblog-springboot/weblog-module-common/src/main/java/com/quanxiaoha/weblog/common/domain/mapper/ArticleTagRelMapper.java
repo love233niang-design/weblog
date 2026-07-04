@@ -41,4 +41,9 @@ public interface ArticleTagRelMapper extends InsertBatchMapper<ArticleTagRelDO> 
                 .last("LIMIT 1"));
     }
 
+    default List<ArticleTagRelDO> selectByArticleIds(List<Long> articleIds) {
+        return selectList(Wrappers.<ArticleTagRelDO>lambdaQuery()
+                .in(ArticleTagRelDO::getArticleId, articleIds));
+    }
+
 }

@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.quanxiaoha.weblog.common.domain.dos.ArticleCategoryRelDO;
 
+import java.util.List;
+
 public interface ArticleCategoryRelMapper extends BaseMapper<ArticleCategoryRelDO> {
     default int deleteByArticleId(Long articleId) {
         return delete(Wrappers.<ArticleCategoryRelDO>lambdaQuery()
@@ -31,5 +33,15 @@ public interface ArticleCategoryRelMapper extends BaseMapper<ArticleCategoryRelD
         return selectOne(Wrappers.<ArticleCategoryRelDO>lambdaQuery()
                 .eq(ArticleCategoryRelDO::getCategoryId, categoryId)
                 .last("limit 1"));
+    }
+
+    /**
+     * 根据文章 ID 集合批量查询
+     * @param articleIds
+     * @return
+     */
+    default List<ArticleCategoryRelDO> selectByArticleIds(List<Long> articleIds) {
+        return selectList(Wrappers.<ArticleCategoryRelDO>lambdaQuery()
+                .in(ArticleCategoryRelDO::getArticleId, articleIds));
     }
 }
