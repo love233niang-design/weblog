@@ -2,11 +2,14 @@ package com.love233niang.weblog.controller;
 
 import com.love233niang.weblog.common.aspect.ApiOperationLog;
 import com.love233niang.weblog.common.utils.Response;
+import com.love233niang.weblog.model.vo.tag.FindTagArticlePageListReqVO;
 import com.love233niang.weblog.service.TagService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,4 +28,11 @@ public class TagController {
         return tagService.findTagList();
     }
 
+
+    @PostMapping("/article/list")
+    @ApiOperation(value = "前台获取标签下文章列表")
+    @ApiOperationLog(description = "前台获取标签下文章列表")
+    public Response findTagPageList(@RequestBody @Validated FindTagArticlePageListReqVO findTagArticlePageListReqVO) {
+        return tagService.findTagPageList(findTagArticlePageListReqVO);
+    }
 }
