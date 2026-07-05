@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/model/vo/tag/FindTagArticlePageListReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/model/vo/tag/FindTagArticlePageListRspVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleTagRelMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleTagRelMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/convert/ArticleConvert.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/convert/ArticleConvert.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/TagService.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/TagService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/TagServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/TagServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/layouts/frontend/components/CategoryListCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/layouts/frontend/components/CategoryListCard.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/category-article-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/category-article-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/tag-list.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/tag-list.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +257,7 @@
       <workItem from="1783169240426" duration="93000" />
       <workItem from="1783169406240" duration="1217000" />
       <workItem from="1783220287222" duration="6200000" />
-      <workItem from="1783235857015" duration="6209000" />
+      <workItem from="1783235857015" duration="6968000" />
     </task>
     <servers />
   </component>

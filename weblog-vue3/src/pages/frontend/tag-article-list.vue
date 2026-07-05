@@ -7,13 +7,24 @@
         <div class="grid grid-cols-4 gap-7">
             <!-- 左边栏，占用 3 列 -->
             <div class="col-span-4 md:col-span-3 mb-3">
-                <!-- 分类文章列表 -->
+                <!-- 标签文章列表 -->
                 <div class="p-5 mb-4 border border-gray-200 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
                     <h1 class="flex items-center text-lg font-semibold text-gray-900 dark:text-white">
-                       
-                        <!-- 文件夹图标 -->
-                         <svg t="1698998570037" class="icon w-5 h-5 mr-2" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="21572" width="200" height="200"><path d="M938.666667 464.592593h-853.333334v-265.481482c0-62.577778 51.2-113.777778 113.777778-113.777778h128.948148c15.17037 0 28.444444 3.792593 41.718519 11.377778l98.607407 64.474074h356.503704c62.577778 0 113.777778 51.2 113.777778 113.777778v189.62963z" fill="#3A69DD" p-id="21573"></path><path d="M805.925926 398.222222h-587.851852v-125.155555c0-24.651852 20.859259-45.511111 45.511111-45.511111h496.82963c24.651852 0 45.511111 20.859259 45.511111 45.511111V398.222222z" fill="#D9E3FF" p-id="21574"></path><path d="M843.851852 417.185185h-663.703704v-98.607407c0-28.444444 22.755556-53.096296 53.096296-53.096297h559.407408c28.444444 0 53.096296 22.755556 53.096296 53.096297V417.185185z" fill="#FFFFFF" p-id="21575"></path><path d="M786.962963 938.666667h-549.925926c-83.437037 0-151.703704-68.266667-151.703704-151.703704V341.333333s316.681481 37.925926 430.45926 37.925926c189.62963 0 422.874074-37.925926 422.874074-37.925926v445.62963c0 83.437037-68.266667 151.703704-151.703704 151.703704z" fill="#5F7CF9" p-id="21576"></path><path d="M559.407407 512h-75.851851c-20.859259 0-37.925926-17.066667-37.925926-37.925926s17.066667-37.925926 37.925926-37.925926h75.851851c20.859259 0 37.925926 17.066667 37.925926 37.925926s-17.066667 37.925926-37.925926 37.925926z" fill="#F9D523" p-id="21577"></path></svg>
-                        {{ categoryName }}
+                        <!-- 标签图标 -->
+                        <svg t="1698980289658" class="icon w-5 h-5 mr-2" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="13858" width="200" height="200">
+                            <path
+                                d="M646.4512 627.5584m-298.1888 0a298.1888 298.1888 0 1 0 596.3776 0 298.1888 298.1888 0 1 0-596.3776 0Z"
+                                fill="#C7ACEF" p-id="13859"></path>
+                            <path
+                                d="M467.6096 962.5088c-34.4064 0-68.7616-13.1072-94.976-39.2704l-276.48-276.48c-52.3776-52.3776-52.3776-137.5744 0-189.9008L465.4592 87.552a105.216 105.216 0 0 1 76.8512-30.6176l308.6336 8.3456c55.3472 1.4848 100.096 46.0288 101.7856 101.376l9.5744 310.1696c0.8704 28.7744-10.2912 56.9344-30.6176 77.2608l-369.2032 369.2032c-26.112 26.112-60.4672 39.2192-94.8736 39.2192z m71.8848-844.1856c-11.4176 0-22.4768 4.5568-30.5664 12.6464L139.6224 500.2752c-28.416 28.416-28.416 74.6496 0 103.0144l276.48 276.48c28.416 28.416 74.6496 28.416 103.0144 0l369.2032-369.2032a43.4176 43.4176 0 0 0 12.6464-31.8976l-9.5744-310.1696c-0.7168-22.8864-19.2-41.2672-42.0352-41.8816l-308.6336-8.3456c-0.4608 0.0512-0.8192 0.0512-1.2288 0.0512z"
+                                fill="#4F4F4F" p-id="13860"></path>
+                            <path
+                                d="M676.4032 445.5424c-62.208 0-112.8448-50.6368-112.8448-112.8448s50.6368-112.8448 112.8448-112.8448c62.208 0 112.8448 50.6368 112.8448 112.8448s-50.6368 112.8448-112.8448 112.8448z m0-164.1984c-28.3648 0-51.4048 23.04-51.4048 51.4048s23.04 51.4048 51.4048 51.4048c28.3648 0 51.4048-23.04 51.4048-51.4048s-23.0912-51.4048-51.4048-51.4048z"
+                                fill="#4F4F4F" p-id="13861">
+                            </path>
+                        </svg>
+                        {{ tagName }}
                     </h1>
                     <ol v-if="articles && articles.length > 0"
                         class="mt-3 divide-y divider-gray-200 dark:divide-gray-700">
@@ -39,7 +50,8 @@
                             </a>
                         </li>
                     </ol>
-                    <!-- 该分类下没有文章提示，指定为 flex 布局，内容垂直水平居中，并纵向排列 -->
+
+                    <!-- 该标签下没有文章提示，指定为 flex 布局，内容垂直水平居中，并纵向排列  -->
                     <div v-else class="flex items-center justify-center flex-col">
                         <svg height="300" node-id="1" sillyvg="true" template-height="600" template-width="600"
                             version="1.1" viewBox="0 0 600 600" width="600" xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +225,7 @@
                                 fill="#c0c7d2" fill-rule="evenodd" group-id="4" id="矩形" node-id="56" stroke="none"
                                 target-height="46" target-width="33.334473" target-x="380.8566" target-y="423" />
                         </svg>
-                        <p class="mt-2 mb-16 text-gray-400">此分类下还未发布文章哟~</p>
+                        <p class="mt-2 mb-16 text-gray-400">此标签下还未发布文章哟~</p>
                     </div>
                 </div>
 
@@ -222,7 +234,7 @@
                     <ul class="flex items-center -space-x-px h-10 text-base">
                         <!-- 上一页 -->
                         <li>
-                            <a @click="getCategoryArticles(current - 1)"
+                            <a @click="getTagArticles(current - 1)"
                                 class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                                 :class="[current > 1 ? '' : 'cursor-not-allowed']">
 
@@ -236,7 +248,7 @@
                         </li>
                         <!-- 页码 -->
                         <li v-for="(pageNo, index) in pages" :key="index">
-                            <a @click="getCategoryArticles(pageNo)"
+                            <a @click="getTagArticles(pageNo)"
                                 class="flex items-center justify-center px-4 h-10 leading-tight border  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                                 :class="[pageNo == current ? 'text-blue-600  bg-blue-50 border-blue-300 hover:bg-blue-100 hover:text-blue-700' : 'text-gray-500 border-gray-300 bg-white hover:bg-gray-100 hover:text-gray-700']">
                                 {{ index + 1 }}
@@ -244,7 +256,7 @@
                         </li>
                         <!-- 下一页 -->
                         <li>
-                            <a @click="getCategoryArticles(current + 1)"
+                            <a @click="getTagArticles(current + 1)"
                                 class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
                                 :class="[current < pages ? '' : 'cursor-not-allowed']">
                                 <span class="sr-only">下一页</span>
@@ -257,8 +269,6 @@
                         </li>
                     </ul>
                 </nav>
-
-
             </div>
 
             <!-- 右边侧边栏，占用一列 -->
@@ -287,16 +297,24 @@ import TagListCard from '@/layouts/frontend/components/TagListCard.vue'
 import CategoryListCard from '@/layouts/frontend/components/CategoryListCard.vue'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import { getCategoryArticlePageList } from '@/api/frontend/category'
+import { getTagArticlePageList } from '@/api/frontend/tag'
 
+const route = useRoute()
 
 // 文章集合
 const articles = ref([])
-const route = useRoute()
-// 分类名称
-const categoryName = ref(route.query.name)
-// 分类 ID
-const categoryId = ref(route.query.id)
+// 标签名称
+const tagName = ref(route.query.name)
+// 标签 ID
+const tagId = ref(route.query.id)
+
+// 监听路由
+watch(route, (newRoute, oldRoute) => {
+    tagName.value = newRoute.query.name
+    tagId.value = newRoute.query.id
+    getTagArticles(current.value)
+})
+
 // 当前页码
 const current = ref(1)
 // 每页显示的文章数
@@ -306,27 +324,19 @@ const total = ref(0)
 // 总共多少页
 const pages = ref(0)
 
-function getCategoryArticles(currentNo) {
+function getTagArticles(currentNo) {
     // 上下页是否能点击判断，当要跳转上一页且页码小于 1 时，则不允许跳转；当要跳转下一页且页码大于总页数时，则不允许跳转
     if (currentNo < 1 || (pages.value > 0 && currentNo > pages.value)) return
     // 调用分页接口渲染数据
-    getCategoryArticlePageList({ current: currentNo, size: size.value, id: categoryId.value }).then((res) => {
+    getTagArticlePageList({ current: currentNo, size: size.value, id: tagId.value }).then((res) => {
         if (res.success) {
             articles.value = res.data
             current.value = res.current
             size.value = res.size
             total.value = res.total
             pages.value = res.pages
-            console.log(articles)
         }
     })
 }
-getCategoryArticles(current.value)
-
-// 监听路由
-watch(route, (newRoute, oldRoute) => {
-    categoryName.value = newRoute.query.name
-    categoryId.value = newRoute.query.id
-    getCategoryArticles(current.value)
-})
+getTagArticles(current.value)
 </script>
