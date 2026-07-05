@@ -23,7 +23,7 @@ public class Knif4jAdiminConfig {
                 .apiInfo(buildApiInfo())
                 .groupName("Admin 后台接口")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.quanxiaoha.weblog.admin.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.love233niang.weblog.admin.controller"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;

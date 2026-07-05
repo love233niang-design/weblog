@@ -23,7 +23,7 @@ public class Knif4jConfig {
                 .apiInfo(buildApiInfo())
                 .groupName("Web 前台接口")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.quanxiaoha.weblog.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.love233niang.weblog.controller"))
                 .paths(PathSelectors.any())
                 .build();
         return docket;
