@@ -19,14 +19,14 @@
                         </svg>
                         {{ categoryName }}
                     </h1>
-                    <ol v-if="articles.length > 0" class="mt-3 divide-y divider-gray-200 dark:divide-gray-700">
-                        <li>
+                    <ol v-if="articles && articles.length > 0"
+                        class="mt-3 divide-y divider-gray-200 dark:divide-gray-700">
+                        <li v-for="(article, index) in articles" :key="index">
                             <a href="#" class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <img class="w-24 h-12 mb-3 mr-3 rounded-lg sm:mb-0"
-                                    src="https://img.quanxiaoha.com/quanxiaoha/193dd1504ebb4f138085acb23619e0dd.jpg" />
+                                <img class="w-24 h-12 mb-3 mr-3 rounded-lg sm:mb-0" :src="article.cover" />
                                 <div class="text-gray-600 dark:text-gray-400">
                                     <h2 class="text-base font-normal text-gray-900">
-                                        111
+                                        {{ article.title }}
                                     </h2>
                                     <span
                                         class="inline-flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">
@@ -37,51 +37,7 @@
                                                 stroke-width="2"
                                                 d="M5 1v3m5-3v3m5-3v3M1 7h18M5 11h10M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
                                         </svg>
-                                        2019-10-10
-                                    </span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <img class="w-24 h-12 mb-3 mr-3 rounded-lg sm:mb-0"
-                                    src="https://img.quanxiaoha.com/quanxiaoha/193dd1504ebb4f138085acb23619e0dd.jpg" />
-                                <div class="text-gray-600 dark:text-gray-400">
-                                    <h2 class="text-base font-normal text-gray-900">
-                                        111
-                                    </h2>
-                                    <span
-                                        class="inline-flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">
-                                        <svg class="inline w-2.5 h-2.5 mr-2 text-gray-400 dark:text-white"
-                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 20 20">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M5 1v3m5-3v3m5-3v3M1 7h18M5 11h10M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
-                                        </svg>
-                                        2019-10-10
-                                    </span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
-                                <img class="w-24 h-12 mb-3 mr-3 rounded-lg sm:mb-0"
-                                    src="https://img.quanxiaoha.com/quanxiaoha/193dd1504ebb4f138085acb23619e0dd.jpg" />
-                                <div class="text-gray-600 dark:text-gray-400">
-                                    <h2 class="text-base font-normal text-gray-900">
-                                        111
-                                    </h2>
-                                    <span
-                                        class="inline-flex items-center text-xs font-normal text-gray-500 dark:text-gray-400">
-                                        <svg class="inline w-2.5 h-2.5 mr-2 text-gray-400 dark:text-white"
-                                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 20 20">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2"
-                                                d="M5 1v3m5-3v3m5-3v3M1 7h18M5 11h10M2 3h16a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z" />
-                                        </svg>
-                                        2019-10-10
+                                        {{ article.createDate }}
                                     </span>
                                 </div>
                             </a>
@@ -266,12 +222,13 @@
                 </div>
 
                 <!-- 分页 -->
-                <nav v-if="articles.length > 0" aria-label="Page navigation example" class="mt-10 flex justify-center">
+                <nav aria-label="Page navigation example" class="mt-10 flex justify-center" v-if="pages > 1">
                     <ul class="flex items-center -space-x-px h-10 text-base">
                         <!-- 上一页 -->
                         <li>
-                            <a
-                                class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <a @click="getCategoryArticles(current - 1)"
+                                class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                :class="[current > 1 ? '' : 'cursor-not-allowed']">
 
                                 <span class="sr-only">上一页</span>
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -282,16 +239,18 @@
                             </a>
                         </li>
                         <!-- 页码 -->
-                        <li>
-                            <a
-                                class="text-blue-600  bg-blue-50 border-blue-300 hover:bg-blue-100 hover:text-blue-700 flex items-center justify-center px-4 h-10 leading-tight border  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                                1
+                        <li v-for="(pageNo, index) in pages" :key="index">
+                            <a @click="getCategoryArticles(pageNo)"
+                                class="flex items-center justify-center px-4 h-10 leading-tight border  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                :class="[pageNo == current ? 'text-blue-600  bg-blue-50 border-blue-300 hover:bg-blue-100 hover:text-blue-700' : 'text-gray-500 border-gray-300 bg-white hover:bg-gray-100 hover:text-gray-700']">
+                                {{ index + 1 }}
                             </a>
                         </li>
                         <!-- 下一页 -->
                         <li>
-                            <a
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+                            <a @click="getCategoryArticles(current + 1)"
+                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+                                :class="[current < pages ? '' : 'cursor-not-allowed']">
                                 <span class="sr-only">下一页</span>
                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     viewBox="0 0 6 10">
@@ -302,6 +261,7 @@
                         </li>
                     </ul>
                 </nav>
+
 
             </div>
 
@@ -331,6 +291,9 @@ import TagListCard from '@/layouts/frontend/components/TagListCard.vue'
 import CategoryListCard from '@/layouts/frontend/components/CategoryListCard.vue'
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import { getCategoryArticlePageList } from '@/api/frontend/category'
+
+
 // 文章集合
 const articles = ref([])
 const route = useRoute()
@@ -338,10 +301,36 @@ const route = useRoute()
 const categoryName = ref(route.query.name)
 // 分类 ID
 const categoryId = ref(route.query.id)
+// 当前页码
+const current = ref(1)
+// 每页显示的文章数
+const size = ref(10)
+// 总文章数
+const total = ref(0)
+// 总共多少页
+const pages = ref(0)
+
+function getCategoryArticles(currentNo) {
+    // 上下页是否能点击判断，当要跳转上一页且页码小于 1 时，则不允许跳转；当要跳转下一页且页码大于总页数时，则不允许跳转
+    if (currentNo < 1 || (pages.value > 0 && currentNo > pages.value)) return
+    // 调用分页接口渲染数据
+    getCategoryArticlePageList({ current: currentNo, size: size.value, id: categoryId.value }).then((res) => {
+        if (res.success) {
+            articles.value = res.data
+            current.value = res.current
+            size.value = res.size
+            total.value = res.total
+            pages.value = res.pages
+            console.log(articles)
+        }
+    })
+}
+getCategoryArticles(current.value)
 
 // 监听路由
 watch(route, (newRoute, oldRoute) => {
     categoryName.value = newRoute.query.name
     categoryId.value = newRoute.query.id
+    getCategoryArticles(current.value)
 })
 </script>
