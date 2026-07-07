@@ -14,11 +14,12 @@ import java.util.Objects;
 public interface ArticleMapper extends BaseMapper<ArticleDO> {
     /**
      * 分页查询
-     * @param current 当前页码
-     * @param size 每页展示的数据量
-     * @param title 文章标题
+     *
+     * @param current   当前页码
+     * @param size      每页展示的数据量
+     * @param title     文章标题
      * @param startDate 开始时间
-     * @param endDate 结束时间
+     * @param endDate   结束时间
      * @return
      */
     default Page<ArticleDO> selectPageList(Long current, Long size, String title, LocalDate startDate, LocalDate endDate) {
@@ -34,6 +35,7 @@ public interface ArticleMapper extends BaseMapper<ArticleDO> {
 
     /**
      * 根据文章 ID 批量分页查询
+     *
      * @param current
      * @param size
      * @param articleIds
@@ -48,4 +50,31 @@ public interface ArticleMapper extends BaseMapper<ArticleDO> {
 
         return selectPage(page, wrapper);
     }
+
+    /**
+     * 查询上一篇文章
+     *
+     * @param articleId
+     * @return
+     */
+    default ArticleDO selectPreArticle(Long articleId) {
+        return selectOne(Wrappers.<ArticleDO>lambdaQuery()
+                .orderByAsc(ArticleDO::getId) // 按文章 ID 升序排列
+                .gt(ArticleDO::getId, articleId) // 查询比当前文章 ID 大的
+                .last("limit 1")); // 第一条记录即为上一篇文章
+    }
+
+    /**
+     * 查询下一篇文章
+     *
+     * @param articleId
+     * @return
+     */
+    default ArticleDO selectNextArticle(Long articleId) {
+        return selectOne(Wrappers.<ArticleDO>lambdaQuery()
+                .orderByDesc(ArticleDO::getId) // 按文章 ID 倒序排列
+                .lt(ArticleDO::getId, articleId) // 查询比当前文章 ID 小的
+                .last("limit 1")); // 第一条记录即为下一篇文章
+    }
+
 }
