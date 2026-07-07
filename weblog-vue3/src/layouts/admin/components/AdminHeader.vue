@@ -23,6 +23,17 @@
                     </div>
                 </el-tooltip>
 
+                <!-- 点击跳转前台首页 -->
+                <el-tooltip class="box-item" effect="dark" content="跳转前台" placement="bottom">
+                    <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
+                        @click="router.push('/')">
+                        <el-icon>
+                            <Monitor />
+                        </el-icon>
+                    </div>
+                </el-tooltip>
+
+
                 <!-- 点击全屏展示 -->
                 <el-tooltip class="box-item" effect="dark" content="全屏" placement="bottom">
                     <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 mr-2 hover:bg-gray-200"
@@ -38,8 +49,7 @@
                 <el-dropdown class="flex items-center justify-center" @command="handleCommand">
                     <span class="el-dropdown-link flex items-center justify-center text-gray-700 text-xs">
                         <!-- 头像 Avatar -->
-                        <el-avatar class="mr-2" :size="25"
-                            :src="userStore.userAvatar.avatar" />
+                        <el-avatar class="mr-2" :size="25" :src="userStore.userAvatar.avatar" />
                         {{ userStore.userInfo.username }}
                         <el-icon class="el-icon--right">
                             <arrow-down />
@@ -99,7 +109,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, watch , onMounted } from 'vue'
+import { ref, reactive, watch, onMounted } from 'vue'
 import { useMenuStore } from '@/stores/menu'
 import { useUserStore } from '@/stores/user'
 import { useFullscreen } from '@vueuse/core'
@@ -124,7 +134,7 @@ const handleMenuWidth = () => {
 }
 
 onMounted(() => {
-  userStore.getavatar()
+    userStore.getavatar()
 })
 
 // 刷新页面
