@@ -29,7 +29,7 @@
                     <ol v-if="articles && articles.length > 0"
                         class="mt-3 divide-y divider-gray-200 dark:divide-gray-700">
                         <li v-for="(article, index) in articles" :key="index">
-                            <a href="#" class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <a @click="goArticleDetailPage(article.id)" class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <img class="w-24 h-12 mb-3 mr-3 rounded-lg sm:mb-0" :src="article.cover" />
                                 <div class="text-gray-600 dark:text-gray-400">
                                     <h2 class="text-base font-normal text-gray-900">
@@ -296,11 +296,11 @@ import UserInfoCard from '@/layouts/frontend/components/UserInfoCard.vue'
 import TagListCard from '@/layouts/frontend/components/TagListCard.vue'
 import CategoryListCard from '@/layouts/frontend/components/CategoryListCard.vue'
 import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getTagArticlePageList } from '@/api/frontend/tag'
-
+import { getArticlePageList } from '@/api/frontend/article'
 const route = useRoute()
-
+const router = useRouter()
 // 文章集合
 const articles = ref([])
 // 标签名称
@@ -339,4 +339,26 @@ function getTagArticles(currentNo) {
     })
 }
 getTagArticles(current.value)
+
+
+// 跳转文章详情页
+const goArticleDetailPage = (articleId) => {
+    router.push('/article/' + articleId)
+}
+// 获取指定页的文章数据
+function getArticles(currentNo) {
+    // 上下页是否能点击判断，当要跳转上一页且页码小于 1 时，则不允许跳转；当要跳转下一页且页码大于总页数时，则不允许跳转
+    if (currentNo < 1 || (pages.value > 0 && currentNo > pages.value)) return
+    // 调用分页接口渲染数据
+    getArticlePageList({ current: currentNo, size: size.value }).then((res) => {
+        if (res.success) {
+            articles.value = res.data
+            current.value = res.current
+            size.value = res.size
+            total.value = res.total
+            pages.value = res.pages
+        }
+    })
+}
+getArticles(current.value)
 </script>

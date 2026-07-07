@@ -5,14 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/model/vo/article/FindArticleDetailReqVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/model/vo/article/FindArticleDetailRspVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/model/vo/article/FindPreNextArticleRspVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/TagMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/TagMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/controller/ArticleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/controller/ArticleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/ArticleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/ArticleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/markdown/renderer/ImageNodeRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/markdown/renderer/ImageNodeRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/article-detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/article-detail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +257,7 @@
       <workItem from="1783235857015" duration="6968000" />
       <workItem from="1783344723279" duration="2519000" />
       <workItem from="1783383367322" duration="7607000" />
-      <workItem from="1783391345400" duration="6801000" />
+      <workItem from="1783391345400" duration="8935000" />
     </task>
     <servers />
   </component>
