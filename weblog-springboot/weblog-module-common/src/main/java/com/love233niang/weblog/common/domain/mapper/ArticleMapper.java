@@ -89,4 +89,13 @@ public interface ArticleMapper extends BaseMapper<ArticleDO> {
                 .setSql("read_num = read_num + 1")
                 .eq(ArticleDO::getId, articleId));
     }
+
+    /**
+     * 查询所有记录的阅读量
+     * @return
+     */
+    default List<ArticleDO> selectAllReadNum() {
+        return selectList(Wrappers.<ArticleDO>lambdaQuery()
+                .select(ArticleDO::getReadNum));
+    }
 }
