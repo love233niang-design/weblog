@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.love233niang.weblog.common.domain.dos.StatisticsArticlePVDO;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public interface StatisticsArticlePVMapper extends BaseMapper<StatisticsArticlePVDO> {
     /**
@@ -17,6 +18,18 @@ public interface StatisticsArticlePVMapper extends BaseMapper<StatisticsArticleP
         return update(null, Wrappers.<StatisticsArticlePVDO>lambdaUpdate()
                 .setSql("pv_count = pv_count + 1")
                 .eq(StatisticsArticlePVDO::getPvDate, date));
+    }
+
+    /**
+     * 查询最近一周的文章 PV 访问记录
+     *
+     * @return
+     */
+    default List<StatisticsArticlePVDO> selectLatestWeekRecords() {
+        return selectList(Wrappers.<StatisticsArticlePVDO>lambdaQuery()
+                .le(StatisticsArticlePVDO::getPvDate, LocalDate.now().plusDays(1))
+                .orderByDesc(StatisticsArticlePVDO::getPvDate)
+                .last("limit 7"));
     }
 
 }
