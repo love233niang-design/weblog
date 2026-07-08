@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/controller/AdminDashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/model/vo/dashboard/FindDashboardStatisticsInfoRspVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/AdminDashboardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/impl/AdminDashboardServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/dos/ArticlePublishCountDO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/controller/AdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/controller/AdminDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/AdminDashboardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/AdminDashboardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/impl/AdminDashboardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/impl/AdminDashboardServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -260,7 +260,8 @@
       <workItem from="1783383367322" duration="7607000" />
       <workItem from="1783391345400" duration="13773000" />
       <workItem from="1783472579596" duration="1641000" />
-      <workItem from="1783474258679" duration="862000" />
+      <workItem from="1783474258679" duration="2732000" />
+      <workItem from="1783478964000" duration="926000" />
     </task>
     <servers />
   </component>
