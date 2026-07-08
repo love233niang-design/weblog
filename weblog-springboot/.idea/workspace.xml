@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="" />
+    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -255,7 +257,7 @@
       <workItem from="1783391345400" duration="13773000" />
       <workItem from="1783472579596" duration="1641000" />
       <workItem from="1783474258679" duration="2732000" />
-      <workItem from="1783478964000" duration="9126000" />
+      <workItem from="1783478964000" duration="11238000" />
     </task>
     <servers />
   </component>

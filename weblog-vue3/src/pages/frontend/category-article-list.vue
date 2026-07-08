@@ -2,7 +2,7 @@
     <Header></Header>
 
     <!-- 主内容区域 -->
-    <main class="container max-w-screen-xl mx-auto p-4 px-6">
+    <main class="container max-w-screen-xl mx-auto p-4">
         <!-- grid 表格布局，分为 4 列 -->
         <div class="grid grid-cols-4 gap-7">
             <!-- 左边栏，占用 3 列 -->
@@ -10,13 +10,28 @@
                 <!-- 分类文章列表 -->
                 <div class="p-5 mb-4 border border-gray-200 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
                     <h1 class="flex items-center text-lg font-semibold text-gray-900 dark:text-white">
-                       
                         <!-- 文件夹图标 -->
-                         <svg t="1698998570037" class="icon w-5 h-5 mr-2" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="21572" width="200" height="200"><path d="M938.666667 464.592593h-853.333334v-265.481482c0-62.577778 51.2-113.777778 113.777778-113.777778h128.948148c15.17037 0 28.444444 3.792593 41.718519 11.377778l98.607407 64.474074h356.503704c62.577778 0 113.777778 51.2 113.777778 113.777778v189.62963z" fill="#3A69DD" p-id="21573"></path><path d="M805.925926 398.222222h-587.851852v-125.155555c0-24.651852 20.859259-45.511111 45.511111-45.511111h496.82963c24.651852 0 45.511111 20.859259 45.511111 45.511111V398.222222z" fill="#D9E3FF" p-id="21574"></path><path d="M843.851852 417.185185h-663.703704v-98.607407c0-28.444444 22.755556-53.096296 53.096296-53.096297h559.407408c28.444444 0 53.096296 22.755556 53.096296 53.096297V417.185185z" fill="#FFFFFF" p-id="21575"></path><path d="M786.962963 938.666667h-549.925926c-83.437037 0-151.703704-68.266667-151.703704-151.703704V341.333333s316.681481 37.925926 430.45926 37.925926c189.62963 0 422.874074-37.925926 422.874074-37.925926v445.62963c0 83.437037-68.266667 151.703704-151.703704 151.703704z" fill="#5F7CF9" p-id="21576"></path><path d="M559.407407 512h-75.851851c-20.859259 0-37.925926-17.066667-37.925926-37.925926s17.066667-37.925926 37.925926-37.925926h75.851851c20.859259 0 37.925926 17.066667 37.925926 37.925926s-17.066667 37.925926-37.925926 37.925926z" fill="#F9D523" p-id="21577"></path></svg>
+                        <svg t="1698998570037" class="icon w-5 h-5 mr-2" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="21572" width="200" height="200">
+                            <path
+                                d="M938.666667 464.592593h-853.333334v-265.481482c0-62.577778 51.2-113.777778 113.777778-113.777778h128.948148c15.17037 0 28.444444 3.792593 41.718519 11.377778l98.607407 64.474074h356.503704c62.577778 0 113.777778 51.2 113.777778 113.777778v189.62963z"
+                                fill="#3A69DD" p-id="21573"></path>
+                            <path
+                                d="M805.925926 398.222222h-587.851852v-125.155555c0-24.651852 20.859259-45.511111 45.511111-45.511111h496.82963c24.651852 0 45.511111 20.859259 45.511111 45.511111V398.222222z"
+                                fill="#D9E3FF" p-id="21574"></path>
+                            <path
+                                d="M843.851852 417.185185h-663.703704v-98.607407c0-28.444444 22.755556-53.096296 53.096296-53.096297h559.407408c28.444444 0 53.096296 22.755556 53.096296 53.096297V417.185185z"
+                                fill="#FFFFFF" p-id="21575"></path>
+                            <path
+                                d="M786.962963 938.666667h-549.925926c-83.437037 0-151.703704-68.266667-151.703704-151.703704V341.333333s316.681481 37.925926 430.45926 37.925926c189.62963 0 422.874074-37.925926 422.874074-37.925926v445.62963c0 83.437037-68.266667 151.703704-151.703704 151.703704z"
+                                fill="#5F7CF9" p-id="21576"></path>
+                            <path
+                                d="M559.407407 512h-75.851851c-20.859259 0-37.925926-17.066667-37.925926-37.925926s17.066667-37.925926 37.925926-37.925926h75.851851c20.859259 0 37.925926 17.066667 37.925926 37.925926s-17.066667 37.925926-37.925926 37.925926z"
+                                fill="#F9D523" p-id="21577"></path>
+                        </svg>
                         {{ categoryName }}
                     </h1>
-                    <ol v-if="articles && articles.length > 0"
-                        class="mt-3 divide-y divider-gray-200 dark:divide-gray-700">
+                    <ol v-if="articles && articles.length > 0" class="mt-3 divide-y divider-gray-200 dark:divide-gray-700">
                         <li v-for="(article, index) in articles" :key="index">
                             <a @click="goArticleDetailPage(article.id)" class="items-center block p-3 sm:flex hover:bg-gray-100 dark:hover:bg-gray-700">
                                 <img class="w-24 h-12 mb-3 mr-3 rounded-lg sm:mb-0" :src="article.cover" />
@@ -39,7 +54,8 @@
                             </a>
                         </li>
                     </ol>
-                    <!-- 该分类下没有文章提示，指定为 flex 布局，内容垂直水平居中，并纵向排列 -->
+
+                    <!-- 该分类下没有文章提示，指定为 flex 布局，内容垂直水平居中，并纵向排列  -->
                     <div v-else class="flex items-center justify-center flex-col">
                         <svg height="300" node-id="1" sillyvg="true" template-height="600" template-width="600"
                             version="1.1" viewBox="0 0 600 600" width="600" xmlns="http://www.w3.org/2000/svg"
@@ -88,12 +104,12 @@
                                 target-height="38" target-width="64.379456" target-x="381" target-y="135" />
                             <path
                                 d="M 284.50 415.00 C 345.88 415.00 401.15 420.01 439.79 428.00 C 477.58 428.26 508.00 439.57 508.00 453.50 C 508.00 464.54 488.89 473.94 462.15 477.49 C 455.77 479.37 448.58 481.15 440.69 482.81 C 440.90 483.86 441.00 484.93 441.00 486.00 C 441.00 510.30 388.17 530.00 323.00 530.00 C 264.37 530.00 215.72 514.05 206.55 493.16 C 128.32 487.22 73.00 472.60 73.00 455.50 C 73.00 433.13 167.69 415.00 284.50 415.00 Z"
-                                fill="#e7eaf0" fill-rule="evenodd" id="形状结合" node-id="24" stroke="none"
-                                target-height="115" target-width="435" target-x="73" target-y="415" />
+                                fill="#e7eaf0" fill-rule="evenodd" id="形状结合" node-id="24" stroke="none" target-height="115"
+                                target-width="435" target-x="73" target-y="415" />
                             <path
                                 d="M 284.00 466.10 C 284.00 471.07 268.55 475.10 249.50 475.10 C 230.45 475.10 215.00 471.07 215.00 466.10 C 215.00 461.13 230.45 457.10 249.50 457.10 C 268.55 457.10 284.00 461.13 284.00 466.10 Z"
-                                fill="#d1d6e2" fill-rule="nonzero" id="椭圆形" node-id="25" stroke="none"
-                                target-height="18" target-width="69" target-x="215" target-y="457.09875" />
+                                fill="#d1d6e2" fill-rule="nonzero" id="椭圆形" node-id="25" stroke="none" target-height="18"
+                                target-width="69" target-x="215" target-y="457.09875" />
                             <path
                                 d="M 463.31 400.57 L 463.62 401.62 L 463.88 402.61 L 464.00 403.41 L 463.76 405.05 L 463.06 406.47 L 461.98 407.62 L 460.62 408.41 L 459.44 408.47 L 458.31 408.53 L 457.12 408.53 L 447.38 408.66 L 447.38 418.97 L 447.47 423.57 L 447.69 427.74 L 448.00 432.00 L 439.00 432.00 L 439.19 429.59 L 439.31 425.73 L 439.38 419.22 L 439.38 409.77 L 438.24 410.47 L 437.00 410.70 L 435.99 410.57 L 435.16 410.20 L 434.45 409.62 L 433.88 408.84 L 426.81 408.47 L 424.92 407.71 L 423.38 406.40 L 422.61 405.29 L 422.16 404.06 L 422.00 402.67 L 422.06 401.99 L 422.25 401.37 L 423.81 397.79 L 424.07 396.47 L 424.59 395.26 L 425.34 394.16 L 426.25 393.22 L 436.06 375.25 L 436.12 375.25 L 437.44 373.22 L 438.94 371.54 L 440.10 370.70 L 441.48 370.18 L 443.12 370.00 L 445.27 370.30 L 447.16 371.17 L 448.71 372.53 L 449.81 374.26 L 457.69 389.51 L 459.02 390.13 L 460.18 390.99 L 461.19 392.11 L 461.95 393.40 L 462.41 394.81 L 462.56 396.37 L 462.25 398.47 L 463.31 400.57 Z"
                                 fill="url(#linearGradient-3)" fill-rule="nonzero" group-id="2" id="路径" node-id="27"
@@ -167,8 +183,7 @@
                             <path
                                 d="M 420.56 343.34 L 423.17 342.07 L 424.35 341.44 L 425.67 340.89 L 428.72 339.87 L 430.94 339.39 L 434.56 339.04 L 438.06 339.10 L 439.39 339.42 L 439.91 339.87 L 439.96 340.57 L 439.60 341.41 L 438.67 342.49 L 436.92 343.93 L 434.61 345.50 L 430.05 348.23 L 427.34 350.01 L 424.88 351.66 L 422.55 353.53 L 418.56 357.32 L 415.78 360.14 L 414.82 361.27 L 413.86 362.72 L 412.16 365.60 L 410.80 367.89 L 409.28 369.98 L 407.87 371.28 L 407.08 371.73 L 406.25 371.97 L 405.28 371.93 L 404.35 371.54 L 403.54 370.86 L 402.89 369.89 L 402.22 368.13 L 402.01 366.70 L 402.20 363.35 L 402.49 361.53 L 403.08 359.50 L 403.51 358.64 L 403.93 358.14 L 405.10 356.83 L 406.25 355.50 L 406.78 354.90 L 407.03 354.31 L 407.31 353.05 L 407.53 352.41 L 408.00 351.71 L 409.15 350.47 L 410.92 348.69 L 412.16 347.67 L 413.92 346.81 L 416.19 345.55 L 417.93 344.63 L 420.56 343.34 Z"
                                 fill="#909aa9" fill-rule="nonzero" group-id="4" id="路径" node-id="47" stroke="none"
-                                target-height="32.93387" target-width="37.947357" target-x="402.0098"
-                                target-y="339.0409" />
+                                target-height="32.93387" target-width="37.947357" target-x="402.0098" target-y="339.0409" />
                             <path
                                 d="M 413.92 374.61 L 415.54 373.15 L 417.29 371.98 L 421.00 370.03 L 423.35 369.03 L 425.64 368.57 L 427.94 368.63 L 430.67 369.17 L 432.03 369.21 L 433.41 368.81 L 433.84 368.41 L 433.81 367.93 L 433.53 367.19 L 432.94 365.97 L 432.23 364.54 L 431.28 363.33 L 430.11 362.31 L 428.78 361.53 L 427.31 361.00 L 425.73 360.74 L 423.83 360.79 L 421.93 361.16 L 419.98 361.87 L 417.28 363.43 L 414.83 365.52 L 412.78 368.01 L 411.14 370.78 L 409.91 373.75 L 409.09 376.78 L 408.92 378.46 L 409.19 380.03 L 409.44 380.34 L 409.82 380.44 L 410.49 380.02 L 411.35 378.88 L 412.06 377.61 L 413.50 375.10 L 413.92 374.61 Z"
                                 fill="#9da5b5" fill-rule="nonzero" group-id="4,5" id="路径" node-id="48" stroke="none"
@@ -192,8 +207,7 @@
                             <path
                                 d="M 409.04 378.10 L 406.80 382.84 L 404.86 387.84 L 403.22 393.10 L 401.91 398.52 L 400.94 404.05 L 400.31 409.67 L 400.02 415.15 L 400.07 420.64 L 400.14 421.97 L 400.39 422.70 L 400.64 422.93 L 400.96 423.00 L 401.54 422.69 L 401.78 421.97 L 401.64 416.54 L 401.84 411.10 L 402.07 408.36 L 402.13 407.71 L 402.15 407.54 L 402.13 407.66 L 402.14 407.57 L 402.19 407.16 L 403.22 400.43 L 404.41 395.10 L 405.92 389.93 L 406.02 389.62 L 406.08 389.47 L 406.11 389.38 L 406.10 389.40 L 406.09 389.43 L 406.12 389.34 L 406.17 389.18 L 406.29 388.84 L 407.70 385.11 L 409.86 380.31 L 412.34 375.77 L 412.66 375.25 L 412.70 375.18 L 412.65 375.26 L 412.73 375.14 L 412.91 374.85 L 413.59 373.80 L 415.76 370.74 L 416.00 370.01 L 415.76 369.29 L 415.18 369.00 L 414.60 369.29 L 411.68 373.52 L 409.04 378.10 Z"
                                 fill="#a2abb9" fill-rule="nonzero" group-id="4" id="路径" node-id="52" stroke="none"
-                                target-height="53.99884" target-width="15.979828" target-x="400.02"
-                                target-y="369.0002" />
+                                target-height="53.99884" target-width="15.979828" target-x="400.02" target-y="369.0002" />
                             <path
                                 d="M 376.17 368.89 L 376.36 369.18 L 376.43 369.28 L 376.45 369.32 L 376.48 369.37 L 377.18 370.48 L 378.53 372.80 L 380.93 377.58 L 383.00 382.63 L 383.11 382.92 L 383.14 383.00 L 383.11 382.92 L 383.17 383.09 L 383.86 385.07 L 384.69 387.67 L 386.17 393.06 L 387.43 398.57 L 388.49 404.18 L 389.38 409.86 L 389.68 411.95 L 389.73 412.32 L 389.76 412.55 L 390.14 415.42 L 390.83 421.12 L 391.00 422.53 L 391.26 423.24 L 391.51 423.46 L 391.82 423.52 L 392.38 423.20 L 392.59 422.47 L 391.11 410.71 L 389.21 399.30 L 388.00 393.73 L 386.56 388.26 L 384.83 382.87 L 382.79 377.68 L 380.42 372.74 L 377.73 368.14 L 376.89 366.88 L 376.63 366.66 L 376.32 366.60 L 375.77 366.92 L 375.57 367.65 L 375.81 368.36 L 376.17 368.89 Z"
                                 fill="#a2abb9" fill-rule="nonzero" group-id="4,8" id="路径" node-id="53" stroke="none"
@@ -257,24 +271,28 @@
                         </li>
                     </ul>
                 </nav>
-
-
             </div>
 
             <!-- 右边侧边栏，占用一列 -->
             <aside class="col-span-4 md:col-span-1">
-                <!-- 博主信息 -->
-                <UserInfoCard></UserInfoCard>
+                <div class="sticky top-[5.5rem]">
+                    <!-- 博主信息 -->
+                    <UserInfoCard></UserInfoCard>
 
-                <!-- 分类 -->
-                <CategoryListCard></CategoryListCard>
+                    <!-- 分类 -->
+                    <CategoryListCard></CategoryListCard>
 
-                <!-- 标签 -->
-                <TagListCard></TagListCard>
+                    <!-- 标签 -->
+                    <TagListCard></TagListCard>
+                </div>
             </aside>
         </div>
 
     </main>
+
+    
+    <!-- 返回顶部 -->
+    <ScrollToTopButton></ScrollToTopButton>
 
     <Footer></Footer>
 </template>
@@ -285,19 +303,28 @@ import Footer from '@/layouts/frontend/components/Footer.vue'
 import UserInfoCard from '@/layouts/frontend/components/UserInfoCard.vue'
 import TagListCard from '@/layouts/frontend/components/TagListCard.vue'
 import CategoryListCard from '@/layouts/frontend/components/CategoryListCard.vue'
+import ScrollToTopButton from '@/layouts/frontend/components/ScrollToTopButton.vue'
 import { ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getCategoryArticlePageList } from '@/api/frontend/category'
-import { getArticlePageList } from '@/api/frontend/article'
+
+const route = useRoute()
 const router = useRouter()
 
 // 文章集合
 const articles = ref([])
-const route = useRoute()
 // 分类名称
 const categoryName = ref(route.query.name)
 // 分类 ID
 const categoryId = ref(route.query.id)
+
+// 监听路由
+watch(route, (newRoute, oldRoute) => {
+    categoryName.value = newRoute.query.name
+    categoryId.value = newRoute.query.id
+    getCategoryArticles(current.value)
+})
+
 // 当前页码
 const current = ref(1)
 // 每页显示的文章数
@@ -328,27 +355,4 @@ getCategoryArticles(current.value)
 const goArticleDetailPage = (articleId) => {
     router.push('/article/' + articleId)
 }
-// 获取指定页的文章数据
-function getArticles(currentNo) {
-    // 上下页是否能点击判断，当要跳转上一页且页码小于 1 时，则不允许跳转；当要跳转下一页且页码大于总页数时，则不允许跳转
-    if (currentNo < 1 || (pages.value > 0 && currentNo > pages.value)) return
-    // 调用分页接口渲染数据
-    getArticlePageList({ current: currentNo, size: size.value }).then((res) => {
-        if (res.success) {
-            articles.value = res.data
-            current.value = res.current
-            size.value = res.size
-            total.value = res.total
-            pages.value = res.pages
-        }
-    })
-}
-getArticles(current.value)
-
-// 监听路由
-watch(route, (newRoute, oldRoute) => {
-    categoryName.value = newRoute.query.name
-    categoryId.value = newRoute.query.id
-    getCategoryArticles(current.value)
-})
 </script>

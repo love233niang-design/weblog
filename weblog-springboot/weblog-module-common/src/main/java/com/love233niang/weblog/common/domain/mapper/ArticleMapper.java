@@ -49,7 +49,6 @@ public interface ArticleMapper extends BaseMapper<ArticleDO> {
         LambdaQueryWrapper<ArticleDO> wrapper = Wrappers.<ArticleDO>lambdaQuery()
                 .in(ArticleDO::getId, articleIds)
                 .orderByDesc(ArticleDO::getCreateTime);
-
         return selectPage(page, wrapper);
     }
 
