@@ -1,7 +1,6 @@
 package com.love233niang.weblog.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.love233niang.weblog.common.domain.dos.ArticleCategoryRelDO;
 import com.love233niang.weblog.common.domain.dos.ArticleDO;
@@ -16,6 +15,7 @@ import com.love233niang.weblog.common.utils.Response;
 import com.love233niang.weblog.convert.ArticleConvert;
 import com.love233niang.weblog.model.vo.category.FindCategoryArticlePageListReqVO;
 import com.love233niang.weblog.model.vo.category.FindCategoryArticlePageListRspVO;
+import com.love233niang.weblog.model.vo.category.FindCategoryListReqVO;
 import com.love233niang.weblog.model.vo.category.FindCategoryListRspVO;
 import com.love233niang.weblog.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
@@ -36,10 +36,22 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private ArticleMapper articleMapper;
 
+    /**
+     * 获取分类列表
+     *
+     * @return
+     */
     @Override
-    public Response findCategoryList() {
+    public Response findCategoryList(FindCategoryListReqVO findCategoryListReqVO) {
+        Long size = findCategoryListReqVO.getSize();
         // 查询分类列表
-        List<CategoryDO> categoryDOS = categoryMapper.selectList(Wrappers.emptyWrapper());
+        List<CategoryDO> categoryDOS = null;
+        if (Objects.isNull(size) || size == 0) {
+            // 查询所有分类
+            categoryDOS = categoryMapper.selectList(null);
+        } else {
+            categoryDOS = categoryMapper.selectByLimit(size);
+        }
         // DO 转 VO
         List<FindCategoryListRspVO> vos = null;
         if (!CollectionUtils.isEmpty(categoryDOS)) {
@@ -47,7 +59,9 @@ public class CategoryServiceImpl implements CategoryService {
                     .map(categoryDO -> FindCategoryListRspVO.builder()
                             .id(categoryDO.getId())
                             .name(categoryDO.getName())
-                            .build()).collect(Collectors.toList());
+                            .articlesTotal(categoryDO.getArticlesTotal())
+                            .build())
+                    .collect(Collectors.toList());
         }
         return Response.success(vos);
     }

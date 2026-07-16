@@ -11,12 +11,12 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.quanxiaoha</groupId>
+    <groupId>com.love233niang</groupId>
     <artifactId>weblog-springboot</artifactId>
     <version>${revision}</version>
     <name>weblog-springboot</name>
     <!-- 项目描述 -->
-    <description>前后端分离博客 Weblog By 犬小哈</description>
+    <description>前后端分离博客 Weblog </description>
 
     <!-- 多模块项目父工程打包模式必须指定为 pom -->
     <packaging>pom</packaging>
@@ -28,6 +28,7 @@
         <module>weblog-module-admin</module>
         <module>weblog-module-common</module>
         <module>weblog-module-jwt</module>
+        <module>weblog-module-search</module>
     </modules>
 
 
@@ -54,6 +55,8 @@
         <minio.version>8.2.1</minio.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <commonmark.version>0.20.0</commonmark.version>
+        <lucene.version>8.11.1</lucene.version>
+        <commons-io.version>2.11.0</commons-io.version>
     </properties>
 
     <!-- 统一依赖管理 -->
@@ -74,13 +77,13 @@
             </dependency>
 
             <dependency>
-                <groupId>com.quanxiaoha</groupId>
+                <groupId>com.love233niang</groupId>
                 <artifactId>weblog-module-admin</artifactId>
                 <version>${revision}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.quanxiaoha</groupId>
+                <groupId>com.love233niang</groupId>
                 <artifactId>weblog-module-common</artifactId>
                 <version>${revision}</version>
             </dependency>
@@ -119,7 +122,7 @@
             </dependency>
 
             <dependency>
-                <groupId>com.quanxiaoha</groupId>
+                <groupId>com.love233niang</groupId>
                 <artifactId>weblog-module-jwt</artifactId>
                 <version>${revision}</version>
             </dependency>
@@ -185,6 +188,46 @@
                 <version>${commonmark.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.love233niang</groupId>
+                <artifactId>weblog-module-search</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <!-- lucene 全文检索引擎 -->
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-core</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+
+            <!-- 中文分词 -->
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-analyzers-smartcn</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+
+            <!-- 关键词高亮 -->
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-highlighter</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+
+            <!-- 查询解析器 -->
+            <dependency>
+                <groupId>org.apache.lucene</groupId>
+                <artifactId>lucene-queryparser</artifactId>
+                <version>${lucene.version}</version>
+            </dependency>
+
+            <!-- 工具包 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

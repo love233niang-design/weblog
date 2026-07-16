@@ -2,20 +2,11 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { getUserInfo } from '@/api/admin/user'
 import { removeToken } from '@/composables/cookie'
-import { getBlogSettingsDetail, updateBlogSettings } from '@/api/admin/blogsettings'
 
 export const useUserStore = defineStore('user', () => {
     // 用户信息
     const userInfo = ref({})
-    const userAvatar = ref({})
 
-    function getavatar() {
-        getBlogSettingsDetail().then(res => {
-            if (res.success == true) {
-                userAvatar.value = res.data
-            }
-        }) 
-    }
     // 设置用户信息
     function setUserInfo() {
         // 调用后头获取用户信息接口
@@ -36,7 +27,7 @@ export const useUserStore = defineStore('user', () => {
         userInfo.value = {}
     }
 
-    return { userInfo, setUserInfo, logout,  userAvatar, getavatar}
+    return { userInfo, setUserInfo, logout}
 },
     {
         // 开启持久化

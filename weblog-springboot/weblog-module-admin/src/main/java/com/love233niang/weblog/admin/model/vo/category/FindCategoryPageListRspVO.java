@@ -13,12 +13,25 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Builder
 public class FindCategoryPageListRspVO {
-    // 分类 ID
+
+    /**
+     * 分类 ID
+     */
     private Long id;
 
-    // 分类名称
+    /**
+     * 分类名称
+     */
     private String name;
 
-    // 创建时间
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
+
+    /**
+     * 文章总数
+     */
+    private Integer articlesTotal;
+
 }

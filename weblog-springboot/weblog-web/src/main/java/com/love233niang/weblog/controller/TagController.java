@@ -3,6 +3,7 @@ package com.love233niang.weblog.controller;
 import com.love233niang.weblog.common.aspect.ApiOperationLog;
 import com.love233niang.weblog.common.utils.Response;
 import com.love233niang.weblog.model.vo.tag.FindTagArticlePageListReqVO;
+import com.love233niang.weblog.model.vo.tag.FindTagListReqVO;
 import com.love233niang.weblog.service.TagService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -24,8 +25,8 @@ public class TagController {
     @PostMapping("/list")
     @ApiOperation(value = "前台获取标签列表")
     @ApiOperationLog(description = "前台获取标签列表")
-    public Response findTagList() {
-        return tagService.findTagList();
+    public Response findTagList(@RequestBody @Validated FindTagListReqVO findTagListReqVO) {
+        return tagService.findTagList(findTagListReqVO);
     }
 
 

@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
     <!-- 指定父项目为 weblog-springboot -->
     <parent>
-        <groupId>com.quanxiaoha</groupId>
+        <groupId>com.love233niang</groupId>
         <artifactId>weblog-springboot</artifactId>
         <version>${revision}</version>
     </parent>
 
-    <groupId>com.quanxiaoha</groupId>
+    <groupId>com.love233niang</groupId>
     <artifactId>weblog-web</artifactId>
     <name>weblog-web</name>
     <description>weblog-web (入口项目，负责博客前台展示相关功能，打包也放在这个模块负责)</description>
@@ -35,12 +35,12 @@
         </dependency>
 
         <dependency>
-            <groupId>com.quanxiaoha</groupId>
+            <groupId>com.love233niang</groupId>
             <artifactId>weblog-module-common</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.quanxiaoha</groupId>
+            <groupId>com.love233niang</groupId>
             <artifactId>weblog-module-admin</artifactId>
         </dependency>
 
@@ -84,6 +84,12 @@
             <groupId>org.commonmark</groupId>
             <artifactId>commonmark-ext-task-list-items</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.love233niang</groupId>
+            <artifactId>weblog-module-search</artifactId>
+        </dependency>
+
 
     </dependencies>
 

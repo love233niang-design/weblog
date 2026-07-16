@@ -1,7 +1,7 @@
 package com.love233niang.weblog.markdown;
 
-import com.love233niang.weblog.markdown.provider.NofollowLinkAttributeProvider;
 import com.love233niang.weblog.markdown.renderer.ImageNodeRenderer;
+import com.love233niang.weblog.markdown.renderer.LinkNodeRenderer;
 import org.commonmark.Extension;
 import org.commonmark.ext.gfm.tables.TablesExtension;
 import org.commonmark.ext.heading.anchor.HeadingAnchorExtension;
@@ -35,11 +35,10 @@ public class MarkdownHelper {
         );
 
         PARSER = Parser.builder().extensions(extensions).build();
-        HTML_RENDERER = HtmlRenderer
-                .builder()
+        HTML_RENDERER = HtmlRenderer.builder()
                 .extensions(extensions)
-                .attributeProviderFactory(context -> new NofollowLinkAttributeProvider())
-                .nodeRendererFactory(context -> new ImageNodeRenderer(context))
+                .nodeRendererFactory(context -> new ImageNodeRenderer(context)) // 自定义图片解析
+                .nodeRendererFactory(context -> new LinkNodeRenderer(context)) // 自定义超链接解析
                 .build();
     }
 
@@ -55,7 +54,7 @@ public class MarkdownHelper {
     }
 
     public static void main(String[] args) {
-        String markdown = "![图 1-1 技术栈](https://img.quanxiaoha.com/quanxiaoha/169560181378937 \"图 1-1 技术栈\"){width=100 height=100}";
+        String markdown = "![图 1-1 技术栈](https://img.love233niang.com/love233niang/169560181378937 \"图 1-1 技术栈\"){width=100 height=100}";
         System.out.println(MarkdownHelper.convertMarkdown2Html(markdown));
 
     }

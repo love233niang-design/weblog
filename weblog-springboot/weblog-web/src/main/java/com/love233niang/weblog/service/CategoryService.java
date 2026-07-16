@@ -2,6 +2,7 @@ package com.love233niang.weblog.service;
 
 import com.love233niang.weblog.common.utils.Response;
 import com.love233niang.weblog.model.vo.category.FindCategoryArticlePageListReqVO;
+import com.love233niang.weblog.model.vo.category.FindCategoryListReqVO;
 
 public interface CategoryService {
     /**
@@ -9,7 +10,7 @@ public interface CategoryService {
      *
      * @return
      */
-    Response findCategoryList();
+    Response findCategoryList(FindCategoryListReqVO findCategoryListReqVO);
 
     /**
      * 获取分类文章分页列表

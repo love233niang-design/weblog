@@ -1,7 +1,6 @@
 package com.love233niang.weblog.service.impl;
 
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
-import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.love233niang.weblog.common.domain.dos.ArticleDO;
 import com.love233niang.weblog.common.domain.dos.ArticleTagRelDO;
@@ -16,6 +15,7 @@ import com.love233niang.weblog.common.utils.Response;
 import com.love233niang.weblog.convert.ArticleConvert;
 import com.love233niang.weblog.model.vo.tag.FindTagArticlePageListReqVO;
 import com.love233niang.weblog.model.vo.tag.FindTagArticlePageListRspVO;
+import com.love233niang.weblog.model.vo.tag.FindTagListReqVO;
 import com.love233niang.weblog.model.vo.tag.FindTagListRspVO;
 import com.love233niang.weblog.service.TagService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class TagServiceImpl implements TagService {
+
     @Autowired
     private TagMapper tagMapper;
     @Autowired
@@ -42,8 +43,15 @@ public class TagServiceImpl implements TagService {
      * @return
      */
     @Override
-    public Response findTagList() {
-        List<TagDO> tagDOS = tagMapper.selectList(Wrappers.emptyWrapper());
+    public Response findTagList(FindTagListReqVO findTagListReqVO) {
+        Long size = findTagListReqVO.getSize();
+        List<TagDO> tagDOS = null;
+        if (Objects.isNull(size) || size == 0) {
+            tagDOS = tagMapper.selectList(null);
+        } else {
+            tagDOS = tagMapper.selectByLimit(size);
+        }
+
 
         // DO 转 VO
         List<FindTagListRspVO> vos = null;
@@ -52,10 +60,10 @@ public class TagServiceImpl implements TagService {
                     .map(tagDO -> FindTagListRspVO.builder()
                             .id(tagDO.getId())
                             .name(tagDO.getName())
+                            .articlesTotal(tagDO.getArticlesTotal())
                             .build())
                     .collect(Collectors.toList());
         }
-
         return Response.success(vos);
     }
 

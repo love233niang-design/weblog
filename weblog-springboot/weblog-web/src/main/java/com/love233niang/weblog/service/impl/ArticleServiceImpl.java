@@ -16,6 +16,7 @@ import com.love233niang.weblog.model.vo.article.*;
 import com.love233niang.weblog.model.vo.category.FindCategoryListRspVO;
 import com.love233niang.weblog.model.vo.tag.FindTagListRspVO;
 import com.love233niang.weblog.service.ArticleService;
+import com.love233niang.weblog.utils.MarkdownStatsUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -153,12 +154,18 @@ public class ArticleServiceImpl implements ArticleService {
 
         // 查询正文
         ArticleContentDO articleContentDO = articleContentMapper.selectByArticleId(articleId);
+        String content = articleContentDO.getContent();
+
+        // 计算markdown 正文字数
+        Integer totalWords = MarkdownStatsUtil.calculateWordCount(content);
         //DO 转 VO
         FindArticleDetailRspVO vo = FindArticleDetailRspVO.builder()
                 .title(articleDO.getTitle())
                 .createTime(articleDO.getCreateTime())
-                .content(MarkdownHelper.convertMarkdown2Html(articleContentDO.getContent()))
+                .content(MarkdownHelper.convertMarkdown2Html(content))
                 .readNum(articleDO.getReadNum())
+                .totalWords(totalWords)
+                .readTime(MarkdownStatsUtil.calculateReadingTime(totalWords))
                 .build();
         // 查询所属分类
         ArticleCategoryRelDO articleCategoryRelDO = articleCategoryRelMapper.selectByArticleId(articleId);

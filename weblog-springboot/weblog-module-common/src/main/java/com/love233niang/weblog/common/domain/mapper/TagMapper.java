@@ -60,4 +60,16 @@ public interface TagMapper extends BaseMapper<TagDO> {
         return selectList(Wrappers.<TagDO>lambdaQuery()
                 .in(TagDO::getId, tagIds));
     }
+
+    /**
+     * 根据标签 ID 批量查询
+     *
+     * @param limit
+     * @return
+     */
+    default List<TagDO> selectByLimit(Long limit) {
+        return selectList(Wrappers.<TagDO>lambdaQuery()
+                .orderByDesc(TagDO::getArticlesTotal)
+                .last(String.format("limit %d", limit)));
+    }
 }

@@ -14,6 +14,8 @@ import VueViewer from 'v-viewer'
 import router from '@/router'
 // 导入全局路由守卫
 import '@/permission'
+// 导入 element-plus 暗黑 css
+import 'element-plus/theme-chalk/dark/css-vars.css'
 
 const app = createApp(App)
 

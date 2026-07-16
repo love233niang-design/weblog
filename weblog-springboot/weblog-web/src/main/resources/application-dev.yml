@@ -25,3 +25,8 @@ minio:
   accessKey: haoqi
   secretKey: 123456789
   bucketName: weblog
+#=================================================================
+# Lucene 全文检索
+#=================================================================
+lucene:
+  indexDir: E:\\JAVA_IDE_WORK\\idea Javawork\\weblog\\lucene-index # lucene 索引存放的位置

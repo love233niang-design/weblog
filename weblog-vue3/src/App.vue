@@ -16,3 +16,11 @@ const locale = zhCn
    background: #409eff !important;
 }
 </style>
+<style>
+
+/* 暗黑模式 body 背景色 */
+.dark body {
+   --tw-bg-opacity: 1;
+    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
+</style>

@@ -45,7 +45,13 @@ import AdminHeader from './components/AdminHeader.vue';
 import AdminMenu from './components/AdminMenu.vue';
 import AdminTagList from './components/AdminTagList.vue';
 import { useMenuStore } from '@/stores/menu'
+import { onMounted } from 'vue';
 const menuStore = useMenuStore()
+
+onMounted(() => {
+    // 移除 html 标签中的 class="dark"
+    document.documentElement.classList.remove('dark');
+})
 </script>
 
 <style scoped>

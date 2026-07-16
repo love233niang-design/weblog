@@ -49,7 +49,7 @@
                 <el-dropdown class="flex items-center justify-center" @command="handleCommand">
                     <span class="el-dropdown-link flex items-center justify-center text-gray-700 text-xs">
                         <!-- 头像 Avatar -->
-                        <el-avatar class="mr-2" :size="25" :src="userStore.userAvatar.avatar" />
+                        <el-avatar class="mr-2" :size="25" :src="blogSettingsStore.blogSettings.avatar" />
                         {{ userStore.userInfo.username }}
                         <el-icon class="el-icon--right">
                             <arrow-down />
@@ -117,9 +117,10 @@ import { updateAdminPassword } from '@/api/admin/user'
 import { showMessage, showModel } from '@/composables/util'
 import { useRouter } from 'vue-router'
 import FormDialog from '@/components/FormDialog.vue'
-
+import { useBlogSettingsStore } from '@/stores/blogsettings'
 const router = useRouter()
-
+// 引入博客设置信息 store
+const blogSettingsStore = useBlogSettingsStore()
 // isFullscreen 表示当前是否处于全屏；toggle 用于动态切换全屏、非全屏
 const { isFullscreen, toggle } = useFullscreen()
 
@@ -133,9 +134,6 @@ const handleMenuWidth = () => {
     menuStore.handleMenuWidth()
 }
 
-onMounted(() => {
-    userStore.getavatar()
-})
 
 // 刷新页面
 const handleRefresh = () => location.reload()
