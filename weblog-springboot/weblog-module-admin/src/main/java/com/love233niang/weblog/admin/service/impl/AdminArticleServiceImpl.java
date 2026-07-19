@@ -270,7 +270,8 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         // 更新该文中的权重
         articleMapper.updateById(ArticleDO.builder()
                 .id(articleId)
-                .weight(weight).build());
+                .weight(weight)
+                .build());
         return Response.success();
     }
 
