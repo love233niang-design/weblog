@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/love233niang/weblog/jwt/config/PasswordEncoderConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/love233niang/weblog/jwt/config/PasswordEncoderConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/db/weblog.sql" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/db/weblog.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.cfe" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.cfe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.cfs" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.cfs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.si" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.si" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/segments_1" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/segments_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/impl/AdminArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-admin/src/main/java/com/love233niang/weblog/admin/service/impl/AdminArticleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-common/src/main/java/com/love233niang/weblog/common/domain/mapper/ArticleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/ArticleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/ArticleServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,7 @@
         <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Dockerfile" />
       </list>
     </option>
   </component>
@@ -75,7 +81,7 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;Spring Boot.WeblogWebApplication.executor&quot;: &quot;Run&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;div&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/JAVA_IDE_WORK/idea Javawork/weblog/weblog-springboot/weblog-web/src/main/java/com/quanxiaoha/weblog&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
@@ -110,7 +116,7 @@
       <recent name="com.quanxiaoha.weblog.admin.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.PasswordEncoderConfig">
+  <component name="RunManager" selected="Spring Boot.WeblogWebApplication">
     <configuration name="JwtTokenHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.quanxiaoha.utils.JwtTokenHelper" />
       <module name="weblog-module-jwt" />
@@ -285,6 +291,11 @@
       <workItem from="1784268517304" duration="1383000" />
       <workItem from="1784291553803" duration="559000" />
       <workItem from="1784334491525" duration="6000" />
+      <workItem from="1784446606703" duration="4600000" />
+      <workItem from="1784452091382" duration="127000" />
+      <workItem from="1784452242112" duration="50000" />
+      <workItem from="1784452305966" duration="37000" />
+      <workItem from="1784452442165" duration="2759000" />
     </task>
     <servers />
   </component>
