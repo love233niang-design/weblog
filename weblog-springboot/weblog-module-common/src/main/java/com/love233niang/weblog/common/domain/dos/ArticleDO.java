@@ -33,4 +33,6 @@ public class ArticleDO {
     private Boolean isDeleted;
 
     private Long readNum;
+
+    private Integer weight;
 }

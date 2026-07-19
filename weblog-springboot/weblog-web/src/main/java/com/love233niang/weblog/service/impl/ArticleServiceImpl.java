@@ -69,7 +69,11 @@ public class ArticleServiceImpl implements ArticleService {
         if (!CollectionUtils.isEmpty(articleDOS)) {
             // 文章 DO 转 VO
             vos = articleDOS.stream()
-                    .map(articleDO -> ArticleConvert.INSTANCE.convertDO2VO(articleDO))
+                    .map(articleDO -> {
+                        FindIndexArticlePageListRspVO vo = ArticleConvert.INSTANCE.convertDO2VO(articleDO);
+                        vo.setIsTop(articleDO.getWeight() > 0);
+                        return vo;
+                    })
                     .collect(Collectors.toList());
             // 拿到所有文章的 ID 集合
             List<Long> articleIds = articleDOS.stream().map(ArticleDO::getId).collect(Collectors.toList());
