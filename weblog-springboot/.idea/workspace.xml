@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/love233niang/weblog/jwt/config/PasswordEncoderConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/love233niang/weblog/jwt/config/PasswordEncoderConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/db/weblog.sql" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/db/weblog.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +110,7 @@
       <recent name="com.quanxiaoha.weblog.admin.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.WeblogWebApplication">
+  <component name="RunManager" selected="Application.PasswordEncoderConfig">
     <configuration name="JwtTokenHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.quanxiaoha.utils.JwtTokenHelper" />
       <module name="weblog-module-jwt" />
@@ -279,7 +280,11 @@
       <workItem from="1784075779681" duration="84000" />
       <workItem from="1784097337999" duration="766000" />
       <workItem from="1784116195752" duration="814000" />
-      <workItem from="1784207912180" duration="718000" />
+      <workItem from="1784207912180" duration="1533000" />
+      <workItem from="1784247404800" duration="766000" />
+      <workItem from="1784268517304" duration="1383000" />
+      <workItem from="1784291553803" duration="559000" />
+      <workItem from="1784334491525" duration="6000" />
     </task>
     <servers />
   </component>
