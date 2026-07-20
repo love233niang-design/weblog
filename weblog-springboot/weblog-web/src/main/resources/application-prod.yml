@@ -27,10 +27,11 @@ spring:
       #=================================================================
 minio:
 #  endpoint: http://120.26.117.209:9000
+  endpoint: https://img.love233niang.xin
   accessKey: quanxiaoha
   secretKey: quanxiaoha
   bucketName: weblog
-  endpoint: img.love233niang.xin
+
 
 #=================================================================
 # Lucene 全文检索
