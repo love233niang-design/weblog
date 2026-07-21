@@ -38,5 +38,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-
-# 忽略 IDEA 所有配置文件

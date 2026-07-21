@@ -16,3 +16,6 @@ jwt:
   tokenHeaderKey: Authorization
   # token 请求头中的 value 值前缀
   tokenPrefix: Bearer
+
+# 鬼鬼 API Key
+api-key: 5f71e951ca10e9170d5e45167fb2d4c1
