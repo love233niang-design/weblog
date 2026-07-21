@@ -3,6 +3,7 @@ package com.love233niang.weblog.service;
 
 import com.love233niang.weblog.common.utils.Response;
 import com.love233niang.weblog.model.vo.comment.FindQQUserInfoReqVO;
+import com.love233niang.weblog.model.vo.comment.PublishCommentReqVO;
 
 /**
  * @author: 犬小哈
@@ -19,5 +20,12 @@ public interface CommentService {
      */
     Response findQQUserInfo(FindQQUserInfoReqVO findQQUserInfoReqVO);
 
+
+    /**
+     * 发布评论
+     * @param publishCommentReqVO
+     * @return
+     */
+    Response publishComment(PublishCommentReqVO publishCommentReqVO);
 }
 

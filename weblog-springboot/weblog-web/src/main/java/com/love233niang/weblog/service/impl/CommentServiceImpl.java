@@ -3,11 +3,17 @@ package com.love233niang.weblog.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.love233niang.weblog.common.domain.dos.BlogSettingsDO;
+import com.love233niang.weblog.common.domain.dos.CommentDO;
+import com.love233niang.weblog.common.domain.mapper.BlogSettingsMapper;
+import com.love233niang.weblog.common.domain.mapper.CommentMapper;
+import com.love233niang.weblog.common.enums.CommentStatusEnum;
 import com.love233niang.weblog.common.enums.ResponseCodeEnum;
 import com.love233niang.weblog.common.exception.BizException;
 import com.love233niang.weblog.common.utils.Response;
 import com.love233niang.weblog.model.vo.comment.FindQQUserInfoReqVO;
 import com.love233niang.weblog.model.vo.comment.FindQQUserInfoRspVO;
+import com.love233niang.weblog.model.vo.comment.PublishCommentReqVO;
 import com.love233niang.weblog.service.CommentService;
 import com.love233niang.weblog.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,18 +22,35 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import toolgood.words.IllegalWordsSearch;
+import toolgood.words.IllegalWordsSearchResult;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 public class CommentServiceImpl implements CommentService {
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private BlogSettingsMapper blogSettingsMapper;
+    @Autowired
+    private CommentMapper commentMapper;
     @Value("${api-key}")
     private String apiKey;
+    @Autowired
+    private IllegalWordsSearch wordsSearch;
 
+    /**
+     * 根据 QQ 号获取用户信息
+     *
+     * @param findQQUserInfoReqVO
+     * @return
+     */
     @Override
     public Response findQQUserInfo(FindQQUserInfoReqVO findQQUserInfoReqVO) {
         String qq = findQQUserInfoReqVO.getQq();
@@ -65,5 +88,84 @@ public class CommentServiceImpl implements CommentService {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * 发布评论
+     *
+     * @param publishCommentReqVO
+     * @return
+     */
+    @Override
+    public Response publishComment(PublishCommentReqVO publishCommentReqVO) {
+        // 回复的评论 ID
+        Long replyCommentId = publishCommentReqVO.getReplyCommentId();
+        // 评论内容
+        String content = publishCommentReqVO.getContent();
+        // 昵称
+        String nickname = publishCommentReqVO.getNickname();
+
+        // 查询博客设置相关信息（约定的 ID 为 1）
+        BlogSettingsDO blogSettingsDO = blogSettingsMapper.selectById(1L);
+        // 是否开启了敏感词过滤
+        boolean isCommentSensiWordOpen = blogSettingsDO.getIsCommentSensiWordOpen();
+        // 是否开启了审核
+        boolean isCommentExamineOpen = blogSettingsDO.getIsCommentExamineOpen();
+
+        // 设置默认状态（正常）
+        Integer status = CommentStatusEnum.NORMAL.getCode();
+        // 审核不通过原因
+        String reason = "";
+
+        // 如果开启了审核, 设置状态为待审核，等待博主后台审核通过
+        if (isCommentExamineOpen) {
+            status = CommentStatusEnum.WAIT_EXAMINE.getCode();
+        }
+
+        // 评论内容是否包含敏感词
+        boolean isContainSensitiveWord = false;
+        // 是否开启了敏感词过滤
+        if (isCommentSensiWordOpen) {
+            // 校验评论师傅包含敏感词
+            isContainSensitiveWord = wordsSearch.ContainsAny(content);
+
+            if (isContainSensitiveWord) {
+                // 若包含敏感词，设置状态为审核不通过
+                status = CommentStatusEnum.EXAMINE_FAILED.getCode();
+                // 匹配到的所有敏感词组
+                List<IllegalWordsSearchResult> results = wordsSearch.FindAll(content);
+                List<String> keywords = results.stream().map(result -> result.Keyword).collect(Collectors.toList());
+                // 不通过的原因
+                reason = String.format("系统自动拦截，包含敏感词：%s", keywords);
+                log.warn("此评论内容中包含敏感词: {}, content: {}", keywords, content);
+            }
+        }
+
+        // 构建 DO 对象
+        CommentDO commentDO = CommentDO.builder()
+                .avatar(publishCommentReqVO.getAvatar())
+                .content(content)
+                .mail(publishCommentReqVO.getMail())
+                .createTime(LocalDateTime.now())
+                .nickname(nickname)
+                .routerUrl(publishCommentReqVO.getRouterUrl())
+                .website(publishCommentReqVO.getWebsite())
+                .replyCommentId(replyCommentId)
+                .parentCommentId(publishCommentReqVO.getParentCommentId())
+                .status(status)
+                .reason(reason)
+                .build();
+
+        // 新增评论
+        commentMapper.insert(commentDO);
+
+        // 给予前端对应的提示信息
+        if (isContainSensitiveWord)
+            throw new BizException(ResponseCodeEnum.COMMENT_CONTAIN_SENSITIVE_WORD);
+
+        if (Objects.equals(status, CommentStatusEnum.WAIT_EXAMINE.getCode()))
+            throw new BizException(ResponseCodeEnum.COMMENT_WAIT_EXAMINE);
+
+        return Response.success();
     }
 }
