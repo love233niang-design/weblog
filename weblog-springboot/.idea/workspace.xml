@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/love233niang/weblog/jwt/config/PasswordEncoderConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-module-jwt/src/main/java/com/love233niang/weblog/jwt/config/PasswordEncoderConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,6 +293,7 @@
       <workItem from="1784507463769" duration="4000" />
       <workItem from="1784539191545" duration="1513000" />
       <workItem from="1784546551357" duration="852000" />
+      <workItem from="1784593957222" duration="9000" />
     </task>
     <servers />
   </component>
