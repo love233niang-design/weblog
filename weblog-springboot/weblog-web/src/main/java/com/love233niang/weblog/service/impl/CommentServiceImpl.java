@@ -12,12 +12,14 @@ import com.love233niang.weblog.common.enums.ResponseCodeEnum;
 import com.love233niang.weblog.common.exception.BizException;
 import com.love233niang.weblog.common.utils.Response;
 import com.love233niang.weblog.convert.CommentConvert;
+import com.love233niang.weblog.event.PublishCommentEvent;
 import com.love233niang.weblog.model.vo.comment.*;
 import com.love233niang.weblog.service.CommentService;
 import com.love233niang.weblog.utils.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -41,6 +43,8 @@ public class CommentServiceImpl implements CommentService {
     private String apiKey;
     @Autowired
     private IllegalWordsSearch wordsSearch;
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
 
     /**
      * 根据 QQ 号获取用户信息
@@ -155,6 +159,11 @@ public class CommentServiceImpl implements CommentService {
 
         // 新增评论
         commentMapper.insert(commentDO);
+
+        Long commentId = commentDO.getId();
+
+        // 发送评论发布事件
+        eventPublisher.publishEvent(new PublishCommentEvent(this, commentId));
 
         // 给予前端对应的提示信息
         if (isContainSensitiveWord)
