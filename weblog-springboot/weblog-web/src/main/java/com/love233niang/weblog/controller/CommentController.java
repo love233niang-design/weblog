@@ -3,6 +3,7 @@ package com.love233niang.weblog.controller;
 
 import com.love233niang.weblog.common.aspect.ApiOperationLog;
 import com.love233niang.weblog.common.utils.Response;
+import com.love233niang.weblog.model.vo.comment.FindCommentListReqVO;
 import com.love233niang.weblog.model.vo.comment.FindQQUserInfoReqVO;
 import com.love233niang.weblog.model.vo.comment.PublishCommentReqVO;
 import com.love233niang.weblog.service.CommentService;
@@ -37,4 +38,10 @@ public class CommentController {
         return commentService.publishComment(publishCommentReqVO);
     }
 
+    @PostMapping("/list")
+    @ApiOperation(value = "获取页面所有评论")
+    @ApiOperationLog(description = "获取页面所有评论")
+    public Response findPageComments(@RequestBody @Validated FindCommentListReqVO findCommentListReqVO) {
+        return commentService.findCommentList(findCommentListReqVO);
+    }
 }

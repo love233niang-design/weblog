@@ -2,6 +2,7 @@ package com.love233niang.weblog.service;
 
 
 import com.love233niang.weblog.common.utils.Response;
+import com.love233niang.weblog.model.vo.comment.FindCommentListReqVO;
 import com.love233niang.weblog.model.vo.comment.FindQQUserInfoReqVO;
 import com.love233niang.weblog.model.vo.comment.PublishCommentReqVO;
 
@@ -27,5 +28,12 @@ public interface CommentService {
      * @return
      */
     Response publishComment(PublishCommentReqVO publishCommentReqVO);
+
+    /**
+     * 查询页面所有评论
+     * @param findCommentListReqVO
+     * @return
+     */
+    Response findCommentList(FindCommentListReqVO findCommentListReqVO);
 }
 
