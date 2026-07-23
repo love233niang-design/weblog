@@ -404,6 +404,8 @@ initFormCommentUserInfo()
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 // 一级评论发布点击事件
 const onPublishCommentClick = () => {
+     commentForm.replyCommentId = null;
+    commentForm.parentCommentId = null;
     initFormCommentUserInfo()
     // 校验
     if (commentForm.nickname.length === 0) {
