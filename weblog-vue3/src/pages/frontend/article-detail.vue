@@ -177,6 +177,8 @@
 
 
                 </div>
+                 <!-- 评论组件 -->
+                <Comment></Comment>
             </div>
 
             <!-- 右边侧边栏，占用一列 -->
@@ -201,7 +203,7 @@
 
     <!-- 返回顶部 -->
     <ScrollToTopButton></ScrollToTopButton>
-
+  
     <Footer></Footer>
 </template>
 
@@ -220,6 +222,7 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/tokyo-night-dark.css'
 import { initTooltips } from 'flowbite'
 import { useDark } from '@vueuse/core'
+import Comment from '@/components/Comment.vue'
 // 初始化 Flowbit 组件
 onMounted(() => {
     initTooltips();

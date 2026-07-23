@@ -16,7 +16,7 @@ export const useUserStore = defineStore('user', () => {
             }
         })
 
-       
+
     }
 
     // 退出登录
@@ -27,7 +27,7 @@ export const useUserStore = defineStore('user', () => {
         userInfo.value = {}
     }
 
-    return { userInfo, setUserInfo, logout}
+    return { userInfo, setUserInfo, logout }
 },
     {
         // 开启持久化
