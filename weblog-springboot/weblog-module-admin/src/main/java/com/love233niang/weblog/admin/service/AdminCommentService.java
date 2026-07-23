@@ -2,6 +2,7 @@ package com.love233niang.weblog.admin.service;
 
 
 import com.love233niang.weblog.admin.model.vo.comment.DeleteCommentReqVO;
+import com.love233niang.weblog.admin.model.vo.comment.ExamineCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.FindCommentPageListReqVO;
 import com.love233niang.weblog.common.utils.Response;
 
@@ -20,5 +21,12 @@ public interface AdminCommentService {
      * @return
      */
     Response deleteComment(DeleteCommentReqVO deleteCommentReqVO);
+
+    /**
+     * 评论审核
+     * @param examineCommentReqVO
+     * @return
+     */
+    Response examine(ExamineCommentReqVO examineCommentReqVO);
 }
 

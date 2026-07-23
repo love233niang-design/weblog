@@ -2,6 +2,7 @@ package com.love233niang.weblog.admin.controller;
 
 
 import com.love233niang.weblog.admin.model.vo.comment.DeleteCommentReqVO;
+import com.love233niang.weblog.admin.model.vo.comment.ExamineCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.FindCommentPageListReqVO;
 import com.love233niang.weblog.admin.service.AdminCommentService;
 import com.love233niang.weblog.common.aspect.ApiOperationLog;
@@ -37,6 +38,15 @@ public class AdminCommentController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Response deleteComment(@RequestBody @Validated DeleteCommentReqVO deleteCommentReqVO) {
         return commentService.deleteComment(deleteCommentReqVO);
+    }
+
+
+    @PostMapping("/examine")
+    @ApiOperation(value = "评论审核")
+    @ApiOperationLog(description = "评论审核")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response examinePass(@RequestBody @Validated ExamineCommentReqVO examineCommentReqVO) {
+        return commentService.examine(examineCommentReqVO);
     }
 
 }
