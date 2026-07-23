@@ -14,8 +14,25 @@ import TagList from '@/pages/frontend/tag-list.vue'
 import TagArticleList from '@/pages/frontend/tag-article-list.vue'
 import ArticleDetail from '@/pages/frontend/article-detail.vue'
 import NotFound from '@/pages/frontend/404.vue'
+import AdminCommentList from '@/pages/admin/comment-list.vue'
 // 统一在这里声明所有路由
 const routes = [
+      {
+        path: "/admin", // 后台首页
+        component: Admin,
+        // 使用到 admin.vue 布局的，都需要放置在其子路由下面
+        children: [
+            // 省略...
+            {
+                path: "/admin/comment/list",
+                component: AdminCommentList,
+                meta: {
+                    title: '评论管理'
+                }
+            },
+        ]
+        
+    },
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',

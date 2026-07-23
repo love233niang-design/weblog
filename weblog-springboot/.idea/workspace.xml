@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="">
+    <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="后台：评论审核功能接口">
       <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.cfe" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.cfe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.cfs" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.cfs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.si" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.si" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lucene-index/article/segments_1" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/segments_1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/article-detail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/frontend/article-detail.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/stores/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/stores/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/pages/admin/blog-setting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/pages/admin/blog-setting.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../weblog-vue3/src/router/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,12 +22,17 @@
       <list>
         <option value="Enum" />
         <option value="Dockerfile" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
@@ -56,44 +61,45 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.JwtTokenHelper.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MarkdownHelper.executor&quot;: &quot;Run&quot;,
-    &quot;Application.PasswordEncoderConfig.executor&quot;: &quot;Run&quot;,
-    &quot;Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WeblogWebApplicationTests.insertTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.WeblogWebApplicationTests.testLog.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.weblog-springboot [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.weblog-springboot [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.weblog-springboot [package].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.weblog-springboot [validate].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;Spring Boot.WeblogWebApplication.executor&quot;: &quot;Run&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/JAVA_IDE_WORK/idea Javawork/weblog/weblog-springboot/weblog-web/src/main/resources/word&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.build.tools.auto.reload&quot;: &quot;ALL&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;build.tools&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.JwtTokenHelper.executor": "Run",
+    "Application.MarkdownHelper.executor": "Run",
+    "Application.PasswordEncoderConfig.executor": "Run",
+    "Application.com.quanxiaoha.weblog.jwt.utils.JwtTokenHelper.executor": "Run",
+    "JUnit.WeblogWebApplicationTests.insertTest.executor": "Run",
+    "JUnit.WeblogWebApplicationTests.testLog.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.weblog-springboot [clean].executor": "Run",
+    "Maven.weblog-springboot [install].executor": "Run",
+    "Maven.weblog-springboot [package].executor": "Run",
+    "Maven.weblog-springboot [validate].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.WeblogWebApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "dev",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/JAVA_IDE_WORK/idea Javawork/weblog/weblog-springboot/weblog-web/src/main/resources/word",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.build.tools.auto.reload": "ALL",
+    "settings.editor.selected.configurable": "build.tools",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.love233niang.weblog.admin.service.impl" />
       <recent name="com.love233niang.weblog.service.impl" />
       <recent name="com.quanxiaoha.weblog.service.impl" />
       <recent name="com.quanxiaoha.weblog.admin.service.impl" />
@@ -304,8 +310,27 @@
       <workItem from="1784679381388" duration="1336000" />
       <workItem from="1784711642441" duration="2838000" />
       <workItem from="1784766990819" duration="235000" />
-      <workItem from="1784774965976" duration="709000" />
+      <workItem from="1784774965976" duration="1317000" />
+      <workItem from="1784786738026" duration="76000" />
+      <workItem from="1784796405918" duration="8174000" />
     </task>
+    <task id="LOCAL-00001" summary="后台管理：评论分页查询及评论删除接口开发">
+      <option name="closed" value="true" />
+      <created>1784805361761</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1784805361761</updated>
+    </task>
+    <task id="LOCAL-00002" summary="后台：评论审核功能接口">
+      <option name="closed" value="true" />
+      <created>1784807385146</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1784807385146</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +346,11 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="后台管理：评论分页查询及评论删除接口开发" />
+    <MESSAGE value="后台：评论审核功能接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="后台：评论审核功能接口" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
