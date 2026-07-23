@@ -202,26 +202,25 @@ public class CommentServiceImpl implements CommentService {
 
             // 循环设置评论回复数据
             vos.forEach(vo -> {
-                // 获取一级评论 id
                 Long commentId = vo.getId();
                 List<FindCommentItemRspVO> childComments = commentDOS.stream()
-                        .filter(commentDO -> Objects.equals(commentDO.getParentCommentId(), commentId))// 过滤出一级评论下所有子评论
-                        .sorted(Comparator.comparing(CommentDO::getCreateTime))
+                        .filter(commentDO -> Objects.equals(commentDO.getParentCommentId(), commentId)) // 过滤出一级评论下所有子评论
+                        .sorted(Comparator.comparing(CommentDO::getCreateTime)) // 按发布时间升序排列
                         .map(commentDO -> {
                             FindCommentItemRspVO findPageCommentRspVO = CommentConvert.INSTANCE.convertDO2VO(commentDO);
                             Long replyCommentId = commentDO.getReplyCommentId();
-                            // 若二级评论的 relayCommentId 不等于一级评论 id 则前端【回复 @ xxx】，需要设置回复昵称
+                            // 若二级评论的 replayCommentId 不等于一级评论 ID, 前端则需要展示【回复 @ xxx】，需要设置回复昵称
                             if (!Objects.equals(replyCommentId, commentId)) {
                                 // 设置回复用户的昵称
                                 Optional<CommentDO> optionalCommentDO = commentDOS.stream()
-                                        .filter(commentDO1 -> Objects.equals(commentDO.getId(), replyCommentId))
-                                        .findFirst(); // 返回流中满足条件的第一个元素
+                                        .filter(commentDO1 -> Objects.equals(commentDO1.getId(), replyCommentId)).findFirst();
                                 if (optionalCommentDO.isPresent()) {
                                     findPageCommentRspVO.setReplyNickname(optionalCommentDO.get().getNickname());
                                 }
                             }
                             return findPageCommentRspVO;
                         }).collect(Collectors.toList());
+
                 vo.setChildComments(childComments);
             });
         }
