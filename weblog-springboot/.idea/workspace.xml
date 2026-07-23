@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6065aaf9-0712-4fd4-a34e-12bec6c18787" name="Changes" comment="后端 Bug 修复:replyCommentId 字段拼写错误导致的前端无法正常显示回复二级评论的名称问题">
-      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/CommentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/java/com/love233niang/weblog/service/impl/CommentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.cfe" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.cfe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.cfs" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.cfs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/_0.si" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/_0.si" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lucene-index/article/segments_1" beforeDir="false" afterPath="$PROJECT_DIR$/../lucene-index/article/segments_1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/weblog-web/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +311,7 @@
       <workItem from="1784766990819" duration="235000" />
       <workItem from="1784774965976" duration="1317000" />
       <workItem from="1784786738026" duration="76000" />
-      <workItem from="1784796405918" duration="10544000" />
+      <workItem from="1784796405918" duration="11786000" />
     </task>
     <task id="LOCAL-00001" summary="后台管理：评论分页查询及评论删除接口开发">
       <option name="closed" value="true" />
