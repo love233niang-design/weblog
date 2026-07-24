@@ -1,20 +1,22 @@
 <template>
-    <header class="sticky top-0 z-10">
-        <nav class="bg-white border-gray-200 border-b dark:border-gray-800 dark:bg-gray-900">
-            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <header class="sticky top-0 z-30">
+        <nav class="border-b border-ink-100/70 bg-white/75 backdrop-blur-xl dark:border-ink-800 dark:bg-ink-950/80">
+            <div class="blog-container flex flex-wrap items-center justify-between py-3.5">
 
                 <!-- 博客 LOGO 、博客名称 -->
-                <a href="/" class="flex items-center">
-                    <img :src="blogSettingsStore.blogSettings.logo" class="h-8 mr-3 rounded-full" alt="Weblog Logo" />
-                    <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">{{
+                <a href="/" class="flex items-center gap-3 group">
+                    <img :src="blogSettingsStore.blogSettings.logo"
+                        class="h-9 w-9 rounded-full ring-2 ring-ink-100 dark:ring-ink-700 transition group-hover:ring-accent/40"
+                        alt="Weblog Logo" />
+                    <span class="font-display text-xl font-semibold tracking-tight text-ink-900 dark:text-white">{{
                         blogSettingsStore.blogSettings.name }}</span>
                 </a>
 
-                <div class="flex items-center md:order-2">
+                <div class="flex items-center gap-2 md:order-2">
                     <!-- 移动端模式搜索按钮 -->
                     <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search"
                         aria-expanded="false"
-                        class="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1">
+                        class="md:hidden text-ink-500 hover:bg-ink-50 dark:text-ink-400 dark:hover:bg-ink-800 rounded-xl text-sm p-2.5">
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                             viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -24,9 +26,9 @@
                     </button>
 
                     <!-- 白天黑夜切换 -->
-                    <button @click="toggleDark()" class="ml-1 mr-4 vt-switch vt-switch-appearance" type="button"
-                        role="switch" aria-label="切换深色模式" aria-checked="false" data-v-d401ce6f=""><span
-                            class="vt-switch-check"><span class="vt-switch-icon"><!--[-->
+                    <button @click="toggleDark()" class="vt-switch vt-switch-appearance" type="button"
+                        role="switch" aria-label="切换深色模式" aria-checked="false"><span
+                            class="vt-switch-check"><span class="vt-switch-icon">
                                 <!-- 太阳图标 -->
                                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"
                                     viewBox="0 0 24 24" class="vt-switch-appearance-sun"
@@ -62,64 +64,50 @@
                                     <path
                                         d="M12.1,22c-0.3,0-0.6,0-0.9,0c-5.5-0.5-9.5-5.4-9-10.9c0.4-4.8,4.2-8.6,9-9c0.4,0,0.8,0.2,1,0.5c0.2,0.3,0.2,0.8-0.1,1.1c-2,2.7-1.4,6.4,1.3,8.4c2.1,1.6,5,1.6,7.1,0c0.3-0.2,0.7-0.3,1.1-0.1c0.3,0.2,0.5,0.6,0.5,1c-0.2,2.7-1.5,5.1-3.6,6.8C16.6,21.2,14.4,22,12.1,22zM9.3,4.4c-2.9,1-5,3.6-5.2,6.8c-0.4,4.4,2.8,8.3,7.2,8.7c2.1,0.2,4.2-0.4,5.8-1.8c1.1-0.9,1.9-2.1,2.4-3.4c-2.5,0.9-5.3,0.5-7.5-1.1C9.2,11.4,8.1,7.7,9.3,4.4z">
                                     </path>
-                                </svg><!--]--></span></span></button>
+                                </svg></span></span></button>
 
                     <!-- 客户端搜索框 -->
-                    <button type="button" @click="clickSearchBtn" class="mr-2 hidden outline-none md:flex items-center text-sm leading-6 text-slate-400 rounded-md 
-                        ring-1 ring-slate-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-slate-300 
-                        dark:bg-slate-800 dark:hover:bg-slate-700 dark:hover:ring-slate-700">
-                        <svg class="w-3.5 h-3.5 mr-2 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    <button type="button" @click="clickSearchBtn" class="hidden outline-none md:flex items-center text-sm text-ink-400 rounded-xl 
+                        border border-ink-100 bg-surface-soft/80 py-1.5 pl-2.5 pr-3 hover:border-ink-200 hover:text-ink-600
+                        dark:bg-ink-900 dark:border-ink-700 dark:hover:border-ink-600 transition-colors">
+                        <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
-                        <span class="mr-3">搜索文章 ...</span>
+                        <span class="mr-3">搜索文章</span>
                         <span
-                            class="px-2 py-[1px] flex-none text-xs border text-gray-400 rounded dark:border-gray-600">Ctrl
+                            class="px-1.5 py-0.5 flex-none text-[10px] font-medium border border-ink-200 text-ink-400 rounded-md dark:border-ink-600">Ctrl
                             K</span>
                     </button>
 
 
                     <!-- 登录 -->
-                    <div class="text-gray-900 ml-1 mr-1 hover:text-blue-700 dark:text-white" v-if="!isLogined"
-                        @click="$router.push('/login')">登录</div>
+                    <button v-if="!isLogined"
+                        class="ml-1 text-sm font-medium text-ink-700 hover:text-accent dark:text-ink-200 dark:hover:text-accent-muted transition-colors"
+                        @click="$router.push('/login')">登录</button>
 
                     <!-- 已经登录，展示用户头像 -->
                     <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown" v-else
-                        class="text-white ml-2 mr-2 md:mr-0 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        class="ml-1 rounded-full ring-2 ring-ink-100 dark:ring-ink-700 hover:ring-accent/40 transition"
                         type="button">
-                        <!-- 用户登录头像 -->
                         <img class="w-8 h-8 rounded-full" :src="blogSettingsStore.blogSettings.avatar" alt="user photo">
                     </button>
 
                     <!-- 头像下拉 menu -->
                     <div id="dropdown"
-                        class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
-                        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
+                        class="z-10 hidden bg-white divide-y divide-ink-100 rounded-xl shadow-lift border border-ink-100 dark:bg-ink-900 dark:border-ink-700 dark:divide-ink-700">
+                        <ul class="py-1.5 text-sm text-ink-700 dark:text-ink-200"
                             aria-labelledby="dropdownDefaultButton">
                             <li>
                                 <a @click="router.push('/admin/index')"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    <svg class="inline w-3 h-3 mb-[2px] mr-1 text-gray-700 dark:text-white"
-                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 20 20">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M10 14v4m-4 1h8M1 10h18M2 1h16a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1Z" />
-                                    </svg>
+                                    class="block px-4 py-2.5 hover:bg-ink-50 dark:hover:bg-ink-800 cursor-pointer">
                                     进入后台
                                 </a>
                             </li>
                             <li>
                                 <a data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-                                    <svg class="inline w-3 h-3 mb-[2px] mr-1 text-gray-700 dark:text-white"
-                                        aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                        viewBox="0 0 16 16">
-                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M4 8h11m0 0-4-4m4 4-4 4m-5 3H3a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h3" />
-                                    </svg>
+                                    class="block px-4 py-2.5 hover:bg-ink-50 dark:hover:bg-ink-800 cursor-pointer">
                                     退出登录
                                 </a>
                             </li>
@@ -130,7 +118,7 @@
 
                     <!-- 移动端模式下选择框按钮 -->
                     <button data-collapse-toggle="navbar-search" type="button"
-                        class="inline-flex outline-none items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                        class="inline-flex outline-none items-center p-2 w-10 h-10 justify-center text-sm text-ink-500 rounded-xl md:hidden hover:bg-ink-50 dark:text-ink-400 dark:hover:bg-ink-800"
                         aria-controls="navbar-search" aria-expanded="false">
                         <span class="sr-only">Open main menu</span>
                         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -145,44 +133,43 @@
                 <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-search">
 
                     <!-- 移动端搜索框 -->
-                    <button type="button" @click="clickSearchBtn" class="relative mt-3 flex w-full md:hidden items-center text-sm leading-6 text-slate-400 rounded-md
-                         ring-1 ring-slate-900/10 shadow-sm py-1.5 pl-2 pr-3 hover:ring-slate-300 dark:bg-slate-800 
-                         dark:highlight-white/5 dark:hover:bg-slate-700 dark:hover:ring-slate-700">
-                        <svg class="w-3.5 h-3.5 mr-2 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    <button type="button" @click="clickSearchBtn" class="relative mt-3 flex w-full md:hidden items-center text-sm text-ink-400 rounded-xl
+                         border border-ink-100 bg-surface-soft py-2 pl-3 pr-3 dark:bg-ink-900 dark:border-ink-700">
+                        <svg class="w-3.5 h-3.5 mr-2" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
-                        <span class="mr-3 grow text-left">搜索文章 ...</span>
+                        <span class="mr-3 grow text-left">搜索文章</span>
                         <span
-                            class="px-2 py-[1px] flex-none text-xs border text-gray-400 rounded dark:border-gray-600">Ctrl
+                            class="px-1.5 py-0.5 flex-none text-[10px] border border-ink-200 text-ink-400 rounded-md dark:border-ink-600">Ctrl
                             K</span>
                     </button>
 
 
                     <!-- 表头 -->
                     <ul
-                        class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        class="flex flex-col gap-1 p-3 mt-3 md:p-0 md:mt-0 md:flex-row md:items-center md:gap-7 rounded-2xl border border-ink-100 bg-surface-soft md:border-0 md:bg-transparent dark:border-ink-700 dark:bg-ink-900 md:dark:bg-transparent">
                         <li>
                             <a @click="router.push('/')"
-                                :class="[currPath == '/' ? 'text-sky-600 md:border-b-2 md:border-sky-600 dark:text-sky-500 dark:md:border-sky-600' : 'text-gray-900 dark:text-white']"
-                                class="block py-2 pl-3 pr-4 rounded md:rounded-none hover:bg-gray-100 md:hover:bg-transparent md:hover:text-sky-600 md:bg-transparent md:p-0 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+                                :class="[currPath == '/' ? 'blog-nav-link blog-nav-link-active' : 'blog-nav-link']"
+                                class="block py-2 px-3 md:px-0 md:py-1"
                                 aria-current="page">首页</a>
                         </li>
                         <li>
                             <a @click="router.push('/category/list')"
-                                :class="[currPath.startsWith('/category') ? 'text-sky-600 md:border-b-2 md:border-sky-600 dark:text-sky-500 dark:md:border-sky-600' : 'text-gray-900 dark:text-white']"
-                                class="block py-2 pl-3 pr-4 rounded md:rounded-none hover:bg-gray-100 md:hover:bg-transparent md:hover:text-sky-600 md:p-0 md:dark:hover:text-sky-500  dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">分类</a>
+                                :class="[currPath.startsWith('/category') ? 'blog-nav-link blog-nav-link-active' : 'blog-nav-link']"
+                                class="block py-2 px-3 md:px-0 md:py-1">分类</a>
                         </li>
                         <li>
                             <a @click="router.push('/tag/list')"
-                                :class="[currPath.startsWith('/tag') ? 'text-sky-600 md:border-b-2 md:border-sky-600 dark:text-sky-500 dark:md:border-sky-600' : 'text-gray-900 dark:text-white']"
-                                class="block py-2 pl-3 pr-4 rounded md:rounded-none hover:bg-gray-100 md:hover:bg-transparent md:hover:text-sky-600 md:p-0 md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">标签</a>
+                                :class="[currPath.startsWith('/tag') ? 'blog-nav-link blog-nav-link-active' : 'blog-nav-link']"
+                                class="block py-2 px-3 md:px-0 md:py-1">标签</a>
                         </li>
                         <li>
                             <a @click="router.push('/archive/list')"
-                                :class="[currPath == '/archive/list' ? 'text-sky-600 md:border-b-2 md:border-sky-600 dark:text-sky-500 dark:md:border-sky-600' : 'text-gray-900 dark:text-white']"
-                                class="block py-2 pl-3 pr-4 rounded md:rounded-none hover:bg-gray-100 md:hover:bg-transparent md:hover:text-sky-600 md:p-0 md:dark:hover:text-sky-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">归档</a>
+                                :class="[currPath == '/archive/list' ? 'blog-nav-link blog-nav-link-active' : 'blog-nav-link']"
+                                class="block py-2 px-3 md:px-0 md:py-1">归档</a>
                         </li>
                     </ul>
 
@@ -459,7 +446,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, onBeforeUnmount, watch } from 'vue'
+import { onMounted, ref, onBeforeUnmount, watch, computed } from 'vue'
 import { initCollapses, initDropdowns, initModals, Modal } from 'flowbite'
 import { useBlogSettingsStore } from '@/stores/blogsettings'
 import { useUserStore } from '@/stores/user'
@@ -532,8 +519,7 @@ const handleKeyDown = (event) => {
 const router = useRouter()
 const route = useRoute()
 
-// 当前路由地址
-const currPath = ref(route.path)
+const currPath = computed(() => route.path)
 
 // 引入博客设置信息 store
 const blogSettingsStore = useBlogSettingsStore()

@@ -2,14 +2,127 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: -apple-system-font,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Hiragino Sans GB,Microsoft YaHei UI,Microsoft YaHei,Arial,sans-serif;
-  color: #4c4e4d;
-  font-size: 16px;
-  background: #f4f4f4;
-  line-height: 1.6;
+@layer base {
+  body {
+    @apply font-sans text-base text-ink-800 bg-surface-soft antialiased;
+    line-height: 1.7;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(15, 118, 110, 0.07), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(15, 23, 42, 0.03), transparent);
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    @apply text-ink-100 bg-ink-950;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(20, 184, 166, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(0, 0, 0, 0.2), transparent);
+  }
+
+  ::selection {
+    @apply bg-accent-soft text-accent-dark;
+  }
+
+  .dark ::selection {
+    @apply bg-accent-dark text-accent-soft;
+  }
 }
 
-[type='text']:focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
-  box-shadow: 0 0 0 1px transparent inset!important;
+@layer components {
+  .blog-container {
+    @apply max-w-content mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .blog-card {
+    @apply bg-white/90 backdrop-blur-sm border border-ink-100/80 rounded-2xl shadow-soft
+      dark:bg-ink-900/80 dark:border-ink-800;
+  }
+
+  .blog-card-hover {
+    @apply bg-white/90 backdrop-blur-sm border border-ink-100/80 rounded-2xl shadow-soft
+      dark:bg-ink-900/80 dark:border-ink-800
+      transition-all duration-300 hover:shadow-lift hover:border-ink-200
+      dark:hover:border-ink-700;
+  }
+
+  .blog-tag {
+    @apply inline-flex items-center text-xs font-medium tracking-wide
+      px-2.5 py-1 rounded-md bg-ink-50 text-ink-600
+      hover:bg-accent-soft hover:text-accent-dark
+      dark:bg-ink-800 dark:text-ink-300 dark:hover:bg-accent-dark dark:hover:text-accent-soft
+      transition-colors cursor-pointer;
+  }
+
+  .blog-chip {
+    @apply inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium
+      rounded-xl border border-ink-100 text-ink-700 bg-white/60
+      hover:border-accent/40 hover:text-accent hover:bg-accent-soft/40
+      dark:bg-ink-900 dark:border-ink-700 dark:text-ink-300
+      dark:hover:border-accent-muted dark:hover:text-accent-muted
+      transition-all cursor-pointer;
+  }
+
+  .blog-nav-link {
+    @apply relative px-1 py-1 text-sm font-medium text-ink-600
+      hover:text-accent transition-colors cursor-pointer
+      dark:text-ink-300 dark:hover:text-accent-muted;
+  }
+
+  .blog-nav-link-active {
+    @apply text-accent dark:text-accent-muted;
+  }
+
+  .blog-nav-link-active::after {
+    content: '';
+    @apply absolute left-0 right-0 -bottom-1 h-0.5 rounded-full bg-accent dark:bg-accent-muted;
+  }
+
+  .blog-btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium
+      text-white bg-accent rounded-xl hover:bg-accent-dark
+      focus:outline-none focus:ring-2 focus:ring-accent/30
+      transition-colors cursor-pointer;
+  }
+
+  .blog-page-btn {
+    @apply flex items-center justify-center min-w-[2.5rem] h-10 px-3 text-sm
+      text-ink-500 bg-white border border-ink-100
+      hover:bg-ink-50 hover:text-ink-800
+      dark:bg-ink-900 dark:border-ink-700 dark:text-ink-400
+      dark:hover:bg-ink-800 dark:hover:text-white
+      transition-colors cursor-pointer;
+  }
+
+  .blog-page-btn-active {
+    @apply text-accent bg-accent-soft/50 border-accent/30
+      hover:bg-accent-soft hover:text-accent-dark
+      dark:bg-accent-dark/40 dark:border-accent-muted/40 dark:text-accent-muted;
+  }
+
+  .blog-section-title {
+    @apply flex items-center gap-2 text-sm font-semibold tracking-wide
+      text-ink-900 uppercase dark:text-white;
+  }
+
+  .blog-meta {
+    @apply flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink-400 dark:text-ink-400;
+  }
+}
+
+[type='text']:focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='time']:focus,
+[type='week']:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 1px transparent inset !important;
 }

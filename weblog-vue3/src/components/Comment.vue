@@ -1,6 +1,6 @@
 <template>
     <div class="mt-14">
-        <h2 class="flex justify-center items-center mb-7 text-gray-500">全部评论<span>({{ total }})</span></h2>
+        <h2 class="flex justify-center items-center mb-7 text-ink-500 font-display tracking-wide">全部评论<span class="ml-1 text-ink-400">({{ total }})</span></h2>
         <!-- 卡片 -->
         <div :class="props.customeCss">
             <!-- 评论发布表单 -->
@@ -82,8 +82,7 @@ text-xs font-medium text-white bg-gray-900 rounded-md shadow-sm opacity-0 toolti
                                     placeholder="发表一个友善的评论吧..." required></textarea>
                             </div>
                             <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
-                                <div @click="onPublishCommentClick" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white 
-bg-sky-600 rounded-lg focus:ring-4 focus:ring-sky-200 dark:focus:ring-sky-900 hover:bg-sky-700">
+                                <div @click="onPublishCommentClick" class="blog-btn-primary text-xs">
                                     发送
                                 </div>
                                 <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">

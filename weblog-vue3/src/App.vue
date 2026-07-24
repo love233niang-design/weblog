@@ -11,16 +11,7 @@ const locale = zhCn
 </script>
 
 <style scoped>
-/* 自定义顶部加载 Loading 颜色 */
 #nprogress .bar {
-   background: #409eff !important;
-}
-</style>
-<style>
-
-/* 暗黑模式 body 背景色 */
-.dark body {
-   --tw-bg-opacity: 1;
-    background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+   background: #0f766e !important;
 }
 </style>

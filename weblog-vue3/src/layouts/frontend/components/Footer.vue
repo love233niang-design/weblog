@@ -1,14 +1,19 @@
 <template>
-    <footer class="bg-white mt-5 dark:bg-gray-800">
-        <div class="w-full mx-auto max-w-screen-xl py-6 px-4 md:flex md:items-center md:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="#"
-                    class="hover:underline">hq</a>. All Rights Reserved.
+    <footer class="mt-16 border-t border-ink-100/80 dark:border-ink-800">
+        <div class="blog-container py-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <span class="text-sm text-ink-400">
+                © {{ year }}
+                <a href="#" class="text-ink-600 hover:text-accent dark:text-ink-300 dark:hover:text-accent-muted transition-colors">hq</a>
+                · All Rights Reserved
             </span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-                <li>
-                    备案号：<a href="#" class="mr-4 hover:underline md:mr-6 ">xxxxxxxxxxxx号</a>
-                </li>
-            </ul>
+            <span class="text-sm text-ink-400">
+                备案号：
+                <a href="#" class="hover:text-accent dark:hover:text-accent-muted transition-colors">xxxxxxxxxxxx号</a>
+            </span>
         </div>
     </footer>
 </template>
+
+<script setup>
+const year = new Date().getFullYear()
+</script>
