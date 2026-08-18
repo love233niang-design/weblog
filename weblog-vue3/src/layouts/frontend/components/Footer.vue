@@ -8,7 +8,7 @@
             </span>
             <span class="text-sm text-ink-400">
                 备案号：
-                <a href="#" class="hover:text-accent dark:hover:text-accent-muted transition-colors">xxxxxxxxxxxx号</a>
+                <a href="https://beian.miit.gov.cn/#/Integrated/index" class="hover:text-accent dark:hover:text-accent-muted transition-colors">皖ICP备2026022613号-1</a>
             </span>
         </div>
     </footer>
