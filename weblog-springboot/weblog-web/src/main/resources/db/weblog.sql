@@ -11,7 +11,7 @@
  Target Server Version : 50715 (5.7.15-log)
  File Encoding         : 65001
 
- Date: 17/07/2026 20:35:59
+ Date: 21/08/2026 17:14:36
 */
 
 SET NAMES utf8mb4;
@@ -30,6 +30,7 @@ CREATE TABLE `t_article`  (
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后一次更新时间',
   `is_deleted` tinyint(2) NOT NULL DEFAULT 0 COMMENT '删除标志位：0：未删除 1：已删除',
   `read_num` int(11) UNSIGNED NOT NULL DEFAULT 1 COMMENT '被阅读次数',
+  `weight` int(6) UNSIGNED NOT NULL DEFAULT 0 COMMENT '文章权重，用于是否置顶（0: 未置顶；>0: 参与置顶，权重值越高越靠前）',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_create_time`(`create_time`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '文章表' ROW_FORMAT = DYNAMIC;
@@ -37,10 +38,10 @@ CREATE TABLE `t_article`  (
 -- ----------------------------
 -- Records of t_article
 -- ----------------------------
-INSERT INTO `t_article` VALUES (9, '测试标题', 'https://img.quanxiaoha.com/quanxiaoha/193dd1504ebb4f138085acb23619e0dd.jpg', '测试摘要', '2026-07-03 15:43:57', '2026-07-13 15:19:35', 0, 7);
-INSERT INTO `t_article` VALUES (10, '代码块测试', 'http://127.0.0.1:9000/weblog/35014cc481f84996b1c855819a27df3c.png', '测试代码块', '2026-07-03 21:49:36', '2026-07-07 18:23:17', 0, 14);
-INSERT INTO `t_article` VALUES (11, '测试标题2', 'http://127.0.0.1:9000/weblog/903a3cf8e63a4e45b4f08801e2d362ac.png', '测试摘要2', '2026-07-07 14:29:34', '2026-07-09 11:39:10', 0, 33);
-INSERT INTO `t_article` VALUES (12, 'lucene 测试 手机', 'http://127.0.0.1:9000/weblog/17237130a89d4395af61e21780083ebc.png', '华为', '2026-07-13 22:15:52', '2026-07-13 22:15:52', 0, 11);
+INSERT INTO `t_article` VALUES (9, '测试标题', 'https://img.quanxiaoha.com/quanxiaoha/193dd1504ebb4f138085acb23619e0dd.jpg', '测试摘要', '2026-07-03 15:43:57', '2026-07-13 15:19:35', 0, 33, 1);
+INSERT INTO `t_article` VALUES (10, '代码块测试', 'http://127.0.0.1:9000/weblog/35014cc481f84996b1c855819a27df3c.png', '测试代码块', '2026-07-03 21:49:36', '2026-07-07 18:23:17', 0, 41, 0);
+INSERT INTO `t_article` VALUES (11, '测试标题2', 'http://127.0.0.1:9000/weblog/903a3cf8e63a4e45b4f08801e2d362ac.png', '测试摘要2', '2026-07-07 14:29:34', '2026-07-09 11:39:10', 0, 55, 0);
+INSERT INTO `t_article` VALUES (12, 'lucene 测试 手机', 'http://127.0.0.1:9000/weblog/17237130a89d4395af61e21780083ebc.png', '华为', '2026-07-13 22:15:52', '2026-07-13 22:15:52', 0, 66, 2);
 
 -- ----------------------------
 -- Table structure for t_article_category_rel
@@ -129,13 +130,16 @@ CREATE TABLE `t_blog_settings`  (
   `csdn_homepage` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'CSDN 主页访问地址',
   `gitee_homepage` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT 'Gitee 主页访问地址',
   `zhihu_homepage` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '知乎主页访问地址',
+  `mail` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '博主邮箱地址',
+  `is_comment_sensi_word_open` tinyint(2) NOT NULL DEFAULT 1 COMMENT '是否开启评论敏感词过滤, 0:不开启；1：开启',
+  `is_comment_examine_open` tinyint(2) NOT NULL DEFAULT 0 COMMENT '是否开启评论审核, 0: 未开启；1：开启',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '博客设置表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of t_blog_settings
 -- ----------------------------
-INSERT INTO `t_blog_settings` VALUES (1, 'http://127.0.0.1:9000/weblog/750eb3b0fc3d4e46b12ffd2ad2fe1f2a.png', 'hq的博客', 'hq', '热枕之心不可泯灭', 'http://127.0.0.1:9000/weblog/037285e16d114f0da6fe86405a6f95ec.jpg', 'https://github.com/love233niang-design', 'https://blog.csdn.net/2401_83600218?spm=1000.2115.3001.5343', 'https://gitee.com/invincible-genshin-impact-daw666666 ', 'https://www.zhihu.com/people/null-72-64-25');
+INSERT INTO `t_blog_settings` VALUES (1, 'http://127.0.0.1:9000/weblog/750eb3b0fc3d4e46b12ffd2ad2fe1f2a.png', 'hq的博客', 'hq', '热枕之心不可泯灭', 'http://127.0.0.1:9000/weblog/37232ec915604fe4883725258c0da68b.jpg', 'https://github.com/love233niang-design', '1', 'https://gitee.com/invincible-genshin-impact-daw666666 ', '1', '3364503437@qq.com', 1, 0);
 
 -- ----------------------------
 -- Table structure for t_category
@@ -160,6 +164,77 @@ INSERT INTO `t_category` VALUES (1, '测试分类', '2026-06-20 15:51:22', '2026
 INSERT INTO `t_category` VALUES (2, 'test1', '2026-06-20 17:25:29', '2026-06-20 17:25:29', 0, 2);
 INSERT INTO `t_category` VALUES (3, 'test2', '2026-06-20 17:25:35', '2026-06-20 17:25:35', 0, 0);
 INSERT INTO `t_category` VALUES (5, 'test3', '2026-06-21 10:06:10', '2026-06-21 10:06:10', 0, 0);
+
+-- ----------------------------
+-- Table structure for t_comment
+-- ----------------------------
+DROP TABLE IF EXISTS `t_comment`;
+CREATE TABLE `t_comment`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `content` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '评论内容',
+  `avatar` varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '头像',
+  `nickname` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '昵称',
+  `mail` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '邮箱',
+  `website` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '网站地址',
+  `router_url` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '评论所属的路由',
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '最后一次更新时间',
+  `is_deleted` tinyint(2) NOT NULL DEFAULT 0 COMMENT '删除标志位：0：未删除 1：已删除',
+  `reply_comment_id` bigint(20) UNSIGNED NULL DEFAULT NULL COMMENT '回复的评论 ID',
+  `parent_comment_id` bigint(20) UNSIGNED NULL DEFAULT NULL COMMENT '父评论 ID',
+  `reason` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '原因描述',
+  `status` tinyint(2) NOT NULL DEFAULT 1 COMMENT '1: 待审核；2：正常；3：审核未通过;',
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `idx_router_url`(`router_url`) USING BTREE,
+  INDEX `idx_create_time`(`create_time`) USING BTREE,
+  INDEX `idx_reply_comment_id`(`reply_comment_id`) USING BTREE,
+  INDEX `idx_parent_comment_id`(`parent_comment_id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 50 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '评论表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of t_comment
+-- ----------------------------
+INSERT INTO `t_comment` VALUES (9, '1', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 18:42:45', '2026-07-23 20:00:10', 0, 8, 2, '', 2);
+INSERT INTO `t_comment` VALUES (10, '2', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 18:42:54', '2026-07-23 18:42:54', 0, 8, 2, '', 2);
+INSERT INTO `t_comment` VALUES (11, '22', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 18:42:58', '2026-07-23 18:42:57', 0, 8, 2, '', 2);
+INSERT INTO `t_comment` VALUES (12, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=1506497656&spec=640&img_type=jpg', '客服小祥', '1506497656@qq.com', NULL, '/article/12', '2026-07-23 18:47:07', '2026-07-23 18:47:07', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (13, '111', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 18:47:46', '2026-07-23 18:47:45', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (14, '111', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 18:47:48', '2026-07-23 18:47:48', 0, 12, 12, '', 2);
+INSERT INTO `t_comment` VALUES (15, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:00:12', '2026-07-23 19:00:12', 0, 12, 12, '', 2);
+INSERT INTO `t_comment` VALUES (16, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:16', '2026-07-23 19:02:16', 0, 13, 13, '', 2);
+INSERT INTO `t_comment` VALUES (17, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:18', '2026-07-23 19:02:17', 0, 13, 13, '', 2);
+INSERT INTO `t_comment` VALUES (18, '1', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:22', '2026-07-23 19:02:22', 0, 14, 12, '', 2);
+INSERT INTO `t_comment` VALUES (19, '1', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:33', '2026-07-23 19:02:32', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (20, '1', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:35', '2026-07-23 19:02:34', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (21, '1', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:37', '2026-07-23 19:02:37', 0, 19, 19, '', 2);
+INSERT INTO `t_comment` VALUES (22, '1', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:41', '2026-07-23 19:02:41', 0, 19, 19, '', 2);
+INSERT INTO `t_comment` VALUES (23, '222222', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:02:47', '2026-07-23 19:02:47', 0, 19, 19, '', 2);
+INSERT INTO `t_comment` VALUES (24, '12', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:07:11', '2026-07-23 19:07:11', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (25, '1', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:07:15', '2026-07-23 19:07:14', 0, 24, 24, '', 2);
+INSERT INTO `t_comment` VALUES (26, '33', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 19:07:17', '2026-07-23 19:07:16', 0, 24, 24, '', 2);
+INSERT INTO `t_comment` VALUES (27, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 19:08:24', '2026-07-23 19:08:24', 0, 24, 24, '', 2);
+INSERT INTO `t_comment` VALUES (28, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 19:25:38', '2026-07-23 19:25:38', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (29, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 19:25:43', '2026-07-23 19:25:42', 0, 24, 24, '', 2);
+INSERT INTO `t_comment` VALUES (30, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 19:25:46', '2026-07-23 19:25:46', 0, 26, 24, '', 2);
+INSERT INTO `t_comment` VALUES (31, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 19:26:01', '2026-07-23 19:26:00', 0, 26, 24, '', 2);
+INSERT INTO `t_comment` VALUES (32, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:00:28', '2026-07-23 20:00:54', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (33, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:01:07', '2026-07-23 20:01:07', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (34, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:01:11', '2026-07-23 20:01:10', 0, 33, 33, '', 2);
+INSERT INTO `t_comment` VALUES (35, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:01:12', '2026-07-23 20:01:12', 0, 33, 33, '', 2);
+INSERT INTO `t_comment` VALUES (36, '111', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:22:02', '2026-07-23 20:22:02', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (37, '111', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:22:05', '2026-07-23 20:22:05', 0, 36, 36, '', 2);
+INSERT INTO `t_comment` VALUES (38, '222', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:22:07', '2026-07-23 20:22:06', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (39, '333', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:22:10', '2026-07-23 20:22:09', 0, 38, 38, '', 2);
+INSERT INTO `t_comment` VALUES (40, '222', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:22:12', '2026-07-23 20:22:11', 0, 39, 38, '', 2);
+INSERT INTO `t_comment` VALUES (41, '222', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:22:18', '2026-07-23 20:22:18', 0, 31, 24, '', 2);
+INSERT INTO `t_comment` VALUES (42, '222', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:22:21', '2026-07-23 20:22:21', 0, 26, 24, '', 2);
+INSERT INTO `t_comment` VALUES (43, '22\n', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 20:29:25', '2026-07-23 20:29:24', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (44, '22', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 20:29:33', '2026-07-23 20:29:32', 0, 38, 38, '', 2);
+INSERT INTO `t_comment` VALUES (45, '22', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 20:29:37', '2026-07-23 20:29:36', 0, 40, 38, '', 2);
+INSERT INTO `t_comment` VALUES (46, '22', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 20:30:19', '2026-07-23 20:30:18', 0, NULL, NULL, '', 2);
+INSERT INTO `t_comment` VALUES (47, '11', 'https://q.qlogo.cn/headimg_dl?dst_uin=3051247364&spec=640&img_type=jpg', '过儿', '3051247364@qq.com', NULL, '/article/12', '2026-07-23 20:30:31', '2026-07-23 20:30:30', 0, 46, 46, '', 2);
+INSERT INTO `t_comment` VALUES (48, '111', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/12', '2026-07-23 20:30:58', '2026-07-23 20:30:58', 0, 47, 46, '', 2);
+INSERT INTO `t_comment` VALUES (49, '🤡', 'https://q.qlogo.cn/headimg_dl?dst_uin=3364503437&spec=640&img_type=jpg', '你要和我决斗吗？', '3364503437@qq.com', NULL, '/article/11', '2026-07-23 21:34:23', '2026-07-23 21:34:22', 0, NULL, NULL, '', 2);
 
 -- ----------------------------
 -- Table structure for t_statistics_article_pv

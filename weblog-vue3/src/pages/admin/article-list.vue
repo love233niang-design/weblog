@@ -21,16 +21,24 @@
 
         <el-card shadow="never">
             <!-- 写文章按钮 -->
-            <div class="mb-5">
+            <div class="mb-5 flex items-center">
                 <el-button type="primary" @click="isArticlePublishEditorShow = true">
                     <el-icon class="mr-1">
                         <EditPen />
                     </el-icon>
                     写文章</el-button>
+                <el-button type="danger" class="ml-3" @click="batchDeleteArticleSubmit">
+                    <el-icon class="mr-1">
+                        <Delete />
+                    </el-icon>
+                    批量删除
+                </el-button>
             </div>
 
             <!-- 分页列表 -->
-            <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading">
+            <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading"
+                @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55" />
                 <el-table-column prop="id" label="ID" width="50" />
                 <el-table-column prop="title" label="标题" width="380" />
                 <el-table-column prop="cover" label="封面" width="180">
@@ -107,7 +115,8 @@
                 </el-form-item>
                 <el-form-item label="内容" prop="content">
                     <!-- Markdown 编辑器 -->
-                    <MdEditor v-model="form.content" @onUploadImg="onUploadImg" editorId="publishArticleEditor" />
+                    <MdEditor v-model="form.content" placeholder="请输入内容" @onUploadImg="onUploadImg"
+                        editorId="publishArticleEditor" />
                 </el-form-item>
                 <el-form-item label="封面" prop="cover">
                     <el-upload class="avatar-uploader" action="#" :on-change="handleCoverChange" :auto-upload="false"
@@ -173,7 +182,7 @@
                 </el-form-item>
                 <el-form-item label="内容" prop="content">
                     <!-- Markdown 编辑器 -->
-                    <MdEditor v-model="updateArticleForm.content" @onUploadImg="onUploadImg"
+                    <MdEditor v-model="updateArticleForm.content" placeholder="请输入内容" @onUploadImg="onUploadImg"
                         editorId="updateArticleEditor" />
                 </el-form-item>
                 <el-form-item label="封面" prop="cover">
@@ -216,7 +225,7 @@ import { ref, reactive } from 'vue'
 import { Search, RefreshRight, Check, Close } from '@element-plus/icons-vue'
 import moment from 'moment'
 import { showMessage, showModel } from '@/composables/util'
-import { getArticlePageList, deleteArticle, publishArticle, getArticleDetail, updateArticle, updateArticleIsTop  } from '@/api/admin/article'
+import { getArticlePageList, deleteArticle, batchDeleteArticle, publishArticle, getArticleDetail, updateArticle, updateArticleIsTop  } from '@/api/admin/article'
 import { MdEditor } from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
 import { uploadFile } from '@/api/admin/file'
@@ -253,7 +262,7 @@ const publishArticleFormRef = ref(null)
 const form = reactive({
     id: null,
     title: '',
-    content: '请输入内容',
+    content: '',
     cover: '',
     categoryId: null,
     tags: [],
@@ -264,7 +273,7 @@ const form = reactive({
 const updateArticleForm = reactive({
     id: null,
     title: '',
-    content: '请输入内容',
+    content: '',
     cover: '',
     categoryId: null,
     tags: [],
@@ -338,6 +347,13 @@ const current = ref(1)
 const total = ref(0)
 // 每页显示的数据量，给了个默认值 10
 const size = ref(10)
+// 表格选中的文章
+const selectedRows = ref([])
+
+// 选择项改变事件
+const handleSelectionChange = (selection) => {
+    selectedRows.value = selection
+}
 
 // 获取分页数据
 function getTableData() {
@@ -351,6 +367,7 @@ function getTableData() {
                 current.value = res.current
                 size.value = res.size
                 total.value = res.total
+                selectedRows.value = []
             }
         })
         .finally(() => tableLoading.value = false) // 隐藏表格 loading
@@ -372,6 +389,31 @@ const deleteArticleSubmit = (row) => {
 
             showMessage('删除成功')
             // 重新请求分页接口，渲染数据
+            getTableData()
+        })
+    }).catch(() => {
+        console.log('取消了')
+    })
+}
+
+
+// 批量删除文章
+const batchDeleteArticleSubmit = () => {
+    if (selectedRows.value.length === 0) {
+        showMessage('请先选择要删除的文章', 'warning')
+        return
+    }
+
+    const ids = selectedRows.value.map(row => row.id)
+    showModel(`是否确定要删除选中的 ${ids.length} 篇文章？`).then(() => {
+        batchDeleteArticle(ids).then((res) => {
+            if (res.success == false) {
+                let message = res.message
+                showMessage(message, 'error')
+                return
+            }
+
+            showMessage('批量删除成功')
             getTableData()
         })
     }).catch(() => {

@@ -1,5 +1,6 @@
 package com.love233niang.weblog.admin.service;
 
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.article.*;
 import com.love233niang.weblog.common.utils.Response;
 
@@ -16,6 +17,13 @@ public interface AdminArticleService {
      * @return
      */
     Response deleteArticle(DeleteArticleReqVO deleteArticleReqVO);
+
+    /**
+     * 批量删除文章
+     * @param batchDeleteReqVO
+     * @return
+     */
+    Response batchDeleteArticle(BatchDeleteReqVO batchDeleteReqVO);
 
     /**
      * 查询文章分页数据

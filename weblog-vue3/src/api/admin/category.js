@@ -15,6 +15,11 @@ export function deleteCategory(id) {
     return axios.post("/admin/category/delete", {id})
 }
 
+// 批量删除分类
+export function batchDeleteCategory(ids) {
+    return axios.post("/admin/category/batch/delete", {ids})
+}
+
 // 获取分类 select 数据
 export function getCategorySelectList() {
     return axios.post("/admin/category/select/list")

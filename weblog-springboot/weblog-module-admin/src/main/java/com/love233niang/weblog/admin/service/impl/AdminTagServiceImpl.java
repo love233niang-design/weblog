@@ -3,6 +3,7 @@ package com.love233niang.weblog.admin.service.impl;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.tag.*;
 import com.love233niang.weblog.admin.service.AdminTagService;
 import com.love233niang.weblog.common.domain.dos.ArticleTagRelDO;
@@ -17,6 +18,7 @@ import com.love233niang.weblog.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
@@ -97,7 +99,27 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
      */
     @Override
     public Response deleteTag(DeleteTagReqVO deleteTagReqVO) {
-        Long tagId = deleteTagReqVO.getId();
+        deleteTagById(deleteTagReqVO.getId());
+        return Response.success();
+    }
+
+    /**
+     * 批量删除标签
+     *
+     * @param batchDeleteReqVO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Response batchDeleteTag(BatchDeleteReqVO batchDeleteReqVO) {
+        batchDeleteReqVO.getIds().stream()
+                .distinct()
+                .forEach(this::deleteTagById);
+
+        return Response.success();
+    }
+
+    private void deleteTagById(Long tagId) {
         ArticleTagRelDO articleTagRelDO = articleTagRelMapper.selectOneByTagId(tagId);
         if (Objects.nonNull(articleTagRelDO)) {
             log.warn("==> 此标签下包含文章，无法删除，tagId: {}", tagId);
@@ -105,7 +127,9 @@ public class AdminTagServiceImpl extends ServiceImpl<TagMapper, TagDO> implement
         }
         int count = tagMapper.deleteById(tagId);
 
-        return count == 1 ? Response.success() : Response.fail(ResponseCodeEnum.TAG_NOT_EXISTED);
+        if (count != 1) {
+            throw new BizException(ResponseCodeEnum.TAG_NOT_EXISTED);
+        }
     }
 
     /**

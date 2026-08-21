@@ -1,6 +1,7 @@
 package com.love233niang.weblog.admin.service;
 
 
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.DeleteCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.ExamineCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.FindCommentPageListReqVO;
@@ -21,6 +22,13 @@ public interface AdminCommentService {
      * @return
      */
     Response deleteComment(DeleteCommentReqVO deleteCommentReqVO);
+
+    /**
+     * 批量删除评论
+     * @param batchDeleteReqVO
+     * @return
+     */
+    Response batchDeleteComment(BatchDeleteReqVO batchDeleteReqVO);
 
     /**
      * 评论审核

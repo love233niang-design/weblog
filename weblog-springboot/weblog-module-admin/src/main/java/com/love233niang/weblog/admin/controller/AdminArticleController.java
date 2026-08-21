@@ -1,6 +1,7 @@
 package com.love233niang.weblog.admin.controller;
 
 import com.love233niang.weblog.admin.model.vo.article.*;
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.service.AdminArticleService;
 import com.love233niang.weblog.common.aspect.ApiOperationLog;
 import com.love233niang.weblog.common.utils.Response;
@@ -35,6 +36,14 @@ public class AdminArticleController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Response deleteArticle(@RequestBody @Validated DeleteArticleReqVO deleteArticleReqVO) {
         return articleService.deleteArticle(deleteArticleReqVO);
+    }
+
+    @PostMapping("/batch/delete")
+    @ApiOperation(value = "文章批量删除")
+    @ApiOperationLog(description = "文章批量删除")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response batchDeleteArticle(@RequestBody @Validated BatchDeleteReqVO batchDeleteReqVO) {
+        return articleService.batchDeleteArticle(batchDeleteReqVO);
     }
 
     @PostMapping("/list")

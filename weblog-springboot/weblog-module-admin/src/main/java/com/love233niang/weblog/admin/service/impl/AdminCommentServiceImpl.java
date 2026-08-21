@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.toolkit.CollectionUtils;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.love233niang.weblog.admin.convert.CommentConvert;
 import com.love233niang.weblog.admin.event.UpdateCommentEvent;
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.DeleteCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.ExamineCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.FindCommentPageListReqVO;
@@ -77,7 +78,31 @@ public class AdminCommentServiceImpl implements AdminCommentService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Response deleteComment(DeleteCommentReqVO deleteCommentReqVO) {
-        Long commentId = deleteCommentReqVO.getId();
+        deleteCommentById(deleteCommentReqVO.getId());
+        return Response.success();
+    }
+
+    /**
+     * 批量删除评论
+     *
+     * @param batchDeleteReqVO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Response batchDeleteComment(BatchDeleteReqVO batchDeleteReqVO) {
+        batchDeleteReqVO.getIds().stream()
+                .distinct()
+                .forEach(commentId -> {
+                    if (Objects.nonNull(commentMapper.selectById(commentId))) {
+                        deleteCommentById(commentId);
+                    }
+                });
+
+        return Response.success();
+    }
+
+    private void deleteCommentById(Long commentId) {
 
         // 查询该评论实际一级评论还是二级评论
         CommentDO commentDO = commentMapper.selectById(commentId);
@@ -99,7 +124,6 @@ public class AdminCommentServiceImpl implements AdminCommentService {
             // 删除此评论，以及一级评论下的回复
             deleteAllChildComment(commentId);
         }
-        return Response.success();
     }
 
     @Override
@@ -155,7 +179,7 @@ public class AdminCommentServiceImpl implements AdminCommentService {
         childCommentDOS.forEach(childCommentDO -> {
             Long childCommentId = childCommentDO.getId();
 
-            commentMapper.deleteById(commentId);
+            commentMapper.deleteById(childCommentId);
 
             // 递归调用
             deleteAllChildComment(childCommentId);

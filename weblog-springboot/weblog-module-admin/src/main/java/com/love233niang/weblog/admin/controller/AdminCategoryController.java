@@ -1,5 +1,6 @@
 package com.love233niang.weblog.admin.controller;
 
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.category.AddCategoryReqVO;
 import com.love233niang.weblog.admin.model.vo.category.DeleteCategoryReqVO;
 import com.love233niang.weblog.admin.model.vo.category.FindCategoryPageListReqVO;
@@ -45,6 +46,14 @@ public class AdminCategoryController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Response deleteCategory(@RequestBody @Validated DeleteCategoryReqVO deleteCategoryReqVO) {
         return categoryService.deleteCategory(deleteCategoryReqVO);
+    }
+
+    @PostMapping("/category/batch/delete")
+    @ApiOperation(value = "批量删除分类")
+    @ApiOperationLog(description = "批量删除分类")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response batchDeleteCategory(@RequestBody @Validated BatchDeleteReqVO batchDeleteReqVO) {
+        return categoryService.batchDeleteCategory(batchDeleteReqVO);
     }
 
     @PostMapping("/category/select/list")

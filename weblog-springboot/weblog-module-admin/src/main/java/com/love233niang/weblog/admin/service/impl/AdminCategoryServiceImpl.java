@@ -1,6 +1,7 @@
 package com.love233niang.weblog.admin.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.category.AddCategoryReqVO;
 import com.love233niang.weblog.admin.model.vo.category.DeleteCategoryReqVO;
 import com.love233niang.weblog.admin.model.vo.category.FindCategoryPageListReqVO;
@@ -18,6 +19,7 @@ import com.love233niang.weblog.common.utils.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.time.LocalDate;
@@ -102,7 +104,27 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
      */
     @Override
     public Response deleteCategory(DeleteCategoryReqVO deleteCategoryReqVO) {
-        Long categoryId = deleteCategoryReqVO.getId();
+        deleteCategoryById(deleteCategoryReqVO.getId());
+        return Response.success();
+    }
+
+    /**
+     * 批量删除分类
+     *
+     * @param batchDeleteReqVO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Response batchDeleteCategory(BatchDeleteReqVO batchDeleteReqVO) {
+        batchDeleteReqVO.getIds().stream()
+                .distinct()
+                .forEach(this::deleteCategoryById);
+
+        return Response.success();
+    }
+
+    private void deleteCategoryById(Long categoryId) {
         ArticleCategoryRelDO articleCategoryRelDO = articleCategoryRelMapper.selectOneByCategoryId(categoryId);
         if (Objects.nonNull(articleCategoryRelDO)) {
             log.warn("==> 此分类下包含文章，无法删除，categoryId: {}", categoryId);
@@ -111,8 +133,6 @@ public class AdminCategoryServiceImpl implements AdminCategoryService {
 
         // 删除分类
         categoryMapper.deleteById(categoryId);
-
-        return Response.success();
     }
 
     /**

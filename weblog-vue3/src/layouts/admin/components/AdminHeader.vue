@@ -121,6 +121,11 @@ import { useBlogSettingsStore } from '@/stores/blogsettings'
 const router = useRouter()
 // 引入博客设置信息 store
 const blogSettingsStore = useBlogSettingsStore()
+onMounted(() => {
+    if (!blogSettingsStore.blogSettings.avatar) {
+        blogSettingsStore.getBlogSettings()
+    }
+})
 // isFullscreen 表示当前是否处于全屏；toggle 用于动态切换全屏、非全屏
 const { isFullscreen, toggle } = useFullscreen()
 

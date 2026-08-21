@@ -3,6 +3,7 @@ import { getToken } from '@/composables/cookie'
 import { showMessage } from '@/composables/util'
 import { showPageLoading, hidePageLoading } from '@/composables/util'
 import { useBlogSettingsStore } from '@/stores/blogsettings'
+import { useUserStore } from '@/stores/user'
 // 全局路由前置守卫
 router.beforeEach((to, from, next) => {
     console.log('==> 全局路由前置守卫')
@@ -24,9 +25,20 @@ router.beforeEach((to, from, next) => {
         // 引入博客设置 store
         let blogSettingsStore = useBlogSettingsStore()
         // 获取博客设置信息并保存到全局状态中
-        blogSettingsStore.getBlogSettings()
+        if (!blogSettingsStore.blogSettings.avatar) {
+            blogSettingsStore.getBlogSettings()
+        }
         next()
     } else {
+        // 访问后台页面时，刷新浏览器后 Pinia 内存状态会丢失，需要重新补齐头部展示信息
+        let blogSettingsStore = useBlogSettingsStore()
+        if (!blogSettingsStore.blogSettings.avatar) {
+            blogSettingsStore.getBlogSettings()
+        }
+        let userStore = useUserStore()
+        if (!userStore.userInfo.username) {
+            userStore.setUserInfo()
+        }
         next()
     }
 

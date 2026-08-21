@@ -14,6 +14,10 @@ export function addTag(data) {
 export function deleteTag(id) {
     return axios.post("/admin/tag/delete", {id})
 }
+// 批量删除标签
+export function batchDeleteTag(ids) {
+    return axios.post("/admin/tag/batch/delete", {ids})
+}
 // 根据标签名模糊查询
 export function searchTags(key) {
     return axios.post("/admin/tag/search", {key})

@@ -9,6 +9,11 @@ export function deleteArticle(id) {
     return axios.post("/admin/article/delete", {id})
 }
 
+// 批量删除文章
+export function batchDeleteArticle(ids) {
+    return axios.post("/admin/article/batch/delete", {ids})
+}
+
 // 发布文章
 export function publishArticle(data) {
     return axios.post("/admin/article/publish", data)

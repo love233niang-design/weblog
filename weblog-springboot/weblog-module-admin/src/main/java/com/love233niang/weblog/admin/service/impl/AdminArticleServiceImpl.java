@@ -6,6 +6,7 @@ import com.love233niang.weblog.admin.convert.ArticleDetailConvert;
 import com.love233niang.weblog.admin.event.DeleteArticleEvent;
 import com.love233niang.weblog.admin.event.PublishArticleEvent;
 import com.love233niang.weblog.admin.event.UpdateArticleEvent;
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.article.*;
 import com.love233niang.weblog.admin.service.AdminArticleService;
 import com.love233niang.weblog.common.domain.dos.*;
@@ -106,7 +107,27 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public Response deleteArticle(DeleteArticleReqVO deleteArticleReqVO) {
-        Long articleId = deleteArticleReqVO.getId();
+        deleteArticleById(deleteArticleReqVO.getId());
+        return Response.success();
+    }
+
+    /**
+     * 批量删除文章
+     *
+     * @param batchDeleteReqVO
+     * @return
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public Response batchDeleteArticle(BatchDeleteReqVO batchDeleteReqVO) {
+        batchDeleteReqVO.getIds().stream()
+                .distinct()
+                .forEach(this::deleteArticleById);
+
+        return Response.success();
+    }
+
+    private void deleteArticleById(Long articleId) {
         // 1. 删除文章
         articleMapper.deleteById(articleId);
 
@@ -121,7 +142,6 @@ public class AdminArticleServiceImpl implements AdminArticleService {
 
         // 发布文章删除事件
         eventPublisher.publishEvent(new DeleteArticleEvent(this, articleId));
-        return Response.success();
     }
 
     /**

@@ -21,16 +21,24 @@
 
         <el-card shadow="never">
             <!-- 新增按钮 -->
-            <div class="mb-5">
+            <div class="mb-5 flex items-center">
                 <el-button type="primary" @click="addCategoryBtnClick">
                     <el-icon class="mr-1">
                         <Plus />
                     </el-icon>
                     新增</el-button>
+                <el-button type="danger" class="ml-3" @click="batchDeleteTagSubmit">
+                    <el-icon class="mr-1">
+                        <Delete />
+                    </el-icon>
+                    批量删除
+                </el-button>
             </div>
 
                      <!-- 分页列表 -->
-            <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading">
+            <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading"
+                @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55" />
                 <el-table-column prop="name" label="标签名称" width="180">
                     <template #default="scope">
                         <el-tag class="ml-2" type="success">{{ scope.row.name }}</el-tag>
@@ -85,7 +93,7 @@
 <script setup>
 import { Search, RefreshRight } from '@element-plus/icons-vue'
 import { ref, reactive, nextTick } from 'vue'
-import { getTagPageList, addTag, deleteTag } from '@/api/admin/tag'
+import { getTagPageList, addTag, deleteTag, batchDeleteTag } from '@/api/admin/tag'
 import moment from 'moment'
 import { showMessage, showModel } from '@/composables/util'
 import FormDialog from '@/components/FormDialog.vue'
@@ -147,6 +155,13 @@ const current = ref(1)
 const total = ref(0)
 // 每页显示的数据量，给了个默认值 10
 const size = ref(10)
+// 表格选中的标签
+const selectedRows = ref([])
+
+// 选择项改变事件
+const handleSelectionChange = (selection) => {
+    selectedRows.value = selection
+}
 
 
 // 获取分页数据
@@ -163,6 +178,7 @@ function getTableData() {
                 current.value = res.current
                 size.value = res.size
                 total.value = res.total
+                selectedRows.value = []
             }
         })
         .finally(() => tableLoading.value = false) // 隐藏表格 loading
@@ -241,6 +257,29 @@ const deleteTagSubmit = (row) => {
                 // 获取服务端返回的错误消息
                 let message = res.message
                 // 提示错误消息
+                showMessage(message, 'error')
+            }
+        })
+    }).catch(() => {
+        console.log('取消了')
+    })
+}
+
+// 批量删除标签
+const batchDeleteTagSubmit = () => {
+    if (selectedRows.value.length === 0) {
+        showMessage('请先选择要删除的标签', 'warning')
+        return
+    }
+
+    const ids = selectedRows.value.map(row => row.id)
+    showModel(`是否确定要删除选中的 ${ids.length} 个标签？`).then(() => {
+        batchDeleteTag(ids).then((res) => {
+            if (res.success == true) {
+                showMessage('批量删除成功')
+                getTableData()
+            } else {
+                let message = res.message
                 showMessage(message, 'error')
             }
         })

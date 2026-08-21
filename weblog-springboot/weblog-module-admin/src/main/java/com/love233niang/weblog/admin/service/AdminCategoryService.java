@@ -1,6 +1,7 @@
 package com.love233niang.weblog.admin.service;
 
 
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.category.AddCategoryReqVO;
 import com.love233niang.weblog.admin.model.vo.category.DeleteCategoryReqVO;
 import com.love233niang.weblog.admin.model.vo.category.FindCategoryPageListReqVO;
@@ -16,6 +17,9 @@ public interface AdminCategoryService {
 
     // 删除分类
     Response deleteCategory(DeleteCategoryReqVO deleteCategoryReqVO);
+
+    // 批量删除分类
+    Response batchDeleteCategory(BatchDeleteReqVO batchDeleteReqVO);
 
     // 获取文章分类 Select 列表数据
     Response findCategorySelectList();

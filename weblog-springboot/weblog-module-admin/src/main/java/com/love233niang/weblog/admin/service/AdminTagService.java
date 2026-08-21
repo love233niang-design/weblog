@@ -1,6 +1,7 @@
 package com.love233niang.weblog.admin.service;
 
 
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.tag.AddTagReqVo;
 import com.love233niang.weblog.admin.model.vo.tag.DeleteTagReqVO;
 import com.love233niang.weblog.admin.model.vo.tag.FindTagPageListReqVO;
@@ -30,6 +31,13 @@ public interface AdminTagService {
      * @return
      */
     Response deleteTag(DeleteTagReqVO deleteTagReqVO);
+
+    /**
+     * 批量删除标签
+     * @param batchDeleteReqVO
+     * @return
+     */
+    Response batchDeleteTag(BatchDeleteReqVO batchDeleteReqVO);
 
     /**
      * 根据标签关键词模糊查询

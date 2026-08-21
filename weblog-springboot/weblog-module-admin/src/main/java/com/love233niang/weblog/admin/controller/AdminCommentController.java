@@ -1,6 +1,7 @@
 package com.love233niang.weblog.admin.controller;
 
 
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.DeleteCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.ExamineCommentReqVO;
 import com.love233niang.weblog.admin.model.vo.comment.FindCommentPageListReqVO;
@@ -38,6 +39,14 @@ public class AdminCommentController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Response deleteComment(@RequestBody @Validated DeleteCommentReqVO deleteCommentReqVO) {
         return commentService.deleteComment(deleteCommentReqVO);
+    }
+
+    @PostMapping("/batch/delete")
+    @ApiOperation(value = "评论批量删除")
+    @ApiOperationLog(description = "评论批量删除")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response batchDeleteComment(@RequestBody @Validated BatchDeleteReqVO batchDeleteReqVO) {
+        return commentService.batchDeleteComment(batchDeleteReqVO);
     }
 
 

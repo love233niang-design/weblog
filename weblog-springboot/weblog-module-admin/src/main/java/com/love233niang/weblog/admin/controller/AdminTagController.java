@@ -1,5 +1,6 @@
 package com.love233niang.weblog.admin.controller;
 
+import com.love233niang.weblog.admin.model.vo.BatchDeleteReqVO;
 import com.love233niang.weblog.admin.model.vo.tag.AddTagReqVo;
 import com.love233niang.weblog.admin.model.vo.tag.DeleteTagReqVO;
 import com.love233niang.weblog.admin.model.vo.tag.FindTagPageListReqVO;
@@ -46,6 +47,14 @@ public class AdminTagController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Response deleteTag(@RequestBody @Validated DeleteTagReqVO deleteTagReqVO) {
         return tagService.deleteTag(deleteTagReqVO);
+    }
+
+    @PostMapping("/batch/delete")
+    @ApiOperation(value = "批量删除标签")
+    @ApiOperationLog(description = "批量删除标签")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public Response batchDeleteTag(@RequestBody @Validated BatchDeleteReqVO batchDeleteReqVO) {
+        return tagService.batchDeleteTag(batchDeleteReqVO);
     }
 
     @PostMapping("/search")

@@ -29,8 +29,19 @@
         </el-card>
 
         <el-card shadow="never">
+            <div class="mb-5 flex items-center">
+                <el-button type="danger" @click="batchDeleteCommentSubmit">
+                    <el-icon class="mr-1">
+                        <Delete />
+                    </el-icon>
+                    批量删除
+                </el-button>
+            </div>
+
             <!-- 分页列表 -->
-            <el-table :data="tableData" border stripe v-loading="tableLoading" table-layout="auto">
+            <el-table :data="tableData" border stripe v-loading="tableLoading" table-layout="auto"
+                @selection-change="handleSelectionChange">
+                <el-table-column type="selection" width="55" />
                 <el-table-column type="index" label="序号" width="60" />
                 <el-table-column prop="routerUrl" label="路由">
                     <template #default="scope">
@@ -146,7 +157,7 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-import { getCommentPageList, deleteComment, examineComment } from '@/api/admin/comment'
+import { getCommentPageList, deleteComment, batchDeleteComment, examineComment } from '@/api/admin/comment'
 
 import { Search, RefreshRight, Delete, Edit, Tickets } from '@element-plus/icons-vue'
 import { showMessage, showModel } from '@/composables/util'
@@ -237,6 +248,13 @@ const current = ref(1)
 const total = ref(0)
 // 每页显示的数据量，给了个默认值 10
 const size = ref(10)
+// 表格选中的评论
+const selectedRows = ref([])
+
+// 选择项改变事件
+const handleSelectionChange = (selection) => {
+    selectedRows.value = selection
+}
 
 // 获取分页数据
 function getTableData() {
@@ -253,6 +271,7 @@ function getTableData() {
                 current.value = res.current
                 size.value = res.size
                 total.value = res.total
+                selectedRows.value = []
             }
         })
         .finally(() => tableLoading.value = false) // 隐藏表格 loading
@@ -279,6 +298,30 @@ const deleteCommentSubmit = (row) => {
 
             showMessage('删除成功')
             // 重新请求分页接口，渲染数据
+            getTableData()
+        })
+    }).catch((e) => {
+        console.log('取消了')
+    })
+}
+
+// 批量删除评论
+const batchDeleteCommentSubmit = () => {
+    if (selectedRows.value.length === 0) {
+        showMessage('请先选择要删除的评论', 'warning')
+        return
+    }
+
+    const ids = selectedRows.value.map(row => row.id)
+    showModel(`是否确定要删除选中的 ${ids.length} 条评论，以及其子评论？`).then(() => {
+        batchDeleteComment(ids).then((res) => {
+            if (!res.success) {
+                let message = res.message
+                showMessage(message, 'error')
+                return
+            }
+
+            showMessage('批量删除成功')
             getTableData()
         })
     }).catch((e) => {
