@@ -39,54 +39,56 @@
             </div>
 
             <!-- 分页列表 -->
-            <el-table :data="tableData" border stripe v-loading="tableLoading" table-layout="auto"
-                @selection-change="handleSelectionChange">
-                <el-table-column type="selection" width="55" />
-                <el-table-column type="index" label="序号" width="60" />
-                <el-table-column prop="routerUrl" label="路由">
-                    <template #default="scope">
-                        <el-link type="primary" :href="'#' + scope.row.routerUrl" target="_blank">{{ scope.row.routerUrl
-                            }}</el-link>
-                    </template>
-                </el-table-column>
-                <el-table-column prop="avatar" label="头像" width="60">
-                    <template #default="scope">
-                        <el-avatar :size="40" :src="scope.row.avatar" />
-                    </template>
-                </el-table-column>
-                <el-table-column prop="nickname" label="昵称" />
-                <el-table-column prop="content" label="评论内容" />
-                <el-table-column prop="createTime" label="发布时间" width="200" />
-                <el-table-column prop="status" label="状态">
-                    <template #default="scope">
-                        <el-tag type="warning" v-if="scope.row.status == 1">待审核</el-tag>
-                        <el-tag type="success" v-else-if="scope.row.status == 2">正常</el-tag>
-                        <el-tag type="danger" v-else-if="scope.row.status == 3">审核不通过</el-tag>
-                    </template>
-                </el-table-column>
-                <el-table-column fixed="right" label="操作" width="150">
-                    <template #default="scope">
+            <div class="admin-table-wrap admin-table-wrap-xl">
+                <el-table :data="tableData" border stripe v-loading="tableLoading" table-layout="auto"
+                    @selection-change="handleSelectionChange">
+                    <el-table-column type="selection" width="55" />
+                    <el-table-column type="index" label="序号" width="60" />
+                    <el-table-column prop="routerUrl" label="路由">
+                        <template #default="scope">
+                            <el-link type="primary" :href="'#' + scope.row.routerUrl" target="_blank">{{ scope.row.routerUrl
+                                }}</el-link>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="avatar" label="头像" width="60">
+                        <template #default="scope">
+                            <el-avatar :size="40" :src="scope.row.avatar" />
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="nickname" label="昵称" />
+                    <el-table-column prop="content" label="评论内容" />
+                    <el-table-column prop="createTime" label="发布时间" width="200" />
+                    <el-table-column prop="status" label="状态">
+                        <template #default="scope">
+                            <el-tag type="warning" v-if="scope.row.status == 1">待审核</el-tag>
+                            <el-tag type="success" v-else-if="scope.row.status == 2">正常</el-tag>
+                            <el-tag type="danger" v-else-if="scope.row.status == 3">审核不通过</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column fixed="right" label="操作" width="150">
+                        <template #default="scope">
 
-                        <el-tooltip class="box-item" effect="dark" content="详情" placement="bottom">
-                            <el-button size="small" :icon="Tickets" circle @click="showDetailDialog(scope.row)">
-                            </el-button>
-                        </el-tooltip>
+                            <el-tooltip class="box-item" effect="dark" content="详情" placement="bottom">
+                                <el-button size="small" :icon="Tickets" circle @click="showDetailDialog(scope.row)">
+                                </el-button>
+                            </el-tooltip>
 
-                      <el-tooltip v-if="scope.row.status == 1" class="box-item" effect="dark" content="审核"
-                            placement="bottom">
-                            <el-button size="small" :icon="Edit" circle @click="showEditDetailDialog(scope.row)">
-                            </el-button>
-                        </el-tooltip>
+                        <el-tooltip v-if="scope.row.status == 1" class="box-item" effect="dark" content="审核"
+                                placement="bottom">
+                                <el-button size="small" :icon="Edit" circle @click="showEditDetailDialog(scope.row)">
+                                </el-button>
+                            </el-tooltip>
 
-                       <el-tooltip class="box-item" effect="dark" content="删除" placement="bottom">
-                            <el-button type="danger" size="small" :icon="Delete" @click="deleteCommentSubmit(scope.row)"
-                                circle>
-                            </el-button>
-                        </el-tooltip>
+                        <el-tooltip class="box-item" effect="dark" content="删除" placement="bottom">
+                                <el-button type="danger" size="small" :icon="Delete" @click="deleteCommentSubmit(scope.row)"
+                                    circle>
+                                </el-button>
+                            </el-tooltip>
 
-                    </template>
-                </el-table-column>
-            </el-table>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
 
             <!-- 分页 -->
             <div class="mt-10 flex justify-center">

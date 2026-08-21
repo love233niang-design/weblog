@@ -63,3 +63,27 @@ const submit = () => emit('submit')
 
 
 </script>
+
+<style>
+@media (max-width: 768px) {
+    .el-dialog:not(.is-fullscreen) {
+        width: calc(100vw - 24px) !important;
+        margin-top: 8vh !important;
+    }
+
+    .el-dialog:not(.is-fullscreen) .el-dialog__body {
+        max-height: calc(100vh - 180px);
+        overflow-y: auto;
+    }
+
+    .el-dialog__footer .dialog-footer {
+        display: flex;
+        gap: 8px;
+    }
+
+    .el-dialog__footer .dialog-footer .el-button {
+        flex: 1;
+        margin-left: 0 !important;
+    }
+}
+</style>

@@ -1,9 +1,9 @@
 <template>
     <el-affix :offset="0">
         <!-- 设置背景色为白色、高度为 64px，padding-right 为 4， border-bottom 为 slate 100 -->
-        <div class="bg-white h-[64px] flex pr-4 border-b border-slate-100">
+        <div class="admin-header bg-white h-[64px] flex pr-4 border-b border-slate-100">
             <!-- 左边栏收缩、展开 -->
-            <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
+            <div class="admin-header-icon w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
                 @click="handleMenuWidth">
                 <el-icon>
                     <Fold v-if="menuStore.menuWidth == '250px'" />
@@ -12,10 +12,10 @@
             </div>
 
             <!-- 右边容器 -->
-            <div class="ml-auto flex">
+            <div class="admin-header-actions ml-auto flex">
                 <!-- 点击刷新页面 -->
                 <el-tooltip class="box-item" effect="dark" content="刷新" placement="bottom">
-                    <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
+                    <div class="admin-header-icon w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
                         @click="handleRefresh">
                         <el-icon>
                             <Refresh />
@@ -25,7 +25,7 @@
 
                 <!-- 点击跳转前台首页 -->
                 <el-tooltip class="box-item" effect="dark" content="跳转前台" placement="bottom">
-                    <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
+                    <div class="admin-header-icon w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 hover:bg-gray-200"
                         @click="router.push('/')">
                         <el-icon>
                             <Monitor />
@@ -36,7 +36,7 @@
 
                 <!-- 点击全屏展示 -->
                 <el-tooltip class="box-item" effect="dark" content="全屏" placement="bottom">
-                    <div class="w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 mr-2 hover:bg-gray-200"
+                    <div class="admin-header-icon admin-header-fullscreen w-[42px] h-[64px] cursor-pointer flex items-center justify-center text-gray-700 mr-2 hover:bg-gray-200"
                         @click="toggle">
                         <el-icon>
                             <FullScreen v-if="!isFullscreen" />
@@ -50,7 +50,7 @@
                     <span class="el-dropdown-link flex items-center justify-center text-gray-700 text-xs">
                         <!-- 头像 Avatar -->
                         <el-avatar class="mr-2" :size="25" :src="blogSettingsStore.blogSettings.avatar" />
-                        {{ userStore.userInfo.username }}
+                        <span class="admin-username">{{ userStore.userInfo.username }}</span>
                         <el-icon class="el-icon--right">
                             <arrow-down />
                         </el-icon>
@@ -255,3 +255,20 @@ const onSubmit = () => {
 }
 
 </script>
+
+<style scoped>
+@media (max-width: 768px) {
+    .admin-header {
+        padding-right: 8px !important;
+    }
+
+    .admin-header-icon {
+        width: 40px !important;
+    }
+
+    .admin-header-fullscreen,
+    .admin-username {
+        display: none !important;
+    }
+}
+</style>

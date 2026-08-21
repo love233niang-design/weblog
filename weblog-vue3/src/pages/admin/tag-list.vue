@@ -36,27 +36,29 @@
             </div>
 
                      <!-- 分页列表 -->
-            <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading"
-                @selection-change="handleSelectionChange">
-                <el-table-column type="selection" width="55" />
-                <el-table-column prop="name" label="标签名称" width="180">
-                    <template #default="scope">
-                        <el-tag class="ml-2" type="success">{{ scope.row.name }}</el-tag>
-                    </template>
-                </el-table-column>
-                <el-table-column prop="articlesTotal" label="文章数" width="100" />
-                <el-table-column prop="createTime" label="创建时间" width="180" />
-                <el-table-column label="操作">
-                    <template #default="scope">
-                        <el-button type="danger" size="small" @click="deleteTagSubmit(scope.row)">
-                            <el-icon class="mr-1">
-                                <Delete />
-                            </el-icon>
-                            删除
-                        </el-button>
-                    </template>
-                </el-table-column>
-            </el-table>
+            <div class="admin-table-wrap">
+                <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading"
+                    @selection-change="handleSelectionChange">
+                    <el-table-column type="selection" width="55" />
+                    <el-table-column prop="name" label="标签名称" width="180">
+                        <template #default="scope">
+                            <el-tag class="ml-2" type="success">{{ scope.row.name }}</el-tag>
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="articlesTotal" label="文章数" width="100" />
+                    <el-table-column prop="createTime" label="创建时间" width="180" />
+                    <el-table-column label="操作">
+                        <template #default="scope">
+                            <el-button type="danger" size="small" @click="deleteTagSubmit(scope.row)">
+                                <el-icon class="mr-1">
+                                    <Delete />
+                                </el-icon>
+                                删除
+                            </el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
 
 
             <!-- 分页 -->

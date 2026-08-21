@@ -36,44 +36,46 @@
             </div>
 
             <!-- 分页列表 -->
-            <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading"
-                @selection-change="handleSelectionChange">
-                <el-table-column type="selection" width="55" />
-                <el-table-column prop="id" label="ID" width="50" />
-                <el-table-column prop="title" label="标题" width="380" />
-                <el-table-column prop="cover" label="封面" width="180">
-                    <template #default="scope">
-                        <el-image style="width: 100px;" :src="scope.row.cover" />
-                    </template>
-                </el-table-column>
-                <el-table-column prop="isTop" label="是否置顶" width="100">
-                    <template #default="scope">
-                        <el-switch @change="handleIsTopChange(scope.row)" v-model="scope.row.isTop" inline-prompt
-                            :active-icon="Check" :inactive-icon="Close" />
-                    </template>
-                </el-table-column>
-                <el-table-column prop="createTime" label="发布时间" width="180" />
-                <el-table-column label="操作">
-                    <template #default="scope">
-                        <el-button size="small" @click="showArticleUpdateEditor(scope.row)">
-                            <el-icon class="mr-1">
-                                <Edit />
-                            </el-icon>
-                            编辑</el-button>
-                        <el-button size="small" @click="goArticleDetailPage(scope.row.id)">
-                            <el-icon class="mr-1">
-                                <View />
-                            </el-icon>
-                            预览</el-button>
-                        <el-button type="danger" size="small" @click="deleteArticleSubmit(scope.row)">
-                            <el-icon class="mr-1">
-                                <Delete />
-                            </el-icon>
-                            删除
-                        </el-button>
-                    </template>
-                </el-table-column>
-            </el-table>
+            <div class="admin-table-wrap admin-table-wrap-lg">
+                <el-table :data="tableData" border stripe style="width: 100%" v-loading="tableLoading"
+                    @selection-change="handleSelectionChange">
+                    <el-table-column type="selection" width="55" />
+                    <el-table-column prop="id" label="ID" width="50" />
+                    <el-table-column prop="title" label="标题" width="380" />
+                    <el-table-column prop="cover" label="封面" width="180">
+                        <template #default="scope">
+                            <el-image style="width: 100px;" :src="scope.row.cover" />
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="isTop" label="是否置顶" width="100">
+                        <template #default="scope">
+                            <el-switch @change="handleIsTopChange(scope.row)" v-model="scope.row.isTop" inline-prompt
+                                :active-icon="Check" :inactive-icon="Close" />
+                        </template>
+                    </el-table-column>
+                    <el-table-column prop="createTime" label="发布时间" width="180" />
+                    <el-table-column label="操作">
+                        <template #default="scope">
+                            <el-button size="small" @click="showArticleUpdateEditor(scope.row)">
+                                <el-icon class="mr-1">
+                                    <Edit />
+                                </el-icon>
+                                编辑</el-button>
+                            <el-button size="small" @click="goArticleDetailPage(scope.row.id)">
+                                <el-icon class="mr-1">
+                                    <View />
+                                </el-icon>
+                                预览</el-button>
+                            <el-button type="danger" size="small" @click="deleteArticleSubmit(scope.row)">
+                                <el-icon class="mr-1">
+                                    <Delete />
+                                </el-icon>
+                                删除
+                            </el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+            </div>
 
             <!-- 分页 -->
             <div class="mt-10 flex justify-center">

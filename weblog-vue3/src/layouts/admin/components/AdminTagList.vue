@@ -1,6 +1,6 @@
 <template>
     <!-- 左边：标签导航栏 -->
-    <div class="fixed top-[64px] h-[44px] px-2 right-0 z-50 flex items-center bg-white transition-all duration-300 shadow"
+    <div class="admin-tag-list fixed top-[64px] h-[44px] px-2 right-0 z-50 flex items-center bg-white transition-all duration-300 shadow"
         :style="{ left: menuStore.menuWidth }">
         <el-tabs v-model="activeTab" type="card" class="demo-tabs" @tab-remove="removeTab" @tab-change="tabChange"
             style="min-width: 10px;">
@@ -10,7 +10,7 @@
         </el-tabs>
 
         <!-- 右侧下拉菜单 -->
-        <span class="ml-auto flex items-center justify-center h-[32px] w-[32px]">
+        <span class="admin-tag-action ml-auto flex items-center justify-center h-[32px] w-[32px]">
             <el-dropdown @command="handleCloseTab">
                 <span class="el-dropdown-link">
                     <el-icon>
@@ -94,5 +94,31 @@ const { menuStore, activeTab, tabList, tabChange, removeTab, handleCloseTab } = 
 .is-disabled {
     cursor: not-allowed;
     color: #d1d5db;
+}
+
+.admin-tag-list .el-tabs {
+    min-width: 0;
+    flex: 1;
+}
+
+.admin-tag-action {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .admin-tag-list {
+        left: 0 !important;
+        z-index: 60;
+        padding-right: 4px;
+        padding-left: 8px;
+    }
+
+    .admin-tag-list .el-tabs__item {
+        max-width: 120px;
+        padding-right: 10px !important;
+        padding-left: 10px !important;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 </style>
